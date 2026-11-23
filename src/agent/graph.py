@@ -3,6 +3,7 @@ from typing import TypedDict
 from langgraph.graph import END, START, StateGraph
 
 from agent.nodes.analyze import make_analyze_node
+from agent.nodes.approve import make_approve_node
 from agent.nodes.gate import make_gate_node
 from agent.nodes.plan import make_plan_node
 from agent.nodes.report import make_report_node
@@ -22,19 +23,22 @@ class State(TypedDict, total=False):
     attempts: int
     cost_usd: float
     approved_ids: list[str]
+    auto_approved: bool
 
 
-def build_graph(model, tools, store, report_path="report.md"):
+def build_graph(model, tools, store, ask, report_path="report.md"):
     g = StateGraph(State)
     g.add_node("plan", make_plan_node(model, tools))
     g.add_node("analyze", make_analyze_node(model, tools))
     g.add_node("gate", make_gate_node(tools, store))
     g.add_node("verify", make_verify_node(model, tools, store))
+    g.add_node("approve", make_approve_node(ask, store))
     g.add_node("report", make_report_node(report_path))
     g.add_edge(START, "plan")
     g.add_edge("plan", "analyze")
     g.add_edge("analyze", "gate")
     g.add_conditional_edges("gate", lambda s: "analyze" if s["pending"] else "verify")
-    g.add_edge("verify", "report")
+    g.add_edge("verify", "approve")
+    g.add_edge("approve", "report")
     g.add_edge("report", END)
     return g.compile()

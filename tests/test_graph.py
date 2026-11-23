@@ -25,7 +25,7 @@ def test_graph_end_to_end_with_fake_model(tmp_path):
                   sleep=lambda s: None)
     tools = FileTools(FIXTURE, store, "r1")
     out = tmp_path / "report.md"
-    result = build_graph(model, tools, store, report_path=out).invoke(
+    result = build_graph(model, tools, store, lambda f: "y", report_path=out).invoke(
         {"run_id": "r1", "target_root": str(FIXTURE)})
     assert [f.id for f in result["findings"]] == ["F-001"]
     assert [a.file for a in result["plan"]] == ["Vault.sol"]  # bad file dropped
@@ -39,13 +39,13 @@ def bad_citation(end):
         "line_end": end, "description": "d", "impact": "i"}])
 
 
-def run(script, tmp_path):
+def run(script, tmp_path, ask=lambda f: "y"):
     store = Store(":memory:")
     store.start_run("r1", str(FIXTURE))
     client = FakeClient(script)
     model = Model(store, "r1", client=client, sleep=lambda s: None)
     tools = FileTools(FIXTURE, store, "r1")
-    result = build_graph(model, tools, store, report_path=tmp_path / "r.md").invoke(
+    result = build_graph(model, tools, store, ask, report_path=tmp_path / "r.md").invoke(
         {"run_id": "r1", "target_root": str(FIXTURE)})
     return result, store, client
 
@@ -98,12 +98,43 @@ def test_rejected_finding_kept_in_db_but_not_in_report(tmp_path):
 
 
 def test_unusable_verifier_reply_leaves_finding_unverified(tmp_path):
-    result, _, client = run([Reply(PLAN), Reply(FINDINGS), Reply("x"), Reply("y")], tmp_path)
+    result, _, client = run(
+        [Reply(PLAN), Reply(FINDINGS), Reply("x"), Reply("y")], tmp_path, ask=lambda f: "s"
+    )
     f = result["findings"][0]
     assert f.status.value == "proposed" and "unusable" in f.verifier_note
     assert client.calls == 4  # plan, analyze, verify + exactly one verify retry
 
 
 def test_verifier_retries_once_after_unusable_reply(tmp_path):
-    result, _, _ = run([Reply(PLAN), Reply(FINDINGS), Reply("oops"), Reply(OK)], tmp_path)
+    result, _, _ = run(
+        [Reply(PLAN), Reply(FINDINGS), Reply("oops"), Reply(OK)], tmp_path, ask=lambda f: "s"
+    )
     assert result["findings"][0].status.value == "verified"
+
+
+def test_only_approved_findings_reach_the_report(tmp_path):
+    result, store, _ = run([Reply(PLAN), Reply(FINDINGS), Reply(OK)], tmp_path, ask=lambda f: "n")
+    assert result["approved_ids"] == []
+    assert "Reentrancy in withdraw" not in (tmp_path / "r.md").read_text()
+    assert "No approved findings" in (tmp_path / "r.md").read_text()
+    assert '"rejected"' in store.db.execute("SELECT json FROM findings").fetchone()[0]
+
+
+def test_skip_leaves_finding_out_of_report_but_unchanged(tmp_path):
+    result, _, _ = run([Reply(PLAN), Reply(FINDINGS), Reply(OK)], tmp_path, ask=lambda f: "s")
+    assert result["approved_ids"] == []
+    assert result["findings"][0].status.value == "verified"
+
+
+def test_yes_approves_and_is_reported_with_status(tmp_path):
+    result, _, _ = run([Reply(PLAN), Reply(FINDINGS), Reply(OK)], tmp_path)
+    assert result["approved_ids"] == ["F-001"]
+    assert "status: approved" in (tmp_path / "r.md").read_text()
+
+
+def test_verifier_rejected_findings_are_never_shown_to_the_human(tmp_path):
+    shown = []
+    rejected = json.dumps({"verdict": "rejected", "note": "guard exists"})
+    run([Reply(PLAN), Reply(FINDINGS), Reply(rejected)], tmp_path, ask=lambda f: shown.append(f) or "y")
+    assert shown == []

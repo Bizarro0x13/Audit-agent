@@ -4,9 +4,12 @@ from pathlib import Path
 def make_report_node(out_path: str | Path = "report.md"):
     def report(state):
         lines = [f"# Audit report for {state['target_root']}", ""]
-        findings = [f for f in state.get("findings", []) if f.status.value != "rejected"]
+        approved = set(state.get("approved_ids", []))
+        findings = [f for f in state.get("findings", []) if f.id in approved]
+        if state.get("auto_approved"):
+            lines += ["> NOTE: findings were auto-approved (no human review).", ""]
         if not findings:
-            lines.append("No findings.")
+            lines.append("No approved findings.")
         for f in findings:
             lines += [
                 f"## {f.id} [{f.severity.value}] {f.title}",
