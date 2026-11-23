@@ -76,3 +76,13 @@ class Store:
             "INSERT INTO findings(run_id, id, json) VALUES (?,?,?)", (run_id, finding_id, json_text)
         )
         self.db.commit()
+
+    def set_status(self, run_id: str, status: str) -> None:
+        self.db.execute("UPDATE runs SET status = ? WHERE id = ?", (status, run_id))
+        self.db.commit()
+
+    def get_run(self, run_id: str):
+        """Return (target, status) or None if the run is unknown."""
+        return self.db.execute(
+            "SELECT target, status FROM runs WHERE id = ?", (run_id,)
+        ).fetchone()

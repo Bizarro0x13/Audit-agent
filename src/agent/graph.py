@@ -26,7 +26,8 @@ class State(TypedDict, total=False):
     auto_approved: bool
 
 
-def build_graph(model, tools, store, ask, report_path="report.md"):
+def build_graph(model, tools, store, ask, report_path="report.md", checkpointer=None,
+                interrupt_after=None):
     g = StateGraph(State)
     g.add_node("plan", make_plan_node(model, tools))
     g.add_node("analyze", make_analyze_node(model, tools))
@@ -41,4 +42,4 @@ def build_graph(model, tools, store, ask, report_path="report.md"):
     g.add_edge("verify", "approve")
     g.add_edge("approve", "report")
     g.add_edge("report", END)
-    return g.compile()
+    return g.compile(checkpointer=checkpointer, interrupt_after=interrupt_after)
