@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Literal
 
 from pydantic import BaseModel
 
@@ -39,3 +40,8 @@ class Finding(FindingDraft):
     id: str
     status: Status = Status.proposed
     verifier_note: str = ""
+
+
+class VerifyResult(BaseModel):
+    verdict: Literal["verified", "rejected"]
+    note: str

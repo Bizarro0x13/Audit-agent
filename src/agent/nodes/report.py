@@ -4,7 +4,7 @@ from pathlib import Path
 def make_report_node(out_path: str | Path = "report.md"):
     def report(state):
         lines = [f"# Audit report for {state['target_root']}", ""]
-        findings = state.get("findings", [])
+        findings = [f for f in state.get("findings", []) if f.status.value != "rejected"]
         if not findings:
             lines.append("No findings.")
         for f in findings:
@@ -15,6 +15,7 @@ def make_report_node(out_path: str | Path = "report.md"):
                 f.description,
                 "",
                 f"Impact: {f.impact}",
+                f"Verifier: {f.verifier_note or '(not verified)'}",
                 "",
             ]
         Path(out_path).write_text("\n".join(lines))

@@ -114,3 +114,9 @@ def test_ignores_non_text_blocks(monkeypatch):
     reply.content = [thinking, text]
     m, _, _ = make([reply], monkeypatch)
     assert m.call("plan", "s", "u") == "answer"
+
+
+def test_structured_output_after_prose(monkeypatch):
+    reply = 'The claim is wrong because of the guard.\n\n{"name": "a"}'
+    m, _, _ = make([Reply(reply)], monkeypatch)
+    assert m.call("verify", "s", "u", schema=Item) == Item(name="a")

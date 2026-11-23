@@ -69,3 +69,10 @@ class Store:
             (run_id, gate, int(passed), detail, attempt),
         )
         self.db.commit()
+
+    def save_finding(self, run_id: str, finding_id: str, json_text: str) -> None:
+        self.db.execute("DELETE FROM findings WHERE run_id = ? AND id = ?", (run_id, finding_id))
+        self.db.execute(
+            "INSERT INTO findings(run_id, id, json) VALUES (?,?,?)", (run_id, finding_id, json_text)
+        )
+        self.db.commit()

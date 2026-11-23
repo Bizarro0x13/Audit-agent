@@ -33,8 +33,21 @@ def _is_retryable(exc: Exception) -> bool:
 
 
 def _extract_json(text: str) -> str:
+    """Pull the JSON out of a reply: a fenced block, or JSON that ends the reply after prose."""
     fenced = re.search(r"```(?:json)?\s*(.*?)```", text, re.DOTALL)
-    return (fenced.group(1) if fenced else text).strip()
+    if fenced:
+        return fenced.group(1).strip()
+    text = text.strip()
+    decoder = json.JSONDecoder()
+    for i, ch in enumerate(text):
+        if ch in "[{":
+            try:
+                _, end = decoder.raw_decode(text[i:])
+            except ValueError:
+                continue
+            if not text[i + end :].strip():  # valid JSON that runs to the end of the reply
+                return text[i:]
+    return text
 
 
 class Model:

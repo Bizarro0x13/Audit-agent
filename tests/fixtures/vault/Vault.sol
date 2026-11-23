@@ -13,6 +13,6 @@ contract Vault {
         require(balances[msg.sender] >= amount, "insufficient");
         (bool ok, ) = msg.sender.call{value: amount}("");
         require(ok, "send failed");
-        balances[msg.sender] -= amount; // state updated after the external call
+        unchecked { balances[msg.sender] -= amount; } // updated after the external call
     }
 }
