@@ -1,3 +1,4 @@
+from agent.models import ModelOutputError
 from agent.schemas import Finding, FindingDraft
 from agent.tools.files import PathEscapeError
 
@@ -14,6 +15,7 @@ def numbered(text: str) -> str:
 def make_analyze_node(model, tools):
     def analyze(state):
         findings = list(state.get("findings", []))
+        errors = list(state.get("gate_errors", []))
         for area in state["plan"]:
             try:
                 text = tools.read_file(area.file)
@@ -23,9 +25,13 @@ def make_analyze_node(model, tools):
                 f"Focus: check {area.file} for {area.bug_class}.\n\n"
                 f"<file path={area.file!r}>\n{numbered(text)}\n</file>"
             )
-            drafts = model.call("analyze", SYSTEM, user, schema=list[FindingDraft])
+            try:
+                drafts = model.call("analyze", SYSTEM, user, schema=list[FindingDraft])
+            except ModelOutputError as exc:
+                errors.append(f"{area.file}/{area.bug_class}: unusable model reply: {str(exc)[:200]}")
+                continue
             for d in drafts:
                 findings.append(Finding(id=f"F-{len(findings) + 1:03d}", **d.model_dump()))
-        return {"findings": findings}
+        return {"findings": findings, "gate_errors": errors}
 
     return analyze

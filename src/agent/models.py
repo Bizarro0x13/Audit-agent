@@ -70,13 +70,13 @@ class Model:
         )
         if self.store.run_cost(self.run_id) > self.max_usd:
             raise CostCapExceeded(f"cap ${self.max_usd:.2f} exceeded")
-        text = response.content[0].text
+        text = "".join(b.text for b in response.content if getattr(b, "type", "text") == "text")
         if schema is None:
             return text
         try:
             return TypeAdapter(schema).validate_json(_extract_json(text))
         except ValueError as exc:
-            raise ModelOutputError(str(exc)) from exc
+            raise ModelOutputError(f"{exc}\n--- stop_reason={getattr(response, 'stop_reason', None)}, blocks={[getattr(b, 'type', '?') for b in response.content]}, raw reply (first 300 chars) ---\n{text[:300]}") from exc
 
     def _send_with_retry(self, system: str, user: str, model: str):
         for attempt in range(self.max_retries + 1):

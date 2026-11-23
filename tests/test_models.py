@@ -103,3 +103,12 @@ def test_structured_output_invalid_raises(monkeypatch):
     m, _, _ = make([Reply('[{"nope": 1}]')], monkeypatch)
     with pytest.raises(ModelOutputError):
         m.call("plan", "s", "u", schema=list[Item])
+
+
+def test_ignores_non_text_blocks(monkeypatch):
+    reply = Reply("answer")
+    thinking = type("T", (), {"type": "thinking"})()
+    text = type("B", (), {"type": "text", "text": "answer"})()
+    reply.content = [thinking, text]
+    m, _, _ = make([reply], monkeypatch)
+    assert m.call("plan", "s", "u") == "answer"
