@@ -31,7 +31,7 @@ def audit(path: Path, report: Path = Path("report.md")) -> None:
     store.start_run(run_id, str(path))
     model = Model(store, run_id)
     tools = FileTools(path, store, run_id)
-    graph = build_graph(model, tools, report_path=report)
+    graph = build_graph(model, tools, store, report_path=report)
     try:
         result = graph.invoke({"run_id": run_id, "target_root": str(path)})
     except CostCapExceeded as exc:

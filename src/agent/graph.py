@@ -3,6 +3,7 @@ from typing import TypedDict
 from langgraph.graph import END, START, StateGraph
 
 from agent.nodes.analyze import make_analyze_node
+from agent.nodes.gate import make_gate_node
 from agent.nodes.plan import make_plan_node
 from agent.nodes.report import make_report_node
 from agent.schemas import Finding, FocusArea
@@ -12,6 +13,9 @@ class State(TypedDict, total=False):
     run_id: str
     target_root: str
     plan: list[FocusArea]
+    pending: list[FocusArea]
+    candidates: list
+    feedback: dict
     findings: list[Finding]
     gate_errors: list[str]
     attempts: int
@@ -19,13 +23,15 @@ class State(TypedDict, total=False):
     approved_ids: list[str]
 
 
-def build_graph(model, tools, report_path="report.md"):
+def build_graph(model, tools, store, report_path="report.md"):
     g = StateGraph(State)
     g.add_node("plan", make_plan_node(model, tools))
     g.add_node("analyze", make_analyze_node(model, tools))
+    g.add_node("gate", make_gate_node(tools, store))
     g.add_node("report", make_report_node(report_path))
     g.add_edge(START, "plan")
     g.add_edge("plan", "analyze")
-    g.add_edge("analyze", "report")
+    g.add_edge("analyze", "gate")
+    g.add_conditional_edges("gate", lambda s: "analyze" if s["pending"] else "report")
     g.add_edge("report", END)
     return g.compile()

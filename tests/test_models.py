@@ -26,10 +26,12 @@ class FakeClient:
     def __init__(self, script):
         self.script = list(script)
         self.calls = 0
+        self.requests = []
         self.messages = self
 
     def create(self, **kwargs):
         self.calls += 1
+        self.requests.append(kwargs)
         item = self.script.pop(0)
         if isinstance(item, Exception):
             raise item

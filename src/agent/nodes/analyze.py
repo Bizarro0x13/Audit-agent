@@ -1,5 +1,5 @@
 from agent.models import ModelOutputError
-from agent.schemas import Finding, FindingDraft
+from agent.schemas import FindingDraft
 from agent.tools.files import PathEscapeError
 
 SYSTEM = """You are a code security analyst. You get one focus area (a file and a bug class)
@@ -12,11 +12,20 @@ def numbered(text: str) -> str:
     return "\n".join(f"{i}: {line}" for i, line in enumerate(text.splitlines(), start=1))
 
 
+def area_key(area) -> str:
+    return f"{area.file}|{area.bug_class}"
+
+
 def make_analyze_node(model, tools):
+    """Analyze every pending focus area. Output is NOT trusted yet: it goes to the gate."""
+
     def analyze(state):
-        findings = list(state.get("findings", []))
-        errors = list(state.get("gate_errors", []))
-        for area in state["plan"]:
+        feedback = state.get("feedback", {})
+        candidates = []  # list of (area, FindingDraft)
+        errors = dict(feedback)  # carried over; rebuilt for areas we run again
+        for area in state["pending"]:
+            key = area_key(area)
+            errors.pop(key, None)
             try:
                 text = tools.read_file(area.file)
             except (PathEscapeError, OSError):
@@ -25,13 +34,17 @@ def make_analyze_node(model, tools):
                 f"Focus: check {area.file} for {area.bug_class}.\n\n"
                 f"<file path={area.file!r}>\n{numbered(text)}\n</file>"
             )
+            if feedback.get(key):
+                user += (
+                    "\n\nYour previous answer had these problems. Fix them:\n- "
+                    + "\n- ".join(feedback[key])
+                )
             try:
                 drafts = model.call("analyze", SYSTEM, user, schema=list[FindingDraft])
             except ModelOutputError as exc:
-                errors.append(f"{area.file}/{area.bug_class}: unusable model reply: {str(exc)[:200]}")
+                errors[key] = [f"your reply was not valid JSON for the schema: {str(exc)[:200]}"]
                 continue
-            for d in drafts:
-                findings.append(Finding(id=f"F-{len(findings) + 1:03d}", **d.model_dump()))
-        return {"findings": findings, "gate_errors": errors}
+            candidates += [(area, d) for d in drafts]
+        return {"candidates": candidates, "feedback": errors}
 
     return analyze

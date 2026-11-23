@@ -62,3 +62,10 @@ class Store:
             (run_id, node, tool, args_json, int(ok), time.time()),
         )
         self.db.commit()
+
+    def add_gate_result(self, run_id, gate, passed, detail, attempt) -> None:
+        self.db.execute(
+            "INSERT INTO gate_results(run_id, gate, passed, detail, attempt) VALUES (?,?,?,?,?)",
+            (run_id, gate, int(passed), detail, attempt),
+        )
+        self.db.commit()

@@ -17,6 +17,7 @@ def make_plan_node(model, tools):
             model=os.environ.get("AGENT_PLAN_MODEL", "claude-haiku-5-5"),
         )
         known = set(files)
-        return {"plan": [f for f in focus if f.file in known][:8]}
+        plan = [f for f in focus if f.file in known][:8]
+        return {"plan": plan, "pending": plan, "attempts": 0, "findings": [], "feedback": {}}
 
     return plan
