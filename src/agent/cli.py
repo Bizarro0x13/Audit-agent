@@ -5,6 +5,7 @@ from pathlib import Path
 import typer
 
 from agent.env import load_env
+from agent.rag import from_env
 
 DB_PATH = ".agent/runs.db"
 
@@ -39,6 +40,7 @@ def _execute(run_id, target, report, approve_all, initial):
         ask_yes if approve_all else cli_ask,
         report_path=report,
         checkpointer=saver,
+        rag=from_env(),
     )
     config = {"configurable": {"thread_id": run_id}}
     try:

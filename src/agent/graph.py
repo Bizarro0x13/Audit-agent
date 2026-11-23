@@ -27,11 +27,11 @@ class State(TypedDict, total=False):
 
 
 def build_graph(model, tools, store, ask, report_path="report.md", checkpointer=None,
-                interrupt_after=None, verify=True):
+                interrupt_after=None, verify=True, rag=None):
     g = StateGraph(State)
     after_gate = "verify" if verify else "approve"
     g.add_node("plan", make_plan_node(model, tools))
-    g.add_node("analyze", make_analyze_node(model, tools))
+    g.add_node("analyze", make_analyze_node(model, tools, rag))
     g.add_node("gate", make_gate_node(tools, store))
     if verify:
         g.add_node("verify", make_verify_node(model, tools, store))

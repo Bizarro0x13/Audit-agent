@@ -18,12 +18,13 @@ from agent.env import load_env
 from agent.graph import build_graph
 from agent.metrics import Span, score
 from agent.models import CostCapExceeded, Model
+from agent.rag import Index
 from agent.store import Store
 from agent.tools.files import FileTools
 
 HERE = Path(__file__).parent
 CACHE = HERE / ".cache" / "ethernaut"
-VARIANTS = ["single", "graph_noverify", "graph_verify"]
+VARIANTS = ["single", "graph_noverify", "graph_noverify_rag", "graph_verify", "graph_verify_rag"]
 
 
 def fetch(truth: dict) -> Path:
@@ -56,7 +57,9 @@ def run_variant(variant: str, target_dir: Path) -> dict:
         else:
             graph = build_graph(model, tools, store, approve_all,
                                 report_path=target_dir / "report.md",
-                                verify=(variant == "graph_verify"))
+                                verify=variant.startswith("graph_verify"),
+                                rag=Index.build(HERE.parent / "knowledge")
+                                if variant.endswith("_rag") else None)
             result = graph.invoke({"run_id": "e", "target_root": str(target_dir),
                                    "auto_approved": True})
             approved = set(result.get("approved_ids", []))
@@ -123,10 +126,10 @@ def write_results(rows, truth, repeats) -> None:
     )
     header = (
         "| variant | recall | precision | findings | tokens in/out | est. cost | seconds "
-        "| gate failures | failed runs |"
+        "| duplicate hits | gate failures | failed runs |"
     )
     out = ["# Evaluation results", "", intro, "", caveats, "", header,
-           "|---|---|---|---|---|---|---|---|---|"]
+           "|---|---|---|---|---|---|---|---|---|---|"]
     for variant in dict.fromkeys(v for v, *_ in rows):
         ms = [m for v, _, _, m in rows if v == variant]
         n = max(1, repeats)
@@ -139,7 +142,7 @@ def write_results(rows, truth, repeats) -> None:
             f"{(fh / ff if ff else 0):.0%} ({fh:.1f}/{ff:.1f}) | {ff:.1f} | "
             f"{sum(m['in_tokens'] for m in ms) / n:.0f}/{sum(m['out_tokens'] for m in ms) / n:.0f} | "
             f"${sum(m['cost'] for m in ms) / n:.3f} | {sum(m['seconds'] for m in ms) / n:.0f} | "
-            f"{sum(m['gate_failures'] for m in ms) / n:.1f} | "
+            f"{(fh - th):.1f} | {sum(m['gate_failures'] for m in ms) / n:.1f} | "
             f"{sum(m['status'] != 'ok' for m in ms)} |")
     (HERE / "results.md").write_text("\n".join(out) + "\n")
     print("\n" + "\n".join(out))

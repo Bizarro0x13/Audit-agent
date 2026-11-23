@@ -16,7 +16,21 @@ def area_key(area) -> str:
     return f"{area.file}|{area.bug_class}"
 
 
-def make_analyze_node(model, tools):
+def reference_block(rag, area, text, k=3):
+    """Top-k background notes for this focus area, or '' when retrieval is off."""
+    if rag is None:
+        return ""
+    hits = rag.search(f"{area.bug_class} {area.bug_class} {text}", k=k)
+    if not hits:
+        return ""
+    notes = "\n\n".join(h.text for h in hits)
+    return (
+        "\n\nBackground notes on well-known bug classes. They may not apply to this file; "
+        "do not report something only because a note mentions it.\n<notes>\n" + notes + "\n</notes>"
+    )
+
+
+def make_analyze_node(model, tools, rag=None):
     """Analyze every pending focus area. Output is NOT trusted yet: it goes to the gate."""
 
     def analyze(state):
@@ -33,7 +47,7 @@ def make_analyze_node(model, tools):
             user = (
                 f"Focus: check {area.file} for {area.bug_class}.\n\n"
                 f"<file path={area.file!r}>\n{numbered(text)}\n</file>"
-            )
+            ) + reference_block(rag, area, text)
             if feedback.get(key):
                 user += (
                     "\n\nYour previous answer had these problems. Fix them:\n- "
