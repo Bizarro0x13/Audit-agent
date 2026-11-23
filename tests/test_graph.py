@@ -138,3 +138,14 @@ def test_verifier_rejected_findings_are_never_shown_to_the_human(tmp_path):
     rejected = json.dumps({"verdict": "rejected", "note": "guard exists"})
     run([Reply(PLAN), Reply(FINDINGS), Reply(rejected)], tmp_path, ask=lambda f: shown.append(f) or "y")
     assert shown == []
+
+
+def test_graph_without_verifier_skips_the_verify_call(tmp_path):
+    store = Store(":memory:")
+    store.start_run("r1", str(FIXTURE))
+    client = FakeClient([Reply(PLAN), Reply(FINDINGS)])
+    model = Model(store, "r1", client=client, sleep=lambda s: None)
+    result = build_graph(model, FileTools(FIXTURE, store, "r1"), store, lambda f: "y",
+                         report_path=tmp_path / "r.md", verify=False).invoke(
+        {"run_id": "r1", "target_root": str(FIXTURE)})
+    assert client.calls == 2 and result["approved_ids"] == ["F-001"]
