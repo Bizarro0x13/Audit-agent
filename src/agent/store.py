@@ -54,3 +54,11 @@ class Store:
             "SELECT COUNT(*) FROM model_calls WHERE run_id = ?", (run_id,)
         ).fetchone()
         return row[0]
+
+    def add_tool_call(self, run_id, node, tool, args_json, ok) -> None:
+        self.db.execute(
+            "INSERT INTO tool_calls(run_id, node, tool, args_json, ok, started_at)"
+            " VALUES (?,?,?,?,?,?)",
+            (run_id, node, tool, args_json, int(ok), time.time()),
+        )
+        self.db.commit()
