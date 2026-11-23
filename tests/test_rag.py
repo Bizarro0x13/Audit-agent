@@ -46,6 +46,17 @@ def test_from_env_is_off_by_default(monkeypatch):
 
 def test_prompt_has_notes_only_when_rag_is_on():
     area = FocusArea(file="a.sol", bug_class="reentrancy")
-    assert reference_block(None, area, "code") == ""
-    block = reference_block(Index.build(KNOWLEDGE), area, "call value balance")
+    assert reference_block(None, area) == ""
+    block = reference_block(Index.build(KNOWLEDGE), area)
     assert "<notes>" in block and "do not report something only because" in block
+
+
+def test_query_is_the_bug_class_only():
+    class Spy:
+        def search(self, query, k):
+            self.seen = (query, k)
+            return []
+
+    spy = Spy()
+    reference_block(spy, FocusArea(file="a.sol", bug_class="reentrancy"))
+    assert spy.seen == ("reentrancy", 2)

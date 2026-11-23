@@ -16,11 +16,14 @@ def area_key(area) -> str:
     return f"{area.file}|{area.bug_class}"
 
 
-def reference_block(rag, area, text, k=3):
-    """Top-k background notes for this focus area, or '' when retrieval is off."""
+def reference_block(rag, area, k=2):
+    """Top-k notes for this focus area's bug class, or '' when retrieval is off.
+
+    The query is the bug class only: adding the file text pulled in notes for unrelated classes.
+    """
     if rag is None:
         return ""
-    hits = rag.search(f"{area.bug_class} {area.bug_class} {text}", k=k)
+    hits = rag.search(area.bug_class, k=k)
     if not hits:
         return ""
     notes = "\n\n".join(h.text for h in hits)
@@ -47,7 +50,7 @@ def make_analyze_node(model, tools, rag=None):
             user = (
                 f"Focus: check {area.file} for {area.bug_class}.\n\n"
                 f"<file path={area.file!r}>\n{numbered(text)}\n</file>"
-            ) + reference_block(rag, area, text)
+            ) + reference_block(rag, area)
             if feedback.get(key):
                 user += (
                     "\n\nYour previous answer had these problems. Fix them:\n- "

@@ -5,26 +5,97 @@
   "dir": "contracts/src/levels",
   "targets": {
     "ethernaut-a": {
-      "files": ["Reentrance.sol", "King.sol", "Fallout.sol"],
+      "files": [
+        "Reentrance.sol",
+        "King.sol",
+        "Fallout.sol"
+      ],
       "truth": [
-        {"file": "Reentrance.sol", "line_start": 19, "line_end": 26, "bug_class": "reentrancy"},
-        {"file": "King.sol", "line_start": 15, "line_end": 20, "bug_class": "denial of service via reverting transfer"},
-        {"file": "Fallout.sol", "line_start": 13, "line_end": 16, "bug_class": "misnamed constructor, unprotected ownership"}
+        {
+          "file": "Reentrance.sol",
+          "line_start": 19,
+          "line_end": 26,
+          "bug_class": "reentrancy"
+        },
+        {
+          "file": "King.sol",
+          "line_start": 15,
+          "line_end": 20,
+          "bug_class": "denial of service via reverting transfer"
+        },
+        {
+          "file": "Fallout.sol",
+          "line_start": 13,
+          "line_end": 16,
+          "bug_class": "misnamed constructor, unprotected ownership"
+        }
       ]
     },
     "ethernaut-b": {
-      "files": ["Telephone.sol", "Delegation.sol", "Preservation.sol"],
+      "files": [
+        "Telephone.sol",
+        "Delegation.sol",
+        "Preservation.sol"
+      ],
       "truth": [
-        {"file": "Telephone.sol", "line_start": 11, "line_end": 15, "bug_class": "tx.origin authorization"},
-        {"file": "Delegation.sol", "line_start": 25, "line_end": 30, "bug_class": "delegatecall to arbitrary calldata"},
-        {"file": "Preservation.sol", "line_start": 20, "line_end": 27, "bug_class": "delegatecall storage layout collision"}
+        {
+          "file": "Telephone.sol",
+          "line_start": 11,
+          "line_end": 15,
+          "bug_class": "tx.origin authorization"
+        },
+        {
+          "file": "Delegation.sol",
+          "line_start": 25,
+          "line_end": 30,
+          "bug_class": "delegatecall to arbitrary calldata"
+        },
+        {
+          "file": "Preservation.sol",
+          "line_start": 20,
+          "line_end": 27,
+          "bug_class": "delegatecall storage layout collision"
+        }
       ]
     },
     "ethernaut-c": {
-      "files": ["CoinFlip.sol", "Vault.sol"],
+      "files": [
+        "CoinFlip.sol",
+        "Vault.sol"
+      ],
       "truth": [
-        {"file": "CoinFlip.sol", "line_start": 13, "line_end": 22, "bug_class": "predictable randomness from blockhash"},
-        {"file": "Vault.sol", "line_start": 6, "line_end": 17, "bug_class": "secret stored in private variable"}
+        {
+          "file": "CoinFlip.sol",
+          "line_start": 13,
+          "line_end": 22,
+          "bug_class": "predictable randomness from blockhash"
+        },
+        {
+          "file": "Vault.sol",
+          "line_start": 6,
+          "line_end": 17,
+          "bug_class": "secret stored in private variable"
+        }
+      ]
+    },
+    "ethernaut-d": {
+      "files": [
+        "Elevator.sol",
+        "NaughtCoin.sol"
+      ],
+      "truth": [
+        {
+          "file": "Elevator.sol",
+          "line_start": 12,
+          "line_end": 19,
+          "bug_class": "trusting a caller-controlled callback that returns different values on repeated calls"
+        },
+        {
+          "file": "NaughtCoin.sol",
+          "line_start": 23,
+          "line_end": 25,
+          "bug_class": "transfer restriction bypassed through unoverridden transferFrom"
+        }
       ]
     }
   }
