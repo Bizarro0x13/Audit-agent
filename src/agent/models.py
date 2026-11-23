@@ -53,7 +53,8 @@ class Model:
             client = anthropic.Anthropic(timeout=60.0, max_retries=0)
         self.client = client
 
-    def call(self, node: str, system: str, user: str, schema=None):
+    def call(self, node: str, system: str, user: str, schema=None, model: str | None = None):
+        model = model or self.model
         if self.store.run_cost(self.run_id) >= self.max_usd:
             raise CostCapExceeded(f"cap ${self.max_usd:.2f} already reached")
         if schema is not None:
@@ -61,11 +62,11 @@ class Model:
                 "\n\nReply with JSON only, matching this JSON schema:\n"
                 + json.dumps(TypeAdapter(schema).json_schema())
             )
-        response = self._send_with_retry(system, user)
+        response = self._send_with_retry(system, user, model)
         usage = response.usage
         cost = (usage.input_tokens * self.price_in + usage.output_tokens * self.price_out) / 1e6
         self.store.add_model_call(
-            self.run_id, node, self.model, usage.input_tokens, usage.output_tokens, cost
+            self.run_id, node, model, usage.input_tokens, usage.output_tokens, cost
         )
         if self.store.run_cost(self.run_id) > self.max_usd:
             raise CostCapExceeded(f"cap ${self.max_usd:.2f} exceeded")
@@ -77,11 +78,11 @@ class Model:
         except ValueError as exc:
             raise ModelOutputError(str(exc)) from exc
 
-    def _send_with_retry(self, system: str, user: str):
+    def _send_with_retry(self, system: str, user: str, model: str):
         for attempt in range(self.max_retries + 1):
             try:
                 return self.client.messages.create(
-                    model=self.model,
+                    model=model,
                     max_tokens=4096,
                     system=system,
                     messages=[{"role": "user", "content": user}],
