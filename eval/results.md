@@ -6,6 +6,6 @@ Caveats: ground truth is a short list of the known, deliberate bugs. A finding t
 
 | variant | recall | precision | findings | tokens in/out | est. cost | seconds | duplicate hits | gate failures | failed runs |
 |---|---|---|---|---|---|---|---|---|---|
-| single | 100% (10.0/10) | 100% (10.5/10.5) | 10.5 | 5834/3589 | $0.071 | 30 | 0.5 | 0.0 | 0 |
-| graph_noverify | 100% (10.0/10) | 91% (10.0/11.0) | 11.0 | 15949/7754 | $0.164 | 85 | 0.0 | 1.0 | 0 |
-| graph_verify | 100% (10.0/10) | 83% (10.0/12.0) | 12.0 | 35599/18186 | $0.380 | 184 | 0.0 | 0.0 | 0 |
+| single | 95% (9.5/10) | 100% (9.5/9.5) | 9.5 | 5834/3407 | $0.069 | 32 | 0.0 | 0.0 | 0 |
+| graph_noverify | 100% (10.0/10) | 87% (10.0/11.5) | 11.5 | 16249/8442 | $0.175 | 93 | 0.0 | 0.0 | 0 |
+| graph_verify | 100% (10.0/10) | 91% (10.0/11.0) | 11.0 | 34184/15404 | $0.334 | 162 | 0.0 | 0.0 | 0 |
