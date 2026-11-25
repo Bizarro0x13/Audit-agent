@@ -177,3 +177,32 @@ def test_compare_section_uses_single_as_baseline():
                                 agg("graph", [0.8, 0.8, 0.8], 2.0)])
     assert any("graph" in x and "better" in x for x in lines)
     assert ev.compare_section([agg("graph", [0.8], 1.0)]) == []  # no baseline present
+
+
+def test_repeats_are_the_outer_loop_and_rows_stream_to_sink(tmp_path, monkeypatch):
+    monkeypatch.syspath_prepend(str(ROOT / "eval"))  # eval/ is not a package
+    from dryrun import DryRunClient
+
+    ts = ev.build_targets(TRUTH, MANIFEST, "heldout", None)[:2]
+    sink = tmp_path / "rows.jsonl"
+    rows = ev.run_all(ts, ["single", "graph_noverify"], 2, dry_run=True,
+                      client_factory=lambda: DryRunClient({}, set()), log=lambda *_: None,
+                      sink=sink)
+    assert [r["run"] for r in rows] == [0] * 4 + [1] * 4  # all of repeat 0 before repeat 1
+    streamed = [json.loads(line) for line in sink.read_text().splitlines()]
+    assert len(streamed) == len(rows) == 8
+
+
+def test_budget_stops_before_a_repeat_it_cannot_afford(monkeypatch):
+    monkeypatch.syspath_prepend(str(ROOT / "eval"))
+    from dryrun import DryRunClient
+
+    ts = ev.build_targets(TRUTH, MANIFEST, "heldout", None)[:1]
+    logs = []
+    rows = ev.run_all(ts, ["single"], 5, dry_run=True, budget_usd=1e-9,
+                      client_factory=lambda: DryRunClient({}, set()), log=logs.append)
+    assert {r["run"] for r in rows} == {0}  # repeat 0 always runs; repeat 1 is refused
+    assert any("budget" in str(m) for m in logs)
+    # and the table shows the unused repeats instead of hiding them
+    agg = ev.aggregate(rows, ts, repeats=5)[0]
+    assert agg["repeats_used"] == 1 and agg["repeats_asked"] == 5

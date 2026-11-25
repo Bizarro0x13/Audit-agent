@@ -141,33 +141,56 @@ def run_variant(variant: str, target_dir: Path, client=None, knowledge: Path | N
 
 
 def run_all(targets: list[Target], variants: list[str], repeats: int, dry_run: bool = False,
-            client_factory: Callable[[], object] | None = None, log=print) -> list[dict]:
-    """One row per (target, variant, repeat). A failed run is a row with status != ok."""
-    rows = []
-    for t in targets:
-        for variant in variants:
-            for i in range(repeats):
+            client_factory: Callable[[], object] | None = None, log=print,
+            budget_usd: float | None = None, sink: Path | None = None) -> list[dict]:
+    """One row per (target, variant, repeat). A failed run is a row with status != ok.
+
+    Repeats are the OUTER loop, so every target and variant finishes repeat i before repeat i+1
+    starts. If budget_usd is set, a new repeat is skipped when total spend plus the cost of the
+    previous repeat would exceed it; the skipped repeats simply show as unused in the table.
+    Each finished row is appended to `sink` (jsonl) so a crash loses nothing."""
+    rows: list[dict] = []
+    spent = last_repeat_cost = 0.0
+    for i in range(repeats):
+        if budget_usd is not None and i > 0 and spent + last_repeat_cost > budget_usd:
+            log(f"budget ${budget_usd:.2f} would be exceeded by repeat {i}; stopping after "
+                f"{i} repeat(s), spent ${spent:.2f}")
+            break
+        repeat_cost = 0.0
+        for t in targets:
+            for variant in variants:
                 target_dir = stage(t, dry_run)
                 r = run_variant(variant, target_dir, client_factory() if client_factory else None)
-                spans = r["spans"]
-                row = {"variant": variant, "target": t.name, "kind": t.kind, "split": t.split,
-                       "run": i, "status": r["status"], "cost": r["cost"], "seconds": r["seconds"],
-                       "in_tokens": r["in_tokens"], "out_tokens": r["out_tokens"],
-                       "gate_failures": r["gate_failures"], "found": len(spans),
-                       "spans": [[s.file, s.line_start, s.line_end] for s in spans]}
-                if t.kind == "vuln":
-                    m = score_bugs(spans, t.bugs)
-                    row |= {"truth": m["truth"], "truth_hit": m["truth_hit"],
-                            "found_hit": m["found_hit"], "hit_ids": m["hit_ids"]}
-                else:
-                    fp = false_positives(spans, t.files)
-                    row |= {"safe_files": fp["safe_files"],
-                            "files_with_findings": fp["files_with_findings"],
-                            "findings_on_safe": fp["findings_on_safe"]}
+                row = make_row(variant, t, i, r)
                 rows.append(row)
+                repeat_cost += row["cost"]
+                if sink is not None:
+                    with sink.open("a") as fh:
+                        fh.write(json.dumps(row) + "\n")
                 log(f"{variant:19} {t.name:10} run{i}: {row['status']} found {row['found']} "
                     f"cost ${row['cost']:.3f} {row['seconds']:.0f}s")
+        spent += repeat_cost
+        last_repeat_cost = repeat_cost
+        log(f"-- repeat {i} done, cost ${repeat_cost:.2f}, total ${spent:.2f}")
     return rows
+
+
+def make_row(variant: str, t: Target, run: int, r: dict) -> dict:
+    spans = r["spans"]
+    row = {"variant": variant, "target": t.name, "kind": t.kind, "split": t.split,
+           "run": run, "status": r["status"], "cost": r["cost"], "seconds": r["seconds"],
+           "in_tokens": r["in_tokens"], "out_tokens": r["out_tokens"],
+           "gate_failures": r["gate_failures"], "found": len(spans),
+           "spans": [[s.file, s.line_start, s.line_end] for s in spans]}
+    if t.kind == "vuln":
+        m = score_bugs(spans, t.bugs)
+        row |= {"truth": m["truth"], "truth_hit": m["truth_hit"],
+                "found_hit": m["found_hit"], "hit_ids": m["hit_ids"]}
+    else:
+        fp = false_positives(spans, t.files)
+        row |= {"safe_files": fp["safe_files"], "files_with_findings": fp["files_with_findings"],
+                "findings_on_safe": fp["findings_on_safe"]}
+    return row
 
 
 # ---- aggregation ----------------------------------------------------------------------
@@ -339,6 +362,8 @@ def main(argv: list[str] | None = None) -> None:
     ap.add_argument("--variants", default=",".join(VARIANTS))
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--out-dir", type=Path, default=None)
+    ap.add_argument("--budget-usd", type=float, default=None,
+                    help="stop starting new repeats once total spend would exceed this")
     args = ap.parse_args(argv)
     variants = args.variants.split(",")
 
@@ -364,7 +389,11 @@ def main(argv: list[str] | None = None) -> None:
         safe = {f for t in targets if t.kind == "safe" for f in t.files}
         factory = lambda: DryRunClient(ranges, safe)
     out_dir = args.out_dir or (Path(tempfile.mkdtemp(prefix="eval-dry-")) if args.dry_run else HERE)
-    rows = run_all(targets, variants, args.repeats, args.dry_run, factory)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    sink = out_dir / "rows.partial.jsonl"
+    sink.write_text("")
+    rows = run_all(targets, variants, args.repeats, args.dry_run, factory,
+                   budget_usd=args.budget_usd, sink=sink)
     text = write_results(rows, targets, args.repeats, truth, out_dir, args.dry_run)
     print("\n" + text)
     print(f"written to {out_dir}")
