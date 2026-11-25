@@ -180,6 +180,13 @@ def run_all(targets: list[Target], variants: list[str], repeats: int, dry_run: b
     return rows
 
 
+def report_targets(truth: dict, manifest: dict, rows: list[dict], levels: Path | None) -> list[Target]:
+    """Targets to REPORT on: every target that has rows, not just the ones this invocation ran.
+    Without this, merging a small rerun into a big run would drop the other groups from the table."""
+    have = {r["target"] for r in rows}
+    return [t for t in build_targets(truth, manifest, "all", levels) if t.name in have]
+
+
 def merge_rows(old: list[dict], new: list[dict]) -> list[dict]:
     """Combine earlier rows with new ones. A new row replaces an old row with the same
     (variant, target, run), which is how a failed run is redone."""
@@ -380,6 +387,8 @@ def main(argv: list[str] | None = None) -> None:
                     help="number the repeats from this index (to add a repeat to earlier results)")
     ap.add_argument("--merge-rows", type=Path, default=None,
                     help="jsonl of earlier rows to merge with this run's rows")
+    ap.add_argument("--render-only", type=Path, default=None,
+                    help="do not run anything: render results from this jsonl of rows")
     ap.add_argument("--budget-usd", type=float, default=None,
                     help="stop starting new repeats once total spend would exceed this")
     args = ap.parse_args(argv)
@@ -391,6 +400,13 @@ def main(argv: list[str] | None = None) -> None:
         levels = CACHE / truth["dir"] if (CACHE / ".git").exists() else None
     else:
         levels = fetch(truth)
+    if args.render_only is not None:
+        rows = [json.loads(x) for x in args.render_only.read_text().splitlines() if x.strip()]
+        report = report_targets(truth, manifest, rows, levels)
+        out_dir = args.out_dir or HERE
+        text = write_results(rows, report, 1 + max(r["run"] for r in rows), truth, out_dir, False)
+        print(text)
+        return
     targets = build_targets(truth, manifest, args.split, levels)
     if not targets:
         raise SystemExit(f"no targets for split {args.split!r}")
@@ -418,7 +434,8 @@ def main(argv: list[str] | None = None) -> None:
         rows = merge_rows(old, rows)
         total_repeats = max(total_repeats, 1 + max(r["run"] for r in rows))
         sink.write_text("".join(json.dumps(r) + "\n" for r in rows))
-    text = write_results(rows, targets, total_repeats, truth, out_dir, args.dry_run)
+    report = report_targets(truth, manifest, rows, levels)
+    text = write_results(rows, report, total_repeats, truth, out_dir, args.dry_run)
     print("\n" + text)
     print(f"written to {out_dir}")
 

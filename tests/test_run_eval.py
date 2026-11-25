@@ -228,3 +228,20 @@ def test_run_offset_numbers_repeats_and_rows_keep_finding_titles(monkeypatch):
                       client_factory=lambda: DryRunClient({}, set()), log=lambda *_: None)
     assert [r["run"] for r in rows] == [2, 3]
     assert all("titles" in r for r in rows)
+
+
+def test_report_covers_every_group_with_rows_not_just_the_last_run():
+    rows = [vrow("v", "train-a", 0, 1, 1, 1, 1), vrow("v", "heldout-a", 0, 1, 1, 1, 1)]
+    rows[0]["split"], rows[1]["split"] = "train", "heldout"
+    got = {t.name for t in ev.report_targets(TRUTH, MANIFEST, rows, None)}
+    assert got == {"train-a", "heldout-a"}
+
+
+def test_render_only_rebuilds_the_full_table_from_rows(tmp_path):
+    src = ROOT / "eval" / "rows.partial.jsonl"
+    if not src.exists():
+        pytest.skip("no local rows file")
+    ev.main(["--render-only", str(src), "--out-dir", str(tmp_path)])
+    text = (tmp_path / "results.md").read_text()
+    for group in ["train", "heldout", "unseen", "safe-train", "safe-heldout"]:
+        assert f"| {group} |" in text
