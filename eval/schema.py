@@ -13,6 +13,8 @@ from pathlib import Path
 HERE = Path(__file__).parent
 TRUTH = HERE / "truth.json"
 LOCK = HERE / "split.lock"
+SAFE_DIR = HERE / "safe"
+SAFE_MANIFEST = SAFE_DIR / "manifest.json"
 LEVELS = HERE / ".cache" / "ethernaut" / "contracts" / "src" / "levels"
 SPLITS = {"train", "heldout", "unseen"}
 DIFFICULTIES = {"easy", "medium", "hard"}
@@ -69,6 +71,44 @@ def validate(truth: dict, levels: Path | None = None) -> list[str]:
     return errs
 
 
+def validate_safe(manifest: dict, truth: dict, safe_dir: Path = SAFE_DIR) -> list[str]:
+    """Safe controls: files exist and are all listed, each pairs with real bugs of the same
+    family, and the control sits in the same split as its twins."""
+    errs: list[str] = []
+    by_id = {b["id"]: b for b in bugs(truth)}
+    listed = set()
+    seen = set()
+    for c in manifest["controls"]:
+        where = c.get("id", "?")
+        if c["id"] in seen:
+            errs.append(f"{where}: duplicate control id")
+        seen.add(c["id"])
+        listed.add(c["file"])
+        if not (safe_dir / c["file"]).exists():
+            errs.append(f"{where}: file {c['file']} missing")
+        if c["split"] not in {"train", "heldout"}:
+            errs.append(f"{where}: bad split {c['split']!r}")
+        if not c["twins"]:
+            errs.append(f"{where}: no twin bug")
+        for t in c["twins"]:
+            if t not in by_id:
+                errs.append(f"{where}: unknown twin {t}")
+                continue
+            if by_id[t]["split"] != c["split"]:
+                errs.append(f"{where}: split {c['split']} differs from twin {t} ({by_id[t]['split']})")
+            if by_id[t]["family"] != c["family"]:
+                errs.append(f"{where}: family {c['family']} differs from twin {t} ({by_id[t]['family']})")
+        for t in c.get("also_covers", []):
+            if t not in by_id:
+                errs.append(f"{where}: unknown also_covers {t}")
+            elif by_id[t]["split"] != c["split"]:
+                errs.append(f"{where}: also_covers {t} is in a different split")
+    on_disk = {p.name for p in safe_dir.glob("*.sol")}
+    for extra in sorted(on_disk - listed):
+        errs.append(f"{extra}: on disk but not in manifest")
+    return errs
+
+
 def main() -> int:
     truth = load()
     if "--freeze" in sys.argv:
@@ -78,6 +118,8 @@ def main() -> int:
     errs = validate(truth, LEVELS if LEVELS.exists() else None)
     if LOCK.exists() and LOCK.read_text().strip() != split_hash(truth):
         errs.append("split changed since it was frozen (run --freeze only after review)")
+    if SAFE_MANIFEST.exists():
+        errs += validate_safe(json.loads(SAFE_MANIFEST.read_text()), truth)
     for e in errs:
         print("ERROR:", e)
     print("ok" if not errs else f"{len(errs)} problem(s)")

@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "note": "Original contracts written for this project (not copies of upstream code). Each is the correct form of a pattern whose vulnerable twin is in truth.json. Any finding on one of these is counted as a false positive.",
+  "controls": [
+    {
+      "id": "S01",
+      "file": "SafeVault.sol",
+      "twins": [
+        "E01"
+      ],
+      "family": "reentrancy",
+      "split": "train",
+      "why_safe": "state updated before the external call, plus a reentrancy lock"
+    },
+    {
+      "id": "S02",
+      "file": "SafeAuction.sol",
+      "twins": [
+        "E02"
+      ],
+      "family": "denial-of-service",
+      "split": "train",
+      "why_safe": "pull-payment refunds; a reverting bidder only blocks themselves"
+    },
+    {
+      "id": "S03",
+      "file": "SafeRegistry.sol",
+      "twins": [
+        "E12"
+      ],
+      "family": "access-control",
+      "split": "heldout",
+      "why_safe": "owner set in constructor, two-step transfer, receive() reverts"
+    },
+    {
+      "id": "S04",
+      "file": "SafeVoucher.sol",
+      "twins": [
+        "E04"
+      ],
+      "family": "caller-assumption",
+      "split": "train",
+      "why_safe": "authorization uses msg.sender; tx.origin appears only in an event"
+    },
+    {
+      "id": "S05",
+      "file": "SafeForwarder.sol",
+      "twins": [
+        "E05"
+      ],
+      "family": "delegatecall-storage",
+      "split": "heldout",
+      "why_safe": "delegatecall to an immutable target with fixed calldata and matching layout"
+    },
+    {
+      "id": "S06",
+      "file": "SafeEscrow.sol",
+      "twins": [
+        "E07"
+      ],
+      "family": "randomness",
+      "split": "train",
+      "why_safe": "no randomness; block.timestamp used only for day-scale deadlines"
+    },
+    {
+      "id": "S07",
+      "file": "SafeToken.sol",
+      "twins": [
+        "E11"
+      ],
+      "family": "arithmetic",
+      "split": "train",
+      "why_safe": "balance checked before an unchecked subtraction that cannot underflow"
+    },
+    {
+      "id": "S08",
+      "file": "SafeStaking.sol",
+      "twins": [
+        "E14"
+      ],
+      "family": "unchecked-return",
+      "split": "train",
+      "why_safe": "token call results checked, balance-delta accounting, reentrancy lock"
+    },
+    {
+      "id": "S09",
+      "file": "SafePool.sol",
+      "twins": [
+        "E17"
+      ],
+      "family": "price-manipulation",
+      "split": "heldout",
+      "why_safe": "two fixed tokens, internal reserves, min-out, token validation",
+      "also_covers": [
+        "E18"
+      ]
+    },
+    {
+      "id": "S10",
+      "file": "SafeShop.sol",
+      "twins": [
+        "E09"
+      ],
+      "family": "callback-trust",
+      "split": "train",
+      "why_safe": "price is stored by the seller; no callback to the caller for any value"
+    },
+    {
+      "id": "S11",
+      "file": "SafeGate.sol",
+      "twins": [
+        "E13"
+      ],
+      "family": "caller-assumption",
+      "split": "heldout",
+      "why_safe": "explicit allowlist instead of a code-size check"
+    },
+    {
+      "id": "S12",
+      "file": "SafeDecoder.sol",
+      "twins": [
+        "E15"
+      ],
+      "family": "calldata-encoding",
+      "split": "train",
+      "why_safe": "exact length, exact selector, bounded decoded value"
+    }
+  ]
+}
