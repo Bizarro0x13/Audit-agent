@@ -1,13 +1,18 @@
 # Evaluation results
 
-Targets: Ethernaut @ `d05643a40a` (4 sets, 10 labeled bugs). 2 run(s) per variant per target; numbers are totals over all targets (averaged over runs).
+Targets: Ethernaut @ `d05643a40a` plus our own safe controls. 2 target group(s), 0 labeled bugs in this run. 2 repeat(s); mean ± std over repeats that fully completed.
 
-Caveats: ground truth is a short list of the known, deliberate bugs. A finding that hits none of them may still be a real issue, so precision is a lower bound. Cost uses the published per-model prices in models.py (as of 2026-11-03); token counts are exact. Small sample: treat differences as indicative, not proven.
+Caveats: ground truth is a short list of deliberate bugs, so a finding that hits none of them may still be real and precision is a lower bound. Safe controls are original code reviewed once (see eval/safe/REVIEW.md); a finding on one counts as a false positive. Ethernaut is public and may be in model training data. Cost uses published per-model prices (models.py); token counts are exact. Treat differences inside the spread as noise.
 
-| variant | recall | precision | findings | tokens in/out | est. cost | seconds | duplicate hits | gate failures | failed runs |
-|---|---|---|---|---|---|---|---|---|---|
-| single | 100% (10.0/10) | 100% (11.0/11.0) | 11.0 | 5834/4178 | $0.053 | 34 | 1.0 | 0.0 | 0 |
-| graph_noverify | 100% (10.0/10) | 91% (10.0/11.0) | 11.0 | 17310/8082 | $0.102 | 92 | 0.0 | 0.5 | 0 |
-| graph_noverify_rag | 100% (10.0/10) | 91% (10.0/11.0) | 11.0 | 22878/8804 | $0.121 | 94 | 0.0 | 0.0 | 0 |
-| graph_verify | 100% (10.0/10) | 91% (10.0/11.0) | 11.0 | 31576/13670 | $0.187 | 147 | 0.0 | 0.5 | 0 |
-| graph_verify_rag | 100% (10.0/10) | 91% (10.0/11.0) | 11.0 | 48236/20527 | $0.289 | 200 | 0.0 | 0.5 | 0 |
+| variant | group | recall | precision | FP file rate | findings | cost | tokens in/out | seconds | repeats used | failed runs |
+|---|---|---|---|---|---|---|---|---|---|---|
+| single | safe-heldout | - | - | 0% ±0% | 0.0 | $0.017 | 4456/768 | 8 | 2/2 | 0 |
+| single | safe-train | - | - | 0% ±0% | 0.0 | $0.012 | 4372/375 | 4 | 2/2 | 0 |
+| graph_noverify | safe-heldout | - | - | 0% ±0% | 0.0 | $0.032 | 7877/1904 | 23 | 2/2 | 0 |
+| graph_noverify | safe-train | - | - | 0% ±0% | 0.0 | $0.041 | 9101/2680 | 28 | 2/2 | 0 |
+| graph_noverify_rag | safe-heldout | - | - | 0% ±0% | 0.0 | $0.039 | 10518/2046 | 25 | 2/2 | 0 |
+| graph_noverify_rag | safe-train | - | - | 0% ±0% | 0.0 | $0.031 | 8630/1818 | 20 | 2/2 | 0 |
+| graph_verify | safe-heldout | - | - | 0% ±0% | 0.0 | $0.035 | 9570/1786 | 24 | 2/2 | 0 |
+| graph_verify | safe-train | - | - | 0% ±0% | 0.0 | $0.033 | 7450/2272 | 25 | 2/2 | 0 |
+| graph_verify_rag | safe-heldout | - | - | 0% ±0% | 0.0 | $0.038 | 10518/1942 | 22 | 2/2 | 0 |
+| graph_verify_rag | safe-train | - | - | 0% ±0% | 0.0 | $0.033 | 9266/1850 | 21 | 2/2 | 0 |

@@ -132,6 +132,7 @@ def run_variant(variant: str, target_dir: Path, client=None, knowledge: Path | N
     return {
         "status": status,
         "spans": [Span(Path(f.file).name, f.line_start, f.line_end) for f in findings],
+        "titles": [f.title for f in findings],
         "cost": store.run_cost("e"),
         "seconds": time.time() - started,
         "in_tokens": tokens[0],
@@ -142,19 +143,23 @@ def run_variant(variant: str, target_dir: Path, client=None, knowledge: Path | N
 
 def run_all(targets: list[Target], variants: list[str], repeats: int, dry_run: bool = False,
             client_factory: Callable[[], object] | None = None, log=print,
-            budget_usd: float | None = None, sink: Path | None = None) -> list[dict]:
+            budget_usd: float | None = None, sink: Path | None = None,
+            run_offset: int = 0) -> list[dict]:
     """One row per (target, variant, repeat). A failed run is a row with status != ok.
 
     Repeats are the OUTER loop, so every target and variant finishes repeat i before repeat i+1
     starts. If budget_usd is set, a new repeat is skipped when total spend plus the cost of the
     previous repeat would exceed it; the skipped repeats simply show as unused in the table.
-    Each finished row is appended to `sink` (jsonl) so a crash loses nothing."""
+    Each finished row is appended to `sink` (jsonl) so a crash loses nothing.
+    `run_offset` numbers the repeats from that index, so an extra repeat or a rerun can be merged
+    into earlier results (see merge_rows)."""
     rows: list[dict] = []
     spent = last_repeat_cost = 0.0
-    for i in range(repeats):
-        if budget_usd is not None and i > 0 and spent + last_repeat_cost > budget_usd:
+    for n in range(repeats):
+        i = run_offset + n
+        if budget_usd is not None and n > 0 and spent + last_repeat_cost > budget_usd:
             log(f"budget ${budget_usd:.2f} would be exceeded by repeat {i}; stopping after "
-                f"{i} repeat(s), spent ${spent:.2f}")
+                f"{n} repeat(s), spent ${spent:.2f}")
             break
         repeat_cost = 0.0
         for t in targets:
@@ -175,13 +180,22 @@ def run_all(targets: list[Target], variants: list[str], repeats: int, dry_run: b
     return rows
 
 
+def merge_rows(old: list[dict], new: list[dict]) -> list[dict]:
+    """Combine earlier rows with new ones. A new row replaces an old row with the same
+    (variant, target, run), which is how a failed run is redone."""
+    keys = {(r["variant"], r["target"], r["run"]) for r in new}
+    kept = [r for r in old if (r["variant"], r["target"], r["run"]) not in keys]
+    return kept + new
+
+
 def make_row(variant: str, t: Target, run: int, r: dict) -> dict:
     spans = r["spans"]
     row = {"variant": variant, "target": t.name, "kind": t.kind, "split": t.split,
            "run": run, "status": r["status"], "cost": r["cost"], "seconds": r["seconds"],
            "in_tokens": r["in_tokens"], "out_tokens": r["out_tokens"],
            "gate_failures": r["gate_failures"], "found": len(spans),
-           "spans": [[s.file, s.line_start, s.line_end] for s in spans]}
+           "spans": [[s.file, s.line_start, s.line_end] for s in spans],
+           "titles": r.get("titles", [])}
     if t.kind == "vuln":
         m = score_bugs(spans, t.bugs)
         row |= {"truth": m["truth"], "truth_hit": m["truth_hit"],
@@ -362,6 +376,10 @@ def main(argv: list[str] | None = None) -> None:
     ap.add_argument("--variants", default=",".join(VARIANTS))
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--out-dir", type=Path, default=None)
+    ap.add_argument("--run-offset", type=int, default=0,
+                    help="number the repeats from this index (to add a repeat to earlier results)")
+    ap.add_argument("--merge-rows", type=Path, default=None,
+                    help="jsonl of earlier rows to merge with this run's rows")
     ap.add_argument("--budget-usd", type=float, default=None,
                     help="stop starting new repeats once total spend would exceed this")
     args = ap.parse_args(argv)
@@ -393,8 +411,14 @@ def main(argv: list[str] | None = None) -> None:
     sink = out_dir / "rows.partial.jsonl"
     sink.write_text("")
     rows = run_all(targets, variants, args.repeats, args.dry_run, factory,
-                   budget_usd=args.budget_usd, sink=sink)
-    text = write_results(rows, targets, args.repeats, truth, out_dir, args.dry_run)
+                   budget_usd=args.budget_usd, sink=sink, run_offset=args.run_offset)
+    total_repeats = args.run_offset + args.repeats
+    if args.merge_rows is not None:
+        old = [json.loads(x) for x in args.merge_rows.read_text().splitlines() if x.strip()]
+        rows = merge_rows(old, rows)
+        total_repeats = max(total_repeats, 1 + max(r["run"] for r in rows))
+        sink.write_text("".join(json.dumps(r) + "\n" for r in rows))
+    text = write_results(rows, targets, total_repeats, truth, out_dir, args.dry_run)
     print("\n" + text)
     print(f"written to {out_dir}")
 

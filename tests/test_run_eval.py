@@ -206,3 +206,25 @@ def test_budget_stops_before_a_repeat_it_cannot_afford(monkeypatch):
     # and the table shows the unused repeats instead of hiding them
     agg = ev.aggregate(rows, ts, repeats=5)[0]
     assert agg["repeats_used"] == 1 and agg["repeats_asked"] == 5
+
+
+def test_merge_rows_replaces_a_redone_run_and_keeps_the_rest():
+    old = [{"variant": "v", "target": "a", "run": 0, "status": "error: X", "n": "old"},
+           {"variant": "v", "target": "a", "run": 1, "status": "ok", "n": "old"},
+           {"variant": "w", "target": "a", "run": 0, "status": "ok", "n": "old"}]
+    new = [{"variant": "v", "target": "a", "run": 0, "status": "ok", "n": "new"},
+           {"variant": "v", "target": "a", "run": 2, "status": "ok", "n": "new"}]
+    merged = ev.merge_rows(old, new)
+    by = {(r["variant"], r["run"]): r["n"] for r in merged}
+    assert by == {("v", 0): "new", ("v", 1): "old", ("w", 0): "old", ("v", 2): "new"}
+
+
+def test_run_offset_numbers_repeats_and_rows_keep_finding_titles(monkeypatch):
+    monkeypatch.syspath_prepend(str(ROOT / "eval"))
+    from dryrun import DryRunClient
+
+    ts = ev.build_targets(TRUTH, MANIFEST, "heldout", None)[:1]
+    rows = ev.run_all(ts, ["single"], 2, dry_run=True, run_offset=2,
+                      client_factory=lambda: DryRunClient({}, set()), log=lambda *_: None)
+    assert [r["run"] for r in rows] == [2, 3]
+    assert all("titles" in r for r in rows)

@@ -1,682 +1,4647 @@
 [
   {
     "variant": "single",
-    "target": "ethernaut-a",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
     "run": 0,
-    "truth": 3,
+    "status": "ok",
+    "cost": 0.016864,
+    "seconds": 10.769521951675415,
+    "in_tokens": 1692,
+    "out_tokens": 1348,
+    "gate_failures": 0,
     "found": 3,
+    "spans": [
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "Reentrance.sol",
+        19,
+        27
+      ],
+      [
+        "King.sol",
+        15,
+        20
+      ]
+    ],
+    "truth": 3,
     "truth_hit": 3,
     "found_hit": 3,
-    "recall": 1.0,
-    "precision": 1.0,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
     "status": "ok",
-    "cost": 0.014814,
-    "seconds": 9.420472145080566,
-    "in_tokens": 1692,
-    "out_tokens": 1143,
-    "gate_failures": 0
+    "cost": 0.0208627,
+    "seconds": 14.588374137878418,
+    "in_tokens": 3142,
+    "out_tokens": 1596,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Reentrance.sol",
+        19,
+        27
+      ],
+      [
+        "King.sol",
+        15,
+        20
+      ],
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "Fallout.sol",
+        27,
+        30
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0250307,
+    "seconds": 17.605805158615112,
+    "in_tokens": 4390,
+    "out_tokens": 1900,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Reentrance.sol",
+        19,
+        27
+      ],
+      [
+        "King.sol",
+        15,
+        20
+      ],
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "Fallout.sol",
+        27,
+        30
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0559632,
+    "seconds": 37.32686710357666,
+    "in_tokens": 8137,
+    "out_tokens": 4260,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Reentrance.sol",
+        19,
+        27
+      ],
+      [
+        "King.sol",
+        15,
+        20
+      ],
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "Fallout.sol",
+        27,
+        30
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0548782,
+    "seconds": 38.21605706214905,
+    "in_tokens": 9291,
+    "out_tokens": 3896,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Reentrance.sol",
+        19,
+        27
+      ],
+      [
+        "King.sol",
+        15,
+        20
+      ],
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "Fallout.sol",
+        27,
+        30
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
   },
   {
     "variant": "single",
-    "target": "ethernaut-a",
-    "run": 1,
-    "truth": 3,
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.011904,
+    "seconds": 7.285739898681641,
+    "in_tokens": 1322,
+    "out_tokens": 926,
+    "gate_failures": 0,
     "found": 3,
+    "spans": [
+      [
+        "Telephone.sol",
+        11,
+        15
+      ],
+      [
+        "Vault.sol",
+        6,
+        17
+      ],
+      [
+        "CoinFlip.sol",
+        14,
+        22
+      ]
+    ],
+    "truth": 3,
     "truth_hit": 3,
     "found_hit": 3,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.014414,
-    "seconds": 8.887485980987549,
-    "in_tokens": 1692,
-    "out_tokens": 1103,
-    "gate_failures": 0
+    "hit_ids": [
+      "E04",
+      "E07",
+      "E08"
+    ]
   },
   {
     "variant": "graph_noverify",
-    "target": "ethernaut-a",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
     "run": 0,
+    "status": "ok",
+    "cost": 0.0195254,
+    "seconds": 19.54435682296753,
+    "in_tokens": 2823,
+    "out_tokens": 1782,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "CoinFlip.sol",
+        14,
+        24
+      ],
+      [
+        "Telephone.sol",
+        11,
+        15
+      ],
+      [
+        "Vault.sol",
+        6,
+        17
+      ]
+    ],
     "truth": 3,
-    "found": 4,
     "truth_hit": 3,
     "found_hit": 3,
-    "recall": 1.0,
-    "precision": 0.75,
+    "hit_ids": [
+      "E04",
+      "E07",
+      "E08"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
     "status": "ok",
-    "cost": 0.0217002,
-    "seconds": 16.445414066314697,
-    "in_tokens": 3172,
-    "out_tokens": 1840,
-    "gate_failures": 0
+    "cost": 0.021037399999999998,
+    "seconds": 14.583510160446167,
+    "in_tokens": 4179,
+    "out_tokens": 1453,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "CoinFlip.sol",
+        14,
+        24
+      ],
+      [
+        "Telephone.sol",
+        11,
+        15
+      ],
+      [
+        "Vault.sol",
+        6,
+        17
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E04",
+      "E07",
+      "E08"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0319059,
+    "seconds": 24.197084188461304,
+    "in_tokens": 5040,
+    "out_tokens": 2342,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "CoinFlip.sol",
+        14,
+        24
+      ],
+      [
+        "Telephone.sol",
+        11,
+        15
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E04",
+      "E07"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0444179,
+    "seconds": 30.51740598678589,
+    "in_tokens": 7268,
+    "out_tokens": 3159,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "CoinFlip.sol",
+        14,
+        22
+      ],
+      [
+        "Vault.sol",
+        6,
+        17
+      ],
+      [
+        "Telephone.sol",
+        11,
+        15
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E04",
+      "E07",
+      "E08"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0106,
+    "seconds": 9.889797925949097,
+    "in_tokens": 1090,
+    "out_tokens": 842,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Token.sol",
+        13,
+        15
+      ],
+      [
+        "Elevator.sol",
+        12,
+        18
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E09",
+      "E11"
+    ]
   },
   {
     "variant": "graph_noverify",
-    "target": "ethernaut-a",
-    "run": 1,
-    "truth": 3,
-    "found": 4,
-    "truth_hit": 3,
-    "found_hit": 3,
-    "recall": 1.0,
-    "precision": 0.75,
-    "status": "ok",
-    "cost": 0.0341413,
-    "seconds": 23.0654079914093,
-    "in_tokens": 5167,
-    "out_tokens": 2748,
-    "gate_failures": 0
-  },
-  {
-    "variant": "graph_noverify_rag",
-    "target": "ethernaut-a",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
     "run": 0,
-    "truth": 3,
-    "found": 4,
-    "truth_hit": 3,
-    "found_hit": 3,
-    "recall": 1.0,
-    "precision": 0.75,
     "status": "ok",
-    "cost": 0.0252508,
-    "seconds": 18.332821130752563,
-    "in_tokens": 4614,
-    "out_tokens": 1980,
-    "gate_failures": 0
+    "cost": 0.0296737,
+    "seconds": 27.50474715232849,
+    "in_tokens": 3636,
+    "out_tokens": 2403,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Elevator.sol",
+        12,
+        19
+      ],
+      [
+        "Token.sol",
+        13,
+        15
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E09",
+      "E11"
+    ]
   },
   {
     "variant": "graph_noverify_rag",
-    "target": "ethernaut-a",
-    "run": 1,
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0362252,
+    "seconds": 27.32251524925232,
+    "in_tokens": 5376,
+    "out_tokens": 2827,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Elevator.sol",
+        12,
+        19
+      ],
+      [
+        "Token.sol",
+        12,
+        17
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E09",
+      "E11"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0442707,
+    "seconds": 32.031850814819336,
+    "in_tokens": 5952,
+    "out_tokens": 3504,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Elevator.sol",
+        13,
+        17
+      ],
+      [
+        "Token.sol",
+        13,
+        15
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E09",
+      "E11"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.048533700000000006,
+    "seconds": 37.02125072479248,
+    "in_tokens": 7561,
+    "out_tokens": 3504,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Elevator.sol",
+        12,
+        19
+      ],
+      [
+        "Token.sol",
+        12,
+        17
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E09",
+      "E11"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.016754,
+    "seconds": 10.67467713356018,
+    "in_tokens": 1837,
+    "out_tokens": 1308,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        23,
+        29
+      ],
+      [
+        "Switch.sol",
+        13,
+        27
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.058035399999999994,
+    "seconds": 48.81370711326599,
+    "in_tokens": 6501,
+    "out_tokens": 4696,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Stake.sol",
+        25,
+        29
+      ],
+      [
+        "Stake.sol",
+        32,
+        38
+      ],
+      [
+        "Switch.sol",
+        15,
+        20
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0593804,
+    "seconds": 41.172839879989624,
+    "in_tokens": 8644,
+    "out_tokens": 4400,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        25,
+        29
+      ],
+      [
+        "Switch.sol",
+        13,
+        22
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.10614239999999998,
+    "seconds": 74.15781021118164,
+    "in_tokens": 14272,
+    "out_tokens": 8057,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Stake.sol",
+        25,
+        29
+      ],
+      [
+        "Stake.sol",
+        34,
+        37
+      ],
+      [
+        "Switch.sol",
+        13,
+        27
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0796549,
+    "seconds": 57.147071838378906,
+    "in_tokens": 11740,
+    "out_tokens": 5813,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        23,
+        29
+      ],
+      [
+        "Switch.sol",
+        13,
+        27
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.019144,
+    "seconds": 10.826796054840088,
+    "in_tokens": 2202,
+    "out_tokens": 1474,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        29
+      ],
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ]
+    ],
     "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E16",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.07946909999999999,
+    "seconds": 56.829878091812134,
+    "in_tokens": 9756,
+    "out_tokens": 6412,
+    "gate_failures": 0,
     "found": 4,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        29
+      ],
+      [
+        "PuzzleWallet.sol",
+        7,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ],
+      [
+        "PuzzleWallet.sol",
+        52,
+        55
+      ]
+    ],
+    "truth": 3,
     "truth_hit": 3,
     "found_hit": 3,
-    "recall": 1.0,
-    "precision": 0.75,
+    "hit_ids": [
+      "E16",
+      "E19",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
     "status": "ok",
-    "cost": 0.0253823,
-    "seconds": 17.09158706665039,
-    "in_tokens": 4411,
+    "cost": 0.0869936,
+    "seconds": 52.186322927474976,
+    "in_tokens": 12880,
+    "out_tokens": 6590,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        29
+      ],
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        52,
+        55
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E16",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.12395560000000001,
+    "seconds": 79.28169012069702,
+    "in_tokens": 17807,
+    "out_tokens": 9259,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        29
+      ],
+      [
+        "AlienCodex.sol",
+        10,
+        17
+      ],
+      [
+        "PuzzleWallet.sol",
+        7,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ],
+      [
+        "PuzzleWallet.sol",
+        52,
+        55
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E16",
+      "E19",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.18277509999999997,
+    "seconds": 108.38131403923035,
+    "in_tokens": 29688,
+    "out_tokens": 12779,
+    "gate_failures": 1,
+    "found": 6,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        29
+      ],
+      [
+        "AlienCodex.sol",
+        10,
+        17
+      ],
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        52,
+        55
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ],
+      [
+        "PuzzleWallet.sol",
+        7,
+        8
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E16",
+      "E19",
+      "E20"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.009004,
+    "seconds": 6.808021306991577,
+    "in_tokens": 1442,
+    "out_tokens": 612,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        30
+      ],
+      [
+        "Preservation.sol",
+        20,
+        27
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.012103,
+    "seconds": 10.057539224624634,
+    "in_tokens": 2329,
+    "out_tokens": 963,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        30
+      ],
+      [
+        "Preservation.sol",
+        20,
+        27
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.024531499999999998,
+    "seconds": 16.520260095596313,
+    "in_tokens": 4813,
+    "out_tokens": 1843,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        30
+      ],
+      [
+        "Preservation.sol",
+        20,
+        27
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.035945,
+    "seconds": 25.347847938537598,
+    "in_tokens": 6096,
+    "out_tokens": 2609,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        30
+      ],
+      [
+        "Preservation.sol",
+        20,
+        27
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0405345,
+    "seconds": 24.83926510810852,
+    "in_tokens": 7548,
+    "out_tokens": 2788,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        30
+      ],
+      [
+        "Preservation.sol",
+        20,
+        27
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.015164,
+    "seconds": 9.18568229675293,
+    "in_tokens": 2002,
+    "out_tokens": 1116,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        25
+      ],
+      [
+        "GatekeeperTwo.sol",
+        12,
+        24
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0188077,
+    "seconds": 16.009169340133667,
+    "in_tokens": 3535,
+    "out_tokens": 1519,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "GatekeeperTwo.sol",
+        12,
+        19
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        35
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0262532,
+    "seconds": 16.038331985473633,
+    "in_tokens": 4986,
+    "out_tokens": 1866,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "GatekeeperTwo.sol",
+        12,
+        19
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        35
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.08005419999999999,
+    "seconds": 54.02067303657532,
+    "in_tokens": 12354,
+    "out_tokens": 5877,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "GatekeeperTwo.sol",
+        12,
+        19
+      ],
+      [
+        "GatekeeperTwo.sol",
+        22,
+        22
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        35
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.08239570000000002,
+    "seconds": 59.26857805252075,
+    "in_tokens": 15706,
+    "out_tokens": 5512,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "GatekeeperTwo.sol",
+        12,
+        19
+      ],
+      [
+        "GatekeeperTwo.sol",
+        21,
+        24
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        35
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.019232,
+    "seconds": 13.740801811218262,
+    "in_tokens": 2546,
+    "out_tokens": 1414,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "DexTwo.sol",
+        23,
+        29
+      ],
+      [
+        "Dex.sol",
+        23,
+        34
+      ],
+      [
+        "Dex.sol",
+        56,
+        59
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0407391,
+    "seconds": 31.602942943572998,
+    "in_tokens": 6624,
+    "out_tokens": 3154,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Dex.sol",
+        32,
+        34
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        33
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.06190960000000001,
+    "seconds": 41.438026905059814,
+    "in_tokens": 12589,
+    "out_tokens": 4117,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Dex.sol",
+        23,
+        34
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        33
+      ],
+      [
+        "DexTwo.sol",
+        55,
+        58
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0765091,
+    "seconds": 53.9668071269989,
+    "in_tokens": 12257,
+    "out_tokens": 5631,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Dex.sol",
+        32,
+        34
+      ],
+      [
+        "Dex.sol",
+        56,
+        59
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        33
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0642076,
+    "seconds": 38.92598009109497,
+    "in_tokens": 12320,
+    "out_tokens": 4298,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Dex.sol",
+        32,
+        34
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        33
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.025588,
+    "seconds": 15.329901933670044,
+    "in_tokens": 3089,
+    "out_tokens": 1941,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        19,
+        27
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        13
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        39,
+        47
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0843078,
+    "seconds": 58.27555513381958,
+    "in_tokens": 8028,
+    "out_tokens": 7049,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        19,
+        26
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        18
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        39,
+        43
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        44,
+        47
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 5,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0816238,
+    "seconds": 59.467063903808594,
+    "in_tokens": 9991,
+    "out_tokens": 6388,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        21,
+        24
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        18
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        39,
+        43
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 4,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.14092280000000001,
+    "seconds": 91.34024310112,
+    "in_tokens": 17208,
+    "out_tokens": 11055,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        19,
+        26
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        39,
+        43
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        13
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 4,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.14160129999999999,
+    "seconds": 95.10015511512756,
+    "in_tokens": 19215,
+    "out_tokens": 10540,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        19,
+        25
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        18
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        39,
+        43
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 4,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.023056,
+    "seconds": 13.317643880844116,
+    "in_tokens": 3398,
+    "out_tokens": 1626,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ],
+      [
+        "AirdropClaim.sol",
+        30,
+        38
+      ],
+      [
+        "StakeRewards.sol",
+        7,
+        7
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U03"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.06748320000000001,
+    "seconds": 49.53358197212219,
+    "in_tokens": 9498,
+    "out_tokens": 5117,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        30,
+        38
+      ],
+      [
+        "Payroll.sol",
+        33,
+        38
+      ],
+      [
+        "StakeRewards.sol",
+        7,
+        7
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 4,
+    "found_hit": 4,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U03",
+      "U04"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0727612,
+    "seconds": 47.40183877944946,
+    "in_tokens": 12207,
+    "out_tokens": 5103,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        34,
+        37
+      ],
+      [
+        "Payroll.sol",
+        36,
+        37
+      ],
+      [
+        "StakeRewards.sol",
+        7,
+        7
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 4,
+    "found_hit": 4,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U03",
+      "U04"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.1039192,
+    "seconds": 68.08691000938416,
+    "in_tokens": 16001,
+    "out_tokens": 7460,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        30,
+        38
+      ],
+      [
+        "Payroll.sol",
+        36,
+        37
+      ],
+      [
+        "StakeRewards.sol",
+        7,
+        7
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 4,
+    "found_hit": 4,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U03",
+      "U04"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.11921320000000002,
+    "seconds": 76.38022327423096,
+    "in_tokens": 20268,
+    "out_tokens": 8136,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        30,
+        38
+      ],
+      [
+        "Payroll.sol",
+        36,
+        37
+      ],
+      [
+        "StakeRewards.sol",
+        7,
+        7
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 4,
+    "found_hit": 4,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U03",
+      "U04"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.018732,
+    "seconds": 11.38186502456665,
+    "in_tokens": 2156,
+    "out_tokens": 1442,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Treasury.sol",
+        15,
+        19
+      ],
+      [
+        "ShareVault.sol",
+        12,
+        18
+      ],
+      [
+        "PayoutSplitter.sol",
+        11,
+        25
+      ],
+      [
+        "VoucherMint.sol",
+        15,
+        17
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 4,
+    "found_hit": 4,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U07",
+      "U08"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0546379,
+    "seconds": 43.7886700630188,
+    "in_tokens": 6246,
+    "out_tokens": 4450,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        21,
+        24
+      ],
+      [
+        "ShareVault.sol",
+        12,
+        18
+      ],
+      [
+        "Treasury.sol",
+        15,
+        19
+      ],
+      [
+        "VoucherMint.sol",
+        15,
+        19
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 4,
+    "found_hit": 4,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U07",
+      "U08"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0742309,
+    "seconds": 57.125898122787476,
+    "in_tokens": 10380,
+    "out_tokens": 5592,
+    "gate_failures": 1,
+    "found": 4,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        21,
+        24
+      ],
+      [
+        "ShareVault.sol",
+        14,
+        17
+      ],
+      [
+        "Treasury.sol",
+        15,
+        19
+      ],
+      [
+        "VoucherMint.sol",
+        15,
+        17
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 4,
+    "found_hit": 4,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U07",
+      "U08"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0680619,
+    "seconds": 48.30601906776428,
+    "in_tokens": 9108,
+    "out_tokens": 5163,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        21,
+        24
+      ],
+      [
+        "ShareVault.sol",
+        14,
+        17
+      ],
+      [
+        "Treasury.sol",
+        15,
+        19
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U07"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0842639,
+    "seconds": 64.71632623672485,
+    "in_tokens": 10819,
+    "out_tokens": 6441,
+    "gate_failures": 1,
+    "found": 3,
+    "spans": [
+      [
+        "ShareVault.sol",
+        14,
+        15
+      ],
+      [
+        "Treasury.sol",
+        15,
+        19
+      ],
+      [
+        "PayoutSplitter.sol",
+        21,
+        24
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U07"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0300356,
+    "seconds": 20.77177405357361,
+    "in_tokens": 7877,
+    "out_tokens": 1663,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0382176,
+    "seconds": 25.510998010635376,
+    "in_tokens": 10518,
     "out_tokens": 1953,
-    "gate_failures": 0
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
   },
   {
     "variant": "graph_verify",
-    "target": "ethernaut-a",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
     "run": 0,
-    "truth": 3,
-    "found": 4,
-    "truth_hit": 3,
-    "found_hit": 3,
-    "recall": 1.0,
-    "precision": 0.75,
     "status": "ok",
-    "cost": 0.05831030000000001,
-    "seconds": 41.84807801246643,
-    "in_tokens": 9392,
-    "out_tokens": 4261,
-    "gate_failures": 0
-  },
-  {
-    "variant": "graph_verify",
-    "target": "ethernaut-a",
-    "run": 1,
-    "truth": 3,
-    "found": 4,
-    "truth_hit": 3,
-    "found_hit": 3,
-    "recall": 1.0,
-    "precision": 0.75,
-    "status": "ok",
-    "cost": 0.0671168,
-    "seconds": 45.69751501083374,
-    "in_tokens": 10620,
-    "out_tokens": 5011,
-    "gate_failures": 0
+    "cost": 0.0362396,
+    "seconds": 24.038601875305176,
+    "in_tokens": 10259,
+    "out_tokens": 1807,
+    "gate_failures": 2,
+    "found": 0,
+    "spans": [],
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
   },
   {
     "variant": "graph_verify_rag",
-    "target": "ethernaut-a",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
     "run": 0,
-    "truth": 3,
-    "found": 4,
-    "truth_hit": 3,
-    "found_hit": 3,
-    "recall": 1.0,
-    "precision": 0.75,
     "status": "ok",
-    "cost": 0.1265713,
-    "seconds": 76.36974596977234,
-    "in_tokens": 16403,
-    "out_tokens": 9721,
-    "gate_failures": 0
-  },
-  {
-    "variant": "graph_verify_rag",
-    "target": "ethernaut-a",
-    "run": 1,
-    "truth": 3,
-    "found": 4,
-    "truth_hit": 3,
-    "found_hit": 3,
-    "recall": 1.0,
-    "precision": 0.75,
-    "status": "ok",
-    "cost": 0.08400679999999999,
-    "seconds": 57.666871070861816,
-    "in_tokens": 12866,
-    "out_tokens": 6019,
-    "gate_failures": 0
-  },
-  {
-    "variant": "single",
-    "target": "ethernaut-b",
-    "run": 0,
-    "truth": 3,
-    "found": 3,
-    "truth_hit": 3,
-    "found_hit": 3,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.014402,
-    "seconds": 8.472532987594604,
-    "in_tokens": 1616,
-    "out_tokens": 1117,
-    "gate_failures": 0
-  },
-  {
-    "variant": "single",
-    "target": "ethernaut-b",
-    "run": 1,
-    "truth": 3,
-    "found": 3,
-    "truth_hit": 3,
-    "found_hit": 3,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.013992,
-    "seconds": 8.095078945159912,
-    "in_tokens": 1616,
-    "out_tokens": 1076,
-    "gate_failures": 0
+    "cost": 0.0395676,
+    "seconds": 22.834874868392944,
+    "in_tokens": 10518,
+    "out_tokens": 2088,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
   },
   {
     "variant": "graph_noverify",
-    "target": "ethernaut-b",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
     "run": 0,
-    "truth": 3,
-    "found": 3,
-    "truth_hit": 3,
-    "found_hit": 3,
-    "recall": 1.0,
-    "precision": 1.0,
     "status": "ok",
-    "cost": 0.0174299,
-    "seconds": 23.14367413520813,
-    "in_tokens": 3153,
-    "out_tokens": 1458,
-    "gate_failures": 0
-  },
-  {
-    "variant": "graph_noverify",
-    "target": "ethernaut-b",
-    "run": 1,
-    "truth": 3,
-    "found": 3,
-    "truth_hit": 3,
-    "found_hit": 3,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.025415,
-    "seconds": 28.641728162765503,
-    "in_tokens": 4883,
-    "out_tokens": 1924,
-    "gate_failures": 0
+    "cost": 0.0368347,
+    "seconds": 25.896053075790405,
+    "in_tokens": 8124,
+    "out_tokens": 2402,
+    "gate_failures": 1,
+    "found": 0,
+    "spans": [],
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
   },
   {
     "variant": "graph_noverify_rag",
-    "target": "ethernaut-b",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
     "run": 0,
-    "truth": 3,
-    "found": 3,
-    "truth_hit": 3,
-    "found_hit": 3,
-    "recall": 1.0,
-    "precision": 1.0,
     "status": "ok",
-    "cost": 0.022906000000000003,
-    "seconds": 19.996369123458862,
-    "in_tokens": 4405,
-    "out_tokens": 1725,
-    "gate_failures": 0
-  },
-  {
-    "variant": "graph_noverify_rag",
-    "target": "ethernaut-b",
-    "run": 1,
-    "truth": 3,
-    "found": 3,
-    "truth_hit": 3,
-    "found_hit": 3,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.030979,
-    "seconds": 25.89881706237793,
-    "in_tokens": 7046,
-    "out_tokens": 2082,
-    "gate_failures": 0
+    "cost": 0.0346242,
+    "seconds": 19.65294075012207,
+    "in_tokens": 9372,
+    "out_tokens": 2033,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
   },
   {
     "variant": "graph_verify",
-    "target": "ethernaut-b",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
     "run": 0,
-    "truth": 3,
-    "found": 3,
-    "truth_hit": 3,
-    "found_hit": 3,
-    "recall": 1.0,
-    "precision": 1.0,
     "status": "ok",
-    "cost": 0.050526,
-    "seconds": 36.42079520225525,
-    "in_tokens": 8797,
-    "out_tokens": 3658,
-    "gate_failures": 0
-  },
-  {
-    "variant": "graph_verify",
-    "target": "ethernaut-b",
-    "run": 1,
-    "truth": 3,
-    "found": 3,
-    "truth_hit": 3,
-    "found_hit": 3,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.0381145,
-    "seconds": 29.51755690574646,
-    "in_tokens": 6789,
-    "out_tokens": 2751,
-    "gate_failures": 0
+    "cost": 0.031934699999999996,
+    "seconds": 22.543401956558228,
+    "in_tokens": 6892,
+    "out_tokens": 2280,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
   },
   {
     "variant": "graph_verify_rag",
-    "target": "ethernaut-b",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
     "run": 0,
-    "truth": 3,
+    "status": "ok",
+    "cost": 0.0344922,
+    "seconds": 23.78607177734375,
+    "in_tokens": 9349,
+    "out_tokens": 2013,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "single",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.015314,
+    "seconds": 9.499186277389526,
+    "in_tokens": 1692,
+    "out_tokens": 1193,
+    "gate_failures": 0,
     "found": 3,
+    "spans": [
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "Reentrance.sol",
+        19,
+        27
+      ],
+      [
+        "King.sol",
+        15,
+        20
+      ]
+    ],
+    "truth": 3,
     "truth_hit": 3,
     "found_hit": 3,
-    "recall": 1.0,
-    "precision": 1.0,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
     "status": "ok",
-    "cost": 0.044916000000000005,
-    "seconds": 32.476587772369385,
+    "cost": 0.0235602,
+    "seconds": 21.08388090133667,
+    "in_tokens": 3173,
+    "out_tokens": 2003,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "Fallout.sol",
+        27,
+        30
+      ],
+      [
+        "King.sol",
+        15,
+        20
+      ],
+      [
+        "Reentrance.sol",
+        19,
+        27
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0264327,
+    "seconds": 17.60676407814026,
+    "in_tokens": 4364,
+    "out_tokens": 2015,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "Fallout.sol",
+        27,
+        30
+      ],
+      [
+        "King.sol",
+        15,
+        20
+      ],
+      [
+        "Reentrance.sol",
+        19,
+        27
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0537707,
+    "seconds": 40.55031895637512,
+    "in_tokens": 8061,
+    "out_tokens": 3903,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Reentrance.sol",
+        19,
+        27
+      ],
+      [
+        "King.sol",
+        15,
+        20
+      ],
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "Fallout.sol",
+        27,
+        30
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0439162,
+    "seconds": 29.376089096069336,
     "in_tokens": 8374,
-    "out_tokens": 3155,
-    "gate_failures": 0
-  },
-  {
-    "variant": "graph_verify_rag",
-    "target": "ethernaut-b",
-    "run": 1,
-    "truth": 3,
+    "out_tokens": 3063,
+    "gate_failures": 0,
     "found": 3,
+    "spans": [
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "King.sol",
+        15,
+        20
+      ],
+      [
+        "Reentrance.sol",
+        20,
+        25
+      ]
+    ],
+    "truth": 3,
     "truth_hit": 3,
     "found_hit": 3,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.08193900000000001,
-    "seconds": 55.05753707885742,
-    "in_tokens": 15170,
-    "out_tokens": 5595,
-    "gate_failures": 1
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
   },
   {
     "variant": "single",
-    "target": "ethernaut-c",
-    "run": 0,
-    "truth": 2,
-    "found": 2,
-    "truth_hit": 2,
-    "found_hit": 2,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.009666,
-    "seconds": 6.302903175354004,
-    "in_tokens": 1148,
-    "out_tokens": 737,
-    "gate_failures": 0
-  },
-  {
-    "variant": "single",
-    "target": "ethernaut-c",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
     "run": 1,
-    "truth": 2,
-    "found": 2,
-    "truth_hit": 2,
-    "found_hit": 2,
-    "recall": 1.0,
-    "precision": 1.0,
     "status": "ok",
-    "cost": 0.010336,
-    "seconds": 6.716158866882324,
-    "in_tokens": 1148,
-    "out_tokens": 804,
-    "gate_failures": 0
-  },
-  {
-    "variant": "graph_noverify",
-    "target": "ethernaut-c",
-    "run": 0,
-    "truth": 2,
-    "found": 2,
-    "truth_hit": 2,
-    "found_hit": 2,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.024976500000000002,
-    "seconds": 21.745182991027832,
-    "in_tokens": 3799,
-    "out_tokens": 1944,
-    "gate_failures": 0
-  },
-  {
-    "variant": "graph_noverify",
-    "target": "ethernaut-c",
-    "run": 1,
-    "truth": 2,
-    "found": 2,
-    "truth_hit": 2,
-    "found_hit": 2,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.0276236,
-    "seconds": 27.883229970932007,
-    "in_tokens": 5090,
-    "out_tokens": 1983,
-    "gate_failures": 0
-  },
-  {
-    "variant": "graph_noverify_rag",
-    "target": "ethernaut-c",
-    "run": 0,
-    "truth": 2,
-    "found": 2,
-    "truth_hit": 2,
-    "found_hit": 2,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.0387591,
-    "seconds": 29.656095027923584,
-    "in_tokens": 6951,
-    "out_tokens": 2712,
-    "gate_failures": 0
-  },
-  {
-    "variant": "graph_noverify_rag",
-    "target": "ethernaut-c",
-    "run": 1,
-    "truth": 2,
-    "found": 2,
-    "truth_hit": 2,
-    "found_hit": 2,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.0334366,
-    "seconds": 27.60031294822693,
-    "in_tokens": 6906,
-    "out_tokens": 2184,
-    "gate_failures": 0
-  },
-  {
-    "variant": "graph_verify",
-    "target": "ethernaut-c",
-    "run": 0,
-    "truth": 2,
-    "found": 2,
-    "truth_hit": 2,
-    "found_hit": 2,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.0543821,
-    "seconds": 46.91601300239563,
-    "in_tokens": 9179,
-    "out_tokens": 3785,
-    "gate_failures": 1
-  },
-  {
-    "variant": "graph_verify",
-    "target": "ethernaut-c",
-    "run": 1,
-    "truth": 2,
-    "found": 2,
-    "truth_hit": 2,
-    "found_hit": 2,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.04236759999999999,
-    "seconds": 35.524493932724,
-    "in_tokens": 6853,
-    "out_tokens": 3101,
-    "gate_failures": 0
-  },
-  {
-    "variant": "graph_verify_rag",
-    "target": "ethernaut-c",
-    "run": 0,
-    "truth": 2,
-    "found": 2,
-    "truth_hit": 2,
-    "found_hit": 2,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.057344599999999996,
-    "seconds": 49.541613817214966,
-    "in_tokens": 11446,
-    "out_tokens": 3739,
-    "gate_failures": 0
-  },
-  {
-    "variant": "graph_verify_rag",
-    "target": "ethernaut-c",
-    "run": 1,
-    "truth": 2,
-    "found": 2,
-    "truth_hit": 2,
-    "found_hit": 2,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.051420099999999996,
-    "seconds": 39.21757435798645,
-    "in_tokens": 8982,
-    "out_tokens": 3570,
-    "gate_failures": 0
-  },
-  {
-    "variant": "single",
-    "target": "ethernaut-d",
-    "run": 0,
-    "truth": 2,
+    "cost": 0.011474,
+    "seconds": 7.268080949783325,
+    "in_tokens": 1322,
+    "out_tokens": 883,
+    "gate_failures": 0,
     "found": 3,
-    "truth_hit": 2,
+    "spans": [
+      [
+        "Telephone.sol",
+        11,
+        15
+      ],
+      [
+        "Vault.sol",
+        6,
+        17
+      ],
+      [
+        "CoinFlip.sol",
+        13,
+        31
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
     "found_hit": 3,
-    "recall": 1.0,
-    "precision": 1.0,
+    "hit_ids": [
+      "E04",
+      "E07",
+      "E08"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
     "status": "ok",
-    "cost": 0.014506,
-    "seconds": 9.519492149353027,
-    "in_tokens": 1378,
-    "out_tokens": 1175,
-    "gate_failures": 0
+    "cost": 0.0158639,
+    "seconds": 13.202067852020264,
+    "in_tokens": 2799,
+    "out_tokens": 1262,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "CoinFlip.sol",
+        14,
+        22
+      ],
+      [
+        "Telephone.sol",
+        11,
+        15
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E04",
+      "E07"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.023833399999999998,
+    "seconds": 17.604185104370117,
+    "in_tokens": 3991,
+    "out_tokens": 1755,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "CoinFlip.sol",
+        14,
+        24
+      ],
+      [
+        "Vault.sol",
+        6,
+        17
+      ],
+      [
+        "Telephone.sol",
+        11,
+        15
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E04",
+      "E07",
+      "E08"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0425404,
+    "seconds": 34.10774874687195,
+    "in_tokens": 6933,
+    "out_tokens": 3233,
+    "gate_failures": 1,
+    "found": 3,
+    "spans": [
+      [
+        "CoinFlip.sol",
+        14,
+        22
+      ],
+      [
+        "Telephone.sol",
+        11,
+        15
+      ],
+      [
+        "Vault.sol",
+        6,
+        17
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E04",
+      "E07",
+      "E08"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.056766899999999995,
+    "seconds": 44.83016490936279,
+    "in_tokens": 9826,
+    "out_tokens": 3983,
+    "gate_failures": 1,
+    "found": 3,
+    "spans": [
+      [
+        "CoinFlip.sol",
+        14,
+        24
+      ],
+      [
+        "Telephone.sol",
+        11,
+        15
+      ],
+      [
+        "Vault.sol",
+        5,
+        17
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E04",
+      "E07",
+      "E08"
+    ]
   },
   {
     "variant": "single",
-    "target": "ethernaut-d",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
     "run": 1,
+    "status": "ok",
+    "cost": 0.00857,
+    "seconds": 9.925206899642944,
+    "in_tokens": 1090,
+    "out_tokens": 639,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Token.sol",
+        13,
+        15
+      ],
+      [
+        "Elevator.sol",
+        12,
+        18
+      ]
+    ],
     "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E09",
+      "E11"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.031793699999999994,
+    "seconds": 27.983267068862915,
+    "in_tokens": 3636,
+    "out_tokens": 2615,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Elevator.sol",
+        12,
+        19
+      ],
+      [
+        "Token.sol",
+        13,
+        15
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E09",
+      "E11"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0294342,
+    "seconds": 22.901283979415894,
+    "in_tokens": 5736,
+    "out_tokens": 2302,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Elevator.sol",
+        12,
+        19
+      ],
+      [
+        "Token.sol",
+        13,
+        15
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E09",
+      "E11"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.042785699999999996,
+    "seconds": 36.12230706214905,
+    "in_tokens": 5957,
+    "out_tokens": 3250,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Elevator.sol",
+        12,
+        19
+      ],
+      [
+        "Token.sol",
+        12,
+        17
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E09",
+      "E11"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0467237,
+    "seconds": 34.499596118927,
+    "in_tokens": 7406,
+    "out_tokens": 3354,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Elevator.sol",
+        12,
+        19
+      ],
+      [
+        "Token.sol",
+        13,
+        15
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E09",
+      "E11"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.015754,
+    "seconds": 9.851579904556274,
+    "in_tokens": 1837,
+    "out_tokens": 1208,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        23,
+        30
+      ],
+      [
+        "Switch.sol",
+        13,
+        27
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0664449,
+    "seconds": 47.89025568962097,
+    "in_tokens": 7995,
+    "out_tokens": 5241,
+    "gate_failures": 1,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        25,
+        29
+      ],
+      [
+        "Switch.sol",
+        13,
+        27
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0588529,
+    "seconds": 43.410125970840454,
+    "in_tokens": 8649,
+    "out_tokens": 4351,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        25,
+        29
+      ],
+      [
+        "Switch.sol",
+        13,
+        27
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0846169,
+    "seconds": 54.90556859970093,
+    "in_tokens": 11346,
+    "out_tokens": 6388,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        25,
+        29
+      ],
+      [
+        "Switch.sol",
+        15,
+        20
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0926849,
+    "seconds": 58.14220190048218,
+    "in_tokens": 14885,
+    "out_tokens": 6487,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        25,
+        29
+      ],
+      [
+        "Switch.sol",
+        13,
+        22
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.018184,
+    "seconds": 10.425862789154053,
+    "in_tokens": 2202,
+    "out_tokens": 1378,
+    "gate_failures": 0,
     "found": 3,
+    "spans": [
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ],
+      [
+        "AlienCodex.sol",
+        23,
+        29
+      ]
+    ],
+    "truth": 3,
     "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E16",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.049902100000000005,
+    "seconds": 33.61558818817139,
+    "in_tokens": 5920,
+    "out_tokens": 4137,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        29
+      ],
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ],
+      [
+        "PuzzleWallet.sol",
+        52,
+        55
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E16",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0708836,
+    "seconds": 45.85280203819275,
+    "in_tokens": 10438,
+    "out_tokens": 5437,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        29
+      ],
+      [
+        "PuzzleWallet.sol",
+        7,
+        8
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ],
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
     "found_hit": 3,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.014766,
-    "seconds": 10.43545413017273,
-    "in_tokens": 1378,
-    "out_tokens": 1201,
-    "gate_failures": 0
-  },
-  {
-    "variant": "graph_noverify",
-    "target": "ethernaut-d",
-    "run": 0,
-    "truth": 2,
-    "found": 2,
-    "truth_hit": 2,
-    "found_hit": 2,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.0368013,
-    "seconds": 28.74858069419861,
-    "in_tokens": 5600,
-    "out_tokens": 2954,
-    "gate_failures": 1
-  },
-  {
-    "variant": "graph_noverify",
-    "target": "ethernaut-d",
-    "run": 1,
-    "truth": 2,
-    "found": 2,
-    "truth_hit": 2,
-    "found_hit": 2,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.0168159,
-    "seconds": 13.564740180969238,
-    "in_tokens": 3756,
-    "out_tokens": 1314,
-    "gate_failures": 0
-  },
-  {
-    "variant": "graph_noverify_rag",
-    "target": "ethernaut-d",
-    "run": 0,
-    "truth": 2,
-    "found": 2,
-    "truth_hit": 2,
-    "found_hit": 2,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.0276039,
-    "seconds": 20.980098962783813,
-    "in_tokens": 5135,
-    "out_tokens": 2155,
-    "gate_failures": 0
-  },
-  {
-    "variant": "graph_noverify_rag",
-    "target": "ethernaut-d",
-    "run": 1,
-    "truth": 2,
-    "found": 2,
-    "truth_hit": 2,
-    "found_hit": 2,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.0367859,
-    "seconds": 28.962549924850464,
-    "in_tokens": 6288,
-    "out_tokens": 2816,
-    "gate_failures": 0
+    "hit_ids": [
+      "E16",
+      "E19",
+      "E20"
+    ]
   },
   {
     "variant": "graph_verify",
-    "target": "ethernaut-d",
-    "run": 0,
-    "truth": 2,
-    "found": 2,
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.19698460000000004,
+    "seconds": 116.21646094322205,
+    "in_tokens": 26366,
+    "out_tokens": 14909,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        29
+      ],
+      [
+        "PuzzleWallet.sol",
+        7,
+        8
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ],
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        52,
+        55
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E16",
+      "E19",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.1136961,
+    "seconds": 69.71288704872131,
+    "in_tokens": 18287,
+    "out_tokens": 8138,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        29
+      ],
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        52,
+        55
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ]
+    ],
+    "truth": 3,
     "truth_hit": 2,
     "found_hit": 2,
-    "recall": 1.0,
-    "precision": 1.0,
+    "hit_ids": [
+      "E16",
+      "E20"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
     "status": "ok",
-    "cost": 0.0364974,
-    "seconds": 35.832000732421875,
-    "in_tokens": 6795,
-    "out_tokens": 2681,
-    "gate_failures": 0
+    "cost": 0.009214,
+    "seconds": 8.334238290786743,
+    "in_tokens": 1442,
+    "out_tokens": 633,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        30
+      ],
+      [
+        "Preservation.sol",
+        20,
+        27
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.023723499999999998,
+    "seconds": 16.942071199417114,
+    "in_tokens": 3511,
+    "out_tokens": 1958,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        30
+      ],
+      [
+        "Preservation.sol",
+        20,
+        27
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.031708,
+    "seconds": 21.397088050842285,
+    "in_tokens": 6396,
+    "out_tokens": 2207,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        30
+      ],
+      [
+        "Preservation.sol",
+        20,
+        27
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
   },
   {
     "variant": "graph_verify",
-    "target": "ethernaut-d",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
     "run": 1,
-    "truth": 2,
+    "status": "ok",
+    "cost": 0.047421,
+    "seconds": 34.8338360786438,
+    "in_tokens": 8177,
+    "out_tokens": 3462,
+    "gate_failures": 0,
     "found": 2,
+    "spans": [
+      [
+        "Preservation.sol",
+        20,
+        27
+      ],
+      [
+        "Delegation.sol",
+        25,
+        30
+      ]
+    ],
+    "truth": 2,
     "truth_hit": 2,
     "found_hit": 2,
-    "recall": 1.0,
-    "precision": 1.0,
-    "status": "ok",
-    "cost": 0.026013400000000002,
-    "seconds": 22.83463191986084,
-    "in_tokens": 4726,
-    "out_tokens": 2092,
-    "gate_failures": 0
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
   },
   {
     "variant": "graph_verify_rag",
-    "target": "ethernaut-d",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.059317,
+    "seconds": 39.29490566253662,
+    "in_tokens": 10671,
+    "out_tokens": 4225,
+    "gate_failures": 1,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        30
+      ],
+      [
+        "Preservation.sol",
+        20,
+        27
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.017164,
+    "seconds": 10.277517080307007,
+    "in_tokens": 2002,
+    "out_tokens": 1316,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        35
+      ],
+      [
+        "GatekeeperTwo.sol",
+        12,
+        19
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0242717,
+    "seconds": 18.60761070251465,
+    "in_tokens": 3560,
+    "out_tokens": 2220,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "GatekeeperTwo.sol",
+        12,
+        19
+      ],
+      [
+        "GatekeeperTwo.sol",
+        21,
+        24
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        35
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.023510700000000002,
+    "seconds": 18.915175199508667,
+    "in_tokens": 4996,
+    "out_tokens": 1585,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        35
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E10",
+      "E12"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0635217,
+    "seconds": 43.60171604156494,
+    "in_tokens": 9588,
+    "out_tokens": 4757,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "GatekeeperTwo.sol",
+        12,
+        19
+      ],
+      [
+        "GatekeeperTwo.sol",
+        21,
+        24
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        35
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0842852,
+    "seconds": 58.766103982925415,
+    "in_tokens": 13739,
+    "out_tokens": 6139,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "GatekeeperTwo.sol",
+        12,
+        19
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        35
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.018742,
+    "seconds": 10.815196990966797,
+    "in_tokens": 2546,
+    "out_tokens": 1365,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "DexTwo.sol",
+        23,
+        29
+      ],
+      [
+        "Dex.sol",
+        56,
+        59
+      ],
+      [
+        "Dex.sol",
+        23,
+        34
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0446506,
+    "seconds": 33.24834394454956,
+    "in_tokens": 6619,
+    "out_tokens": 3587,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Dex.sol",
+        32,
+        34
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        33
+      ],
+      [
+        "DexTwo.sol",
+        55,
+        58
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.07403660000000001,
+    "seconds": 45.96183514595032,
+    "in_tokens": 12610,
+    "out_tokens": 5316,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Dex.sol",
+        26,
+        33
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        33
+      ],
+      [
+        "DexTwo.sol",
+        55,
+        58
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0695691,
+    "seconds": 48.937551975250244,
+    "in_tokens": 12067,
+    "out_tokens": 4994,
+    "gate_failures": 1,
+    "found": 2,
+    "spans": [
+      [
+        "Dex.sol",
+        23,
+        34
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        29
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0607966,
+    "seconds": 37.463390827178955,
+    "in_tokens": 12196,
+    "out_tokens": 4090,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Dex.sol",
+        32,
+        34
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        33
+      ]
+    ],
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.023778,
+    "seconds": 14.041003942489624,
+    "in_tokens": 3089,
+    "out_tokens": 1760,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        19,
+        27
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        13
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        43
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0868678,
+    "seconds": 61.89894890785217,
+    "in_tokens": 8028,
+    "out_tokens": 7305,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        19,
+        27
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        18
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        39,
+        43
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 4,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0800133,
+    "seconds": 56.11469483375549,
+    "in_tokens": 10016,
+    "out_tokens": 6221,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        21,
+        24
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        18
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        39,
+        43
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 4,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.1030818,
+    "seconds": 66.30705428123474,
+    "in_tokens": 13828,
+    "out_tokens": 7888,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        19,
+        26
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        18
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        39,
+        43
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 4,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.1475238,
+    "seconds": 97.84776711463928,
+    "in_tokens": 20356,
+    "out_tokens": 10905,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        19,
+        26
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        18
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        39,
+        43
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ]
+    ],
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 4,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.023886,
+    "seconds": 14.924584150314331,
+    "in_tokens": 3398,
+    "out_tokens": 1709,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "YieldPool.sol",
+        12,
+        25
+      ],
+      [
+        "AirdropClaim.sol",
+        30,
+        38
+      ],
+      [
+        "StakeRewards.sol",
+        6,
+        7
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U03"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0634832,
+    "seconds": 44.43777799606323,
+    "in_tokens": 9498,
+    "out_tokens": 4717,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        30,
+        38
+      ],
+      [
+        "Payroll.sol",
+        36,
+        37
+      ],
+      [
+        "StakeRewards.sol",
+        7,
+        7
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 4,
+    "found_hit": 4,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U03",
+      "U04"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.07230120000000001,
+    "seconds": 49.86838388442993,
+    "in_tokens": 12207,
+    "out_tokens": 5057,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        34,
+        37
+      ],
+      [
+        "Payroll.sol",
+        36,
+        37
+      ],
+      [
+        "StakeRewards.sol",
+        7,
+        7
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 4,
+    "found_hit": 4,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U03",
+      "U04"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.11740120000000001,
+    "seconds": 76.74525594711304,
+    "in_tokens": 17582,
+    "out_tokens": 8492,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        35,
+        37
+      ],
+      [
+        "Payroll.sol",
+        36,
+        37
+      ],
+      [
+        "StakeRewards.sol",
+        7,
+        7
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 4,
+    "found_hit": 4,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U03",
+      "U04"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.1079392,
+    "seconds": 65.98154187202454,
+    "in_tokens": 18546,
+    "out_tokens": 7353,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        34,
+        37
+      ],
+      [
+        "Payroll.sol",
+        36,
+        37
+      ],
+      [
+        "StakeRewards.sol",
+        7,
+        7
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 4,
+    "found_hit": 4,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U03",
+      "U04"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.017542,
+    "seconds": 10.58869194984436,
+    "in_tokens": 2156,
+    "out_tokens": 1323,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Treasury.sol",
+        15,
+        19
+      ],
+      [
+        "PayoutSplitter.sol",
+        11,
+        25
+      ],
+      [
+        "ShareVault.sol",
+        12,
+        18
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U07"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0375819,
+    "seconds": 31.291704893112183,
+    "in_tokens": 4203,
+    "out_tokens": 3096,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        21,
+        24
+      ],
+      [
+        "ShareVault.sol",
+        14,
+        17
+      ],
+      [
+        "Treasury.sol",
+        15,
+        19
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U07"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0349759,
+    "seconds": 29.68156123161316,
+    "in_tokens": 5740,
+    "out_tokens": 2528,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        21,
+        24
+      ],
+      [
+        "Treasury.sol",
+        15,
+        19
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "U05",
+      "U06"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0650499,
+    "seconds": 44.84609818458557,
+    "in_tokens": 10137,
+    "out_tokens": 4789,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        17,
+        25
+      ],
+      [
+        "Treasury.sol",
+        15,
+        19
+      ],
+      [
+        "VoucherMint.sol",
+        15,
+        19
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U08"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.045543900000000005,
+    "seconds": 33.57861018180847,
+    "in_tokens": 7989,
+    "out_tokens": 3135,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        21,
+        24
+      ],
+      [
+        "Treasury.sol",
+        15,
+        19
+      ]
+    ],
+    "truth": 4,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "U05",
+      "U06"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.033325600000000004,
+    "seconds": 24.5571928024292,
+    "in_tokens": 7877,
+    "out_tokens": 2144,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0401066,
+    "seconds": 23.64845585823059,
+    "in_tokens": 10518,
+    "out_tokens": 2140,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_verify",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0330716,
+    "seconds": 23.23366618156433,
+    "in_tokens": 8880,
+    "out_tokens": 1766,
+    "gate_failures": 1,
+    "found": 0,
+    "spans": [],
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0366766,
+    "seconds": 21.29179811477661,
+    "in_tokens": 10518,
+    "out_tokens": 1797,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0448202,
+    "seconds": 30.63525700569153,
+    "in_tokens": 10078,
+    "out_tokens": 2957,
+    "gate_failures": 1,
+    "found": 0,
+    "spans": [],
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0280092,
+    "seconds": 20.064396142959595,
+    "in_tokens": 7887,
+    "out_tokens": 1602,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_verify",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0344602,
+    "seconds": 27.874833822250366,
+    "in_tokens": 8007,
+    "out_tokens": 2263,
+    "gate_failures": 1,
+    "found": 0,
+    "spans": [],
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0309572,
+    "seconds": 19.106782913208008,
+    "in_tokens": 9183,
+    "out_tokens": 1687,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "single",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
     "run": 0,
-    "truth": 2,
-    "found": 2,
-    "truth_hit": 2,
-    "found_hit": 2,
-    "recall": 1.0,
-    "precision": 1.0,
     "status": "ok",
-    "cost": 0.0747329,
-    "seconds": 48.74218797683716,
-    "in_tokens": 12688,
-    "out_tokens": 5344,
-    "gate_failures": 0
+    "cost": 0.011964,
+    "seconds": 6.487365961074829,
+    "in_tokens": 2927,
+    "out_tokens": 611,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
   },
   {
-    "variant": "graph_verify_rag",
-    "target": "ethernaut-d",
-    "run": 1,
-    "truth": 2,
-    "found": 2,
-    "truth_hit": 2,
-    "found_hit": 2,
-    "recall": 1.0,
-    "precision": 1.0,
+    "variant": "single",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 0,
     "status": "ok",
-    "cost": 0.056637400000000004,
-    "seconds": 40.040279150009155,
-    "in_tokens": 10544,
-    "out_tokens": 3911,
-    "gate_failures": 0
+    "cost": 0.012134,
+    "seconds": 3.4434916973114014,
+    "in_tokens": 4372,
+    "out_tokens": 339,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "single",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.021232,
+    "seconds": 9.89866304397583,
+    "in_tokens": 5986,
+    "out_tokens": 926,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "single",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.012854,
+    "seconds": 4.015972137451172,
+    "in_tokens": 4372,
+    "out_tokens": 411,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
   }
 ]
