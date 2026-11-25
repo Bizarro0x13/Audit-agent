@@ -121,7 +121,7 @@ def write_results(rows, truth, repeats) -> None:
     caveats = (
         "Caveats: ground truth is a short list of the known, deliberate bugs. A finding that "
         "hits none of them may still be a real issue, so precision is a lower bound. "
-        "Cost uses placeholder per-token prices (see models.py); token counts are exact. "
+        "Cost uses the published per-model prices in models.py (as of 2026-11-03); token counts are exact. "
         "Small sample: treat differences as indicative, not proven."
     )
     header = (

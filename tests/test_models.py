@@ -1,7 +1,7 @@
 import pytest
 from pydantic import BaseModel
 
-from agent.models import CostCapExceeded, Model, ModelOutputError
+from agent.models import CostCapExceeded, Model, ModelOutputError, price_for
 from agent.store import Store
 
 
@@ -76,6 +76,8 @@ def test_non_retryable_error_not_retried(monkeypatch):
 
 
 def test_cost_cap_raises(monkeypatch):
+    monkeypatch.setenv("AGENT_PRICE_IN", "3")
+    monkeypatch.setenv("AGENT_PRICE_OUT", "15")
     # each call costs (1000*3 + 1000*15)/1e6 = $0.018; cap $0.03 -> second call exceeds
     m, _, _ = make([Reply("a"), Reply("b"), Reply("c")], monkeypatch, max_usd="0.03")
     m.call("plan", "s", "u")
@@ -120,3 +122,25 @@ def test_structured_output_after_prose(monkeypatch):
     reply = 'The claim is wrong because of the guard.\n\n{"name": "a"}'
     m, _, _ = make([Reply(reply)], monkeypatch)
     assert m.call("verify", "s", "u", schema=Item) == Item(name="a")
+
+
+def test_price_is_per_model_and_env_overrides(monkeypatch):
+    monkeypatch.delenv("AGENT_PRICE_IN", raising=False)
+    monkeypatch.delenv("AGENT_PRICE_OUT", raising=False)
+    assert price_for("claude-haiku-5-5") == (0.10, 0.50)
+    assert price_for("claude-sonnet-5-5") == (2.00, 10.00)
+    assert price_for("some-unknown-model") == (2.00, 10.00)  # safe default: the higher rate
+    monkeypatch.setenv("AGENT_PRICE_IN", "1")
+    monkeypatch.setenv("AGENT_PRICE_OUT", "2")
+    assert price_for("claude-haiku-5-5") == (1.0, 2.0)
+
+
+def test_cost_uses_the_price_of_the_model_called(monkeypatch):
+    monkeypatch.delenv("AGENT_PRICE_IN", raising=False)
+    monkeypatch.delenv("AGENT_PRICE_OUT", raising=False)
+    m, store, _ = make([Reply("a"), Reply("b")], monkeypatch)
+    m.call("plan", "s", "u", model="claude-haiku-5-5")   # 1000 in, 1000 out
+    cheap = store.run_cost("r1")
+    m.call("analyze", "s", "u", model="claude-sonnet-5-5")
+    assert cheap == pytest.approx((1000 * 0.10 + 1000 * 0.50) / 1e6)
+    assert store.run_cost("r1") - cheap == pytest.approx((1000 * 2.0 + 1000 * 10.0) / 1e6)

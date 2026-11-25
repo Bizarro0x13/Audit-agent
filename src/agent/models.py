@@ -13,8 +13,24 @@ from pydantic import TypeAdapter
 
 from agent.store import Store
 
-# USD per million tokens (input, output). Check current pricing; override with env vars.
-DEFAULT_PRICE = (3.0, 15.0)
+# USD per million tokens (input, output), from the published price list as of 2026-11-03.
+# Haiku 5.5 is priced higher ($0.50 / $2.50) for prompts over 100K tokens; our prompts are
+# one file, far below that. Re-check before publishing cost numbers.
+PRICES = {
+    "claude-haiku-5-5": (0.10, 0.50),
+    "claude-sonnet-5-5": (2.00, 10.00),
+}
+# Unknown model id: assume the Sonnet rate so the cost cap errs on the safe side.
+DEFAULT_PRICE = PRICES["claude-sonnet-5-5"]
+
+
+def price_for(model: str) -> tuple[float, float]:
+    """Per-model price. AGENT_PRICE_IN / AGENT_PRICE_OUT override it for every model."""
+    default_in, default_out = PRICES.get(model, DEFAULT_PRICE)
+    return (
+        float(os.environ.get("AGENT_PRICE_IN", default_in)),
+        float(os.environ.get("AGENT_PRICE_OUT", default_out)),
+    )
 RETRY_STATUSES = {429, 500, 502, 503, 529}
 
 
@@ -56,8 +72,6 @@ class Model:
         self.run_id = run_id
         self.model = os.environ.get("AGENT_MODEL", "claude-sonnet-5-5")
         self.max_usd = float(os.environ.get("AGENT_MAX_USD", "1.00"))
-        self.price_in = float(os.environ.get("AGENT_PRICE_IN", DEFAULT_PRICE[0]))
-        self.price_out = float(os.environ.get("AGENT_PRICE_OUT", DEFAULT_PRICE[1]))
         self.max_retries = 3
         self.sleep = sleep
         if client is None:
@@ -77,7 +91,8 @@ class Model:
             )
         response = self._send_with_retry(system, user, model)
         usage = response.usage
-        cost = (usage.input_tokens * self.price_in + usage.output_tokens * self.price_out) / 1e6
+        price_in, price_out = price_for(model)
+        cost = (usage.input_tokens * price_in + usage.output_tokens * price_out) / 1e6
         self.store.add_model_call(
             self.run_id, node, model, usage.input_tokens, usage.output_tokens, cost
         )
