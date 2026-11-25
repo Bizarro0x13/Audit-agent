@@ -3,8 +3,10 @@
   "commit": "d05643a40aa98c45d66247c69ffceab8f44dd8cb",
   "license_note": "Ethernaut is AGPL-3.0. Its code is cloned into a gitignored cache at eval time and never committed here. This file holds only our own ground-truth labels.",
   "dir": "contracts/src/levels",
+  "schema_version": 2,
   "targets": {
-    "ethernaut-a": {
+    "train-a": {
+      "split": "train",
       "files": [
         "Reentrance.sol",
         "King.sol",
@@ -12,89 +14,349 @@
       ],
       "truth": [
         {
+          "id": "E01",
           "file": "Reentrance.sol",
           "line_start": 19,
           "line_end": 26,
-          "bug_class": "reentrancy"
+          "bug_class": "reentrancy",
+          "family": "reentrancy",
+          "difficulty": "easy",
+          "split": "train"
         },
         {
+          "id": "E02",
           "file": "King.sol",
           "line_start": 15,
           "line_end": 20,
-          "bug_class": "denial of service via reverting transfer"
+          "bug_class": "denial of service via reverting transfer",
+          "family": "denial-of-service",
+          "difficulty": "easy",
+          "split": "train"
         },
         {
+          "id": "E03",
           "file": "Fallout.sol",
           "line_start": 13,
           "line_end": 16,
-          "bug_class": "misnamed constructor, unprotected ownership"
+          "bug_class": "misnamed constructor, unprotected ownership",
+          "family": "access-control",
+          "difficulty": "easy",
+          "split": "train"
         }
       ]
     },
-    "ethernaut-b": {
+    "train-b": {
+      "split": "train",
       "files": [
         "Telephone.sol",
-        "Delegation.sol",
-        "Preservation.sol"
-      ],
-      "truth": [
-        {
-          "file": "Telephone.sol",
-          "line_start": 11,
-          "line_end": 15,
-          "bug_class": "tx.origin authorization"
-        },
-        {
-          "file": "Delegation.sol",
-          "line_start": 25,
-          "line_end": 30,
-          "bug_class": "delegatecall to arbitrary calldata"
-        },
-        {
-          "file": "Preservation.sol",
-          "line_start": 20,
-          "line_end": 27,
-          "bug_class": "delegatecall storage layout collision"
-        }
-      ]
-    },
-    "ethernaut-c": {
-      "files": [
         "CoinFlip.sol",
         "Vault.sol"
       ],
       "truth": [
         {
+          "id": "E04",
+          "file": "Telephone.sol",
+          "line_start": 11,
+          "line_end": 15,
+          "bug_class": "tx.origin authorization",
+          "family": "caller-assumption",
+          "difficulty": "easy",
+          "split": "train"
+        },
+        {
+          "id": "E07",
           "file": "CoinFlip.sol",
           "line_start": 13,
           "line_end": 22,
-          "bug_class": "predictable randomness from blockhash"
+          "bug_class": "predictable randomness from blockhash",
+          "family": "randomness",
+          "difficulty": "easy",
+          "split": "train"
         },
         {
+          "id": "E08",
           "file": "Vault.sol",
           "line_start": 6,
           "line_end": 17,
-          "bug_class": "secret stored in private variable"
+          "bug_class": "secret stored in private variable",
+          "family": "data-exposure",
+          "difficulty": "easy",
+          "split": "train"
         }
       ]
     },
-    "ethernaut-d": {
+    "train-c": {
+      "split": "train",
       "files": [
         "Elevator.sol",
-        "NaughtCoin.sol"
+        "Token.sol"
       ],
       "truth": [
         {
+          "id": "E09",
           "file": "Elevator.sol",
           "line_start": 12,
           "line_end": 19,
-          "bug_class": "trusting a caller-controlled callback that returns different values on repeated calls"
+          "bug_class": "trusting a caller-controlled callback that returns different values on repeated calls",
+          "family": "callback-trust",
+          "difficulty": "easy",
+          "split": "train"
         },
         {
+          "id": "E11",
+          "file": "Token.sol",
+          "line_start": 12,
+          "line_end": 17,
+          "bug_class": "unsigned subtraction check always true, underflow",
+          "family": "arithmetic",
+          "difficulty": "easy",
+          "split": "train"
+        }
+      ]
+    },
+    "train-d": {
+      "split": "train",
+      "files": [
+        "Stake.sol",
+        "Switch.sol"
+      ],
+      "truth": [
+        {
+          "id": "E14",
+          "file": "Stake.sol",
+          "line_start": 21,
+          "line_end": 30,
+          "bug_class": "low-level call results unchecked, stake credited without a successful transfer",
+          "family": "unchecked-return",
+          "difficulty": "medium",
+          "split": "train"
+        },
+        {
+          "id": "E15",
+          "file": "Switch.sol",
+          "line_start": 13,
+          "line_end": 27,
+          "bug_class": "calldata offset assumed fixed, selector check bypassed",
+          "family": "calldata-encoding",
+          "difficulty": "hard",
+          "split": "train"
+        }
+      ]
+    },
+    "train-e": {
+      "split": "train",
+      "files": [
+        "AlienCodex.sol",
+        "PuzzleWallet.sol"
+      ],
+      "truth": [
+        {
+          "id": "E16",
+          "file": "AlienCodex.sol",
+          "line_start": 23,
+          "line_end": 25,
+          "bug_class": "array length underflow allows arbitrary storage write",
+          "family": "arithmetic",
+          "difficulty": "hard",
+          "split": "train",
+          "alt_ranges": [
+            [
+              27,
+              29
+            ]
+          ]
+        },
+        {
+          "id": "E19",
+          "file": "PuzzleWallet.sol",
+          "line_start": 7,
+          "line_end": 8,
+          "bug_class": "proxy and implementation share storage slots with different meanings",
+          "family": "delegatecall-storage",
+          "difficulty": "hard",
+          "split": "train",
+          "alt_ranges": [
+            [
+              36,
+              37
+            ]
+          ]
+        },
+        {
+          "id": "E20",
+          "file": "PuzzleWallet.sol",
+          "line_start": 74,
+          "line_end": 90,
+          "bug_class": "multicall reuses msg.value across nested deposit calls",
+          "family": "accounting",
+          "difficulty": "hard",
+          "split": "train"
+        }
+      ]
+    },
+    "heldout-a": {
+      "split": "heldout",
+      "files": [
+        "Delegation.sol",
+        "Preservation.sol"
+      ],
+      "truth": [
+        {
+          "id": "E05",
+          "file": "Delegation.sol",
+          "line_start": 25,
+          "line_end": 30,
+          "bug_class": "delegatecall to arbitrary calldata",
+          "family": "delegatecall-storage",
+          "difficulty": "medium",
+          "split": "heldout"
+        },
+        {
+          "id": "E06",
+          "file": "Preservation.sol",
+          "line_start": 20,
+          "line_end": 27,
+          "bug_class": "delegatecall storage layout collision",
+          "family": "delegatecall-storage",
+          "difficulty": "hard",
+          "split": "heldout"
+        }
+      ]
+    },
+    "heldout-b": {
+      "split": "heldout",
+      "files": [
+        "NaughtCoin.sol",
+        "Fallback.sol",
+        "GatekeeperTwo.sol"
+      ],
+      "truth": [
+        {
+          "id": "E10",
           "file": "NaughtCoin.sol",
           "line_start": 23,
           "line_end": 25,
-          "bug_class": "transfer restriction bypassed through unoverridden transferFrom"
+          "bug_class": "transfer restriction bypassed through unoverridden transferFrom",
+          "family": "access-control",
+          "difficulty": "medium",
+          "split": "heldout"
+        },
+        {
+          "id": "E12",
+          "file": "Fallback.sol",
+          "line_start": 34,
+          "line_end": 37,
+          "bug_class": "ownership taken through receive fallback",
+          "family": "access-control",
+          "difficulty": "easy",
+          "split": "heldout"
+        },
+        {
+          "id": "E13",
+          "file": "GatekeeperTwo.sol",
+          "line_start": 12,
+          "line_end": 19,
+          "bug_class": "contract-caller check bypassed from a constructor (extcodesize)",
+          "family": "caller-assumption",
+          "difficulty": "medium",
+          "split": "heldout"
+        }
+      ]
+    },
+    "heldout-c": {
+      "split": "heldout",
+      "files": [
+        "Dex.sol",
+        "DexTwo.sol"
+      ],
+      "truth": [
+        {
+          "id": "E17",
+          "file": "Dex.sol",
+          "line_start": 32,
+          "line_end": 34,
+          "bug_class": "swap price computed from spot balances, manipulable and rounding-prone",
+          "family": "price-manipulation",
+          "difficulty": "medium",
+          "split": "heldout",
+          "alt_ranges": [
+            [
+              23,
+              30
+            ]
+          ]
+        },
+        {
+          "id": "E18",
+          "file": "DexTwo.sol",
+          "line_start": 23,
+          "line_end": 29,
+          "bug_class": "swap does not restrict which tokens may be swapped",
+          "family": "input-validation",
+          "difficulty": "medium",
+          "split": "heldout"
+        }
+      ]
+    },
+    "heldout-d": {
+      "split": "heldout",
+      "files": [
+        "MagicAnimalCarousel.sol",
+        "GoodSamaritan.sol",
+        "HigherOrder.sol"
+      ],
+      "truth": [
+        {
+          "id": "E21",
+          "file": "MagicAnimalCarousel.sol",
+          "line_start": 31,
+          "line_end": 48,
+          "bug_class": "inconsistent bit packing lets an animal write overwrite the next-id field",
+          "family": "arithmetic",
+          "difficulty": "hard",
+          "split": "heldout",
+          "alt_ranges": [
+            [
+              20,
+              29
+            ],
+            [
+              50,
+              53
+            ]
+          ]
+        },
+        {
+          "id": "E22",
+          "file": "GoodSamaritan.sol",
+          "line_start": 17,
+          "line_end": 28,
+          "bug_class": "error returned by a callee callback is trusted as if produced by the wallet",
+          "family": "callback-trust",
+          "difficulty": "hard",
+          "split": "heldout",
+          "alt_ranges": [
+            [
+              43,
+              58
+            ]
+          ]
+        },
+        {
+          "id": "E23",
+          "file": "HigherOrder.sol",
+          "line_start": 9,
+          "line_end": 13,
+          "bug_class": "typed uint8 argument written as full word through raw calldata",
+          "family": "calldata-encoding",
+          "difficulty": "hard",
+          "split": "heldout",
+          "alt_ranges": [
+            [
+              15,
+              18
+            ]
+          ]
         }
       ]
     }
