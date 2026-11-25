@@ -136,7 +136,7 @@ def test_bug_from_truth_and_real_truth_file_round_trip():
     truth = json.loads((Path(__file__).resolve().parent.parent / "eval" / "truth.json").read_text())
     entries = [e for t in truth["targets"].values() for e in t["truth"]]
     bugs = [bug_from_truth(e) for e in entries]
-    assert len(bugs) == 23
+    assert len(bugs) == 31
     # a finding on every primary span finds every bug
     found = [b.spans[0] for b in bugs]
     assert score_bugs(found, bugs)["recall"] == 1.0

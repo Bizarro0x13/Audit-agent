@@ -359,6 +359,126 @@
           ]
         }
       ]
+    },
+    "unseen-a": {
+      "split": "unseen",
+      "files": [
+        "YieldPool.sol",
+        "AirdropClaim.sol",
+        "StakeRewards.sol",
+        "Payroll.sol"
+      ],
+      "truth": [
+        {
+          "id": "U01",
+          "file": "YieldPool.sol",
+          "line_start": 12,
+          "line_end": 16,
+          "bug_class": "stake does not update reward debt, new stake claims rewards accrued before it joined",
+          "family": "accounting",
+          "difficulty": "hard",
+          "split": "unseen"
+        },
+        {
+          "id": "U02",
+          "file": "AirdropClaim.sol",
+          "line_start": 30,
+          "line_end": 38,
+          "bug_class": "claimed flag set after the receiver callback, re-entry claims repeatedly and exhausts the capped supply",
+          "family": "reentrancy",
+          "difficulty": "medium",
+          "split": "unseen",
+          "alt_ranges": [
+            [
+              40,
+              44
+            ]
+          ]
+        },
+        {
+          "id": "U03",
+          "file": "StakeRewards.sol",
+          "line_start": 7,
+          "line_end": 7,
+          "bug_class": "reward rate computed by integer division truncates to zero, stakers never earn",
+          "family": "arithmetic",
+          "difficulty": "medium",
+          "split": "unseen",
+          "alt_ranges": [
+            [
+              42,
+              45
+            ]
+          ]
+        },
+        {
+          "id": "U04",
+          "file": "Payroll.sol",
+          "line_start": 33,
+          "line_end": 38,
+          "bug_class": "transfer return value ignored after marking paid, payment lost without being sent",
+          "family": "unchecked-return",
+          "difficulty": "medium",
+          "split": "unseen"
+        }
+      ]
+    },
+    "unseen-b": {
+      "split": "unseen",
+      "files": [
+        "PayoutSplitter.sol",
+        "Treasury.sol",
+        "ShareVault.sol",
+        "VoucherMint.sol"
+      ],
+      "truth": [
+        {
+          "id": "U05",
+          "file": "PayoutSplitter.sol",
+          "line_start": 17,
+          "line_end": 25,
+          "bug_class": "push payments in an unbounded loop with require, one reverting or too many members blocks all payouts",
+          "family": "denial-of-service",
+          "difficulty": "easy",
+          "split": "unseen"
+        },
+        {
+          "id": "U06",
+          "file": "Treasury.sol",
+          "line_start": 15,
+          "line_end": 19,
+          "bug_class": "initializer guard uses <= and can be called again, ownership taken",
+          "family": "access-control",
+          "difficulty": "medium",
+          "split": "unseen"
+        },
+        {
+          "id": "U07",
+          "file": "ShareVault.sol",
+          "line_start": 12,
+          "line_end": 18,
+          "bug_class": "share price uses raw balance and zero minted shares are accepted, first-depositor donation steals deposits",
+          "family": "price-manipulation",
+          "difficulty": "medium",
+          "split": "unseen",
+          "alt_ranges": [
+            [
+              8,
+              10
+            ]
+          ]
+        },
+        {
+          "id": "U08",
+          "file": "VoucherMint.sol",
+          "line_start": 14,
+          "line_end": 22,
+          "bug_class": "signed digest lacks contract address and chain id, vouchers replay on other deployments",
+          "family": "signature-replay",
+          "difficulty": "hard",
+          "split": "unseen"
+        }
+      ]
     }
   }
 }

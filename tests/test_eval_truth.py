@@ -2,6 +2,9 @@
 
 import copy
 import importlib.util
+import shutil
+import subprocess
+import tempfile
 from collections import defaultdict
 from pathlib import Path
 
@@ -35,6 +38,45 @@ def test_every_bug_matches_a_row_in_targets_md():
         assert cells[2] == b["file"] and cells[3] == b["family"] and cells[4] == b["difficulty"], b
 
 
+def test_total_bugs_at_least_25_including_unseen():
+    assert len(BUGS) >= 25
+    assert sum(b["split"] == "unseen" for b in BUGS) >= 6
+
+
+def test_unseen_files_are_ours_and_exist():
+    unseen = [b for b in BUGS if b["split"] == "unseen"]
+    for b in unseen:
+        assert (schema.UNSEEN_DIR / b["file"]).exists(), b
+    # no unseen file shares a name with an Ethernaut level used elsewhere
+    other = {b["file"] for b in BUGS if b["split"] != "unseen"}
+    assert not ({b["file"] for b in unseen} & other)
+
+
+def test_unseen_bug_ranges_valid_against_unseen_dir():
+    assert schema.validate(TRUTH, None, schema.UNSEEN_DIR) == []
+
+
+def test_unseen_and_heldout_never_in_tuning_inputs():
+    tuning = schema.tuning_targets(TRUTH)
+    assert tuning and all(t["split"] == "train" for t in tuning.values())
+    names = set(tuning)
+    for n, t in TRUTH["targets"].items():
+        if t["split"] in {"heldout", "unseen"}:
+            assert n not in names
+
+
+@pytest.mark.skipif(shutil.which("forge") is None, reason="forge not installed")
+def test_unseen_contracts_compile():
+    with tempfile.TemporaryDirectory() as d:
+        (Path(d) / "src").mkdir()
+        for p in schema.UNSEEN_DIR.glob("*.sol"):
+            shutil.copy(p, Path(d) / "src" / p.name)
+        (Path(d) / "foundry.toml").write_text('[profile.default]\nsrc="src"\nout="out"\nlibs=[]\n')
+        r = subprocess.run(["forge", "build"], cwd=d, capture_output=True, text=True,
+                           check=False, timeout=600)
+        assert r.returncode == 0, r.stderr[-800:]
+
+
 def test_split_ratio_train_vs_heldout():
     seeded = [b for b in BUGS if b["split"] in {"train", "heldout"}]
     share = sum(b["split"] == "train" for b in seeded) / len(seeded)
@@ -51,6 +93,8 @@ def test_families_with_two_or_more_bugs_appear_in_both_splits():
     by_family = defaultdict(set)
     count = defaultdict(int)
     for b in BUGS:
+        if b["split"] == "unseen":
+            continue  # unseen is a separate judging set; it may add families
         by_family[b["family"]].add(b["split"])
         count[b["family"]] += 1
     for family, n in count.items():

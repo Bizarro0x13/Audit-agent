@@ -13,6 +13,7 @@ from pathlib import Path
 HERE = Path(__file__).parent
 TRUTH = HERE / "truth.json"
 LOCK = HERE / "split.lock"
+UNSEEN_DIR = HERE / "unseen"
 SAFE_DIR = HERE / "safe"
 SAFE_MANIFEST = SAFE_DIR / "manifest.json"
 LEVELS = HERE / ".cache" / "ethernaut" / "contracts" / "src" / "levels"
@@ -35,7 +36,13 @@ def split_hash(truth: dict) -> str:
     return hashlib.sha256("\n".join(pairs).encode()).hexdigest()
 
 
-def validate(truth: dict, levels: Path | None = None) -> list[str]:
+def tuning_targets(truth: dict) -> dict:
+    """Targets that may be used for tuning or learning: train only. Held-out and unseen
+    targets are for judging, never for tuning."""
+    return {n: t for n, t in truth["targets"].items() if t["split"] == "train"}
+
+
+def validate(truth: dict, levels: Path | None = None, unseen: Path | None = None) -> list[str]:
     errs: list[str] = []
     seen_ids: set[str] = set()
     for tname, t in truth["targets"].items():
@@ -62,8 +69,9 @@ def validate(truth: dict, levels: Path | None = None) -> list[str]:
                 if not (1 <= start <= end):
                     errs.append(f"{where}: invalid range {start}-{end}")
                     continue
-                if levels is not None and (levels / b["file"]).exists():
-                    lines = (levels / b["file"]).read_text().splitlines()
+                root = unseen if b["split"] == "unseen" else levels
+                if root is not None and (root / b["file"]).exists():
+                    lines = (root / b["file"]).read_text().splitlines()
                     if end > len(lines):
                         errs.append(f"{where}: range {start}-{end} beyond {b['file']} ({len(lines)} lines)")
                     elif not any(x.strip() for x in lines[start - 1 : end]):
@@ -115,7 +123,7 @@ def main() -> int:
         LOCK.write_text(split_hash(truth) + "\n")
         print("split.lock updated:", split_hash(truth))
         return 0
-    errs = validate(truth, LEVELS if LEVELS.exists() else None)
+    errs = validate(truth, LEVELS if LEVELS.exists() else None, UNSEEN_DIR)
     if LOCK.exists() and LOCK.read_text().strip() != split_hash(truth):
         errs.append("split changed since it was frozen (run --freeze only after review)")
     if SAFE_MANIFEST.exists():

@@ -39,9 +39,12 @@ def test_split_selection():
     assert all(t.kind == "safe" and not t.bugs for t in safe)
     assert {t.name for t in safe} == {"safe-train", "safe-heldout"}
     allt = targets("all")
-    assert sum(len(t.bugs) for t in allt) == 23
+    assert sum(len(t.bugs) for t in allt) == 31
     assert {t.kind for t in allt} == {"vuln", "safe"}
-    assert targets("unseen") == []  # none written yet (step 0.6)
+    unseen = targets("unseen")
+    assert unseen and all(t.split == "unseen" and t.kind == "vuln" for t in unseen)
+    assert sum(len(t.bugs) for t in unseen) == 8
+    assert all(t.src == ev.HERE / "unseen" for t in unseen)
 
 
 def test_dry_run_end_to_end_writes_json_and_markdown(tmp_path):

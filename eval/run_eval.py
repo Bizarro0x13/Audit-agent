@@ -70,7 +70,8 @@ def build_targets(truth: dict, manifest: dict, which: str, levels: Path | None) 
     for name, t in truth["targets"].items():
         if which in (t["split"], "all"):
             bugs = [bug_from_truth(x) for x in t["truth"]]
-            out.append(Target(name, "vuln", t["split"], t["files"], levels, bugs))
+            src = HERE / "unseen" if t["split"] == "unseen" else levels
+            out.append(Target(name, "vuln", t["split"], t["files"], src, bugs))
     if which in ("safe", "all"):
         by_split: dict[str, list[str]] = {}
         for c in manifest["controls"]:

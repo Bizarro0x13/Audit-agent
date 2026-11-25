@@ -47,5 +47,21 @@ Considered and skipped: Force (no bug in the code), Shop (variant of Elevator), 
 (variant of Vault), Recovery (intended bug is off-chain address recovery), GatekeeperOne
 (gas puzzle, not a vulnerability class), MagicNum (bytecode golf).
 
-Next (step 0.2): label exact line ranges for the new rows, add difficulty/family/split to
-`truth.json`, and freeze the train/heldout split.
+## Unseen targets (written for this project)
+
+Original contracts in `eval/unseen/`, not derived from any public level, so models cannot
+have memorized them as benchmark items. Each bug was proven with a Foundry exploit test by
+an independent reviewer, and a separate blind audit found no unlabeled bugs (see
+`eval/unseen/REVIEW.md`). Families here may include ones absent from the train/heldout
+sets (signature-replay, accounting).
+
+| id | level | file | family | difficulty | cross_contract |
+|----|-------|------|--------|------------|----------------|
+| U01 | (ours) YieldPool | YieldPool.sol | accounting | hard | no |
+| U02 | (ours) AirdropClaim | AirdropClaim.sol | reentrancy | medium | no |
+| U03 | (ours) StakeRewards | StakeRewards.sol | arithmetic | medium | no |
+| U04 | (ours) Payroll | Payroll.sol | unchecked-return | medium | no |
+| U05 | (ours) PayoutSplitter | PayoutSplitter.sol | denial-of-service | easy | no |
+| U06 | (ours) Treasury | Treasury.sol | access-control | medium | no |
+| U07 | (ours) ShareVault | ShareVault.sol | price-manipulation | medium | no |
+| U08 | (ours) VoucherMint | VoucherMint.sol | signature-replay | hard | no |
