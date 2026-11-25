@@ -1,6 +1,6 @@
 import pytest
 
-from agent.gates import citation_errors
+from agent.gates import citation_errors, same_issue
 from agent.schemas import FindingDraft
 from agent.tools.files import PathEscapeError
 
@@ -35,3 +35,15 @@ def test_valid_citation_passes():
 def test_bad_citations_fail_with_clear_message(d, needle):
     errs = citation_errors(d, read)
     assert len(errs) == 1 and needle in errs[0]
+
+
+def _d(file, a, b):
+    return FindingDraft(title="t", severity="high", file=file, line_start=a, line_end=b,
+                        description="d", impact="i")
+
+
+def test_same_issue_merges_near_duplicates_only():
+    assert same_issue(_d("F.sol", 19, 26), _d("F.sol", 20, 26))      # shifted range
+    assert same_issue(_d("F.sol", 10, 30), _d("F.sol", 12, 14))      # narrow inside broad
+    assert not same_issue(_d("F.sol", 10, 20), _d("F.sol", 20, 30))  # touch on one line only
+    assert not same_issue(_d("F.sol", 10, 20), _d("G.sol", 10, 20))  # different file
