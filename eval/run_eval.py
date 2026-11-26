@@ -12,6 +12,7 @@ Dry-run results are written to a temp folder, never over eval/results.*.
 
 import argparse
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -202,7 +203,7 @@ def make_row(variant: str, t: Target, run: int, r: dict) -> dict:
            "in_tokens": r["in_tokens"], "out_tokens": r["out_tokens"],
            "gate_failures": r["gate_failures"], "found": len(spans),
            "spans": [[s.file, s.line_start, s.line_end] for s in spans],
-           "titles": r.get("titles", [])}
+           "titles": r.get("titles", [])} | current_models()
     if t.kind == "vuln":
         m = score_bugs(spans, t.bugs)
         row |= {"truth": m["truth"], "truth_hit": m["truth_hit"],
@@ -297,6 +298,13 @@ def pct(s: dict) -> str:
     return f"{s['mean']:.0%} ±{s['std']:.0%}" if s["n"] else "n/a"
 
 
+def models_note(rows: list[dict]) -> str:
+    pairs = sorted({(r["analyst_model"], r["verifier_model"]) for r in rows if "analyst_model" in r})
+    if not pairs:
+        return ""
+    return " Models: " + "; ".join(f"analyst `{a}`, verifier `{v}`" for a, v in pairs) + "."
+
+
 def render(rows, targets, repeats, truth, dry_run: bool) -> str:
     agg = aggregate(rows, targets, repeats)
     n_bugs = sum(len(t.bugs) for t in targets)
@@ -305,6 +313,7 @@ def render(rows, targets, repeats, truth, dry_run: bool) -> str:
         f"Targets: Ethernaut @ `{truth['commit'][:10]}` plus our own safe controls. "
         f"{len(targets)} target group(s), {n_bugs} labeled bugs in this run. "
         f"{repeats} repeat(s); mean ± std over repeats that fully completed."
+        + models_note(rows)
     )
     caveats = (
         "Caveats: ground truth is a short list of deliberate bugs, so a finding that hits none of "
@@ -375,6 +384,27 @@ def write_results(rows, targets, repeats, truth, out_dir: Path, dry_run: bool) -
     return text
 
 
+def apply_models(model: str, verify_model: str | None) -> None:
+    os.environ["AGENT_MODEL"] = model
+    os.environ["AGENT_PLAN_MODEL"] = model
+    os.environ["AGENT_VERIFY_MODEL"] = verify_model or model
+
+
+def current_models() -> dict:
+    analyst = os.environ.get("AGENT_MODEL", "claude-sonnet-5-5")
+    return {"analyst_model": analyst,
+            "verifier_model": os.environ.get("AGENT_VERIFY_MODEL") or analyst}
+
+
+def default_out_dir(dry_run: bool, model: str | None, verify_model: str | None) -> Path:
+    if dry_run:
+        return Path(tempfile.mkdtemp(prefix="eval-dry-"))
+    if not model:
+        return HERE
+    name = model if not verify_model or verify_model == model else f"{model}+verify-{verify_model}"
+    return HERE / "by-model" / name
+
+
 def main(argv: list[str] | None = None) -> None:
     load_env()
     ap = argparse.ArgumentParser()
@@ -382,6 +412,10 @@ def main(argv: list[str] | None = None) -> None:
     ap.add_argument("--repeats", type=int, default=1)
     ap.add_argument("--variants", default=",".join(VARIANTS))
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--model", default=None,
+                    help="use this model for plan, analysis and verification; results go to "
+                         "eval/by-model/<model>/ so the default baseline is not overwritten")
+    ap.add_argument("--verify-model", default=None, help="verifier model (default: --model)")
     ap.add_argument("--out-dir", type=Path, default=None)
     ap.add_argument("--run-offset", type=int, default=0,
                     help="number the repeats from this index (to add a repeat to earlier results)")
@@ -393,6 +427,8 @@ def main(argv: list[str] | None = None) -> None:
                     help="stop starting new repeats once total spend would exceed this")
     args = ap.parse_args(argv)
     variants = args.variants.split(",")
+    if args.model:
+        apply_models(args.model, args.verify_model)
 
     truth = json.loads((HERE / "truth.json").read_text())
     manifest = json.loads((HERE / "safe" / "manifest.json").read_text())
@@ -422,7 +458,7 @@ def main(argv: list[str] | None = None) -> None:
                 ranges.setdefault(b.spans[0].file, []).append((b.spans[0].line_start, b.spans[0].line_end))
         safe = {f for t in targets if t.kind == "safe" for f in t.files}
         factory = lambda: DryRunClient(ranges, safe)
-    out_dir = args.out_dir or (Path(tempfile.mkdtemp(prefix="eval-dry-")) if args.dry_run else HERE)
+    out_dir = args.out_dir or default_out_dir(args.dry_run, args.model, args.verify_model)
     out_dir.mkdir(parents=True, exist_ok=True)
     sink = out_dir / "rows.partial.jsonl"
     sink.write_text("")

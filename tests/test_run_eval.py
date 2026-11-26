@@ -245,3 +245,23 @@ def test_render_only_rebuilds_the_full_table_from_rows(tmp_path):
     text = (tmp_path / "results.md").read_text()
     for group in ["train", "heldout", "unseen", "safe-train", "safe-heldout"]:
         assert f"| {group} |" in text
+
+
+def test_model_override_sets_all_roles_and_never_targets_the_baseline_folder(monkeypatch):
+    for k in ("AGENT_MODEL", "AGENT_PLAN_MODEL", "AGENT_VERIFY_MODEL"):
+        monkeypatch.setenv(k, "x")  # restored after the test
+    ev.apply_models("claude-haiku-5-5", None)
+    assert ev.current_models() == {"analyst_model": "claude-haiku-5-5",
+                                   "verifier_model": "claude-haiku-5-5"}
+    ev.apply_models("claude-haiku-5-5", "claude-sonnet-5-5")
+    assert ev.current_models()["verifier_model"] == "claude-sonnet-5-5"
+    out = ev.default_out_dir(False, "claude-haiku-5-5", None)
+    assert out != ev.HERE and out.name == "claude-haiku-5-5"
+    assert ev.default_out_dir(False, "a", "b").name == "a+verify-b"
+    assert ev.default_out_dir(False, None, None) == ev.HERE
+
+
+def test_report_header_names_the_models():
+    note = ev.models_note([{"analyst_model": "m1", "verifier_model": "m2"}])
+    assert "m1" in note and "m2" in note
+    assert ev.models_note([{}]) == ""
