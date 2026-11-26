@@ -1,0 +1,8147 @@
+[
+  {
+    "variant": "single",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0008752,
+    "seconds": 7.175216913223267,
+    "in_tokens": 1692,
+    "out_tokens": 1412,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "Fallout.sol",
+        27,
+        30
+      ],
+      [
+        "Reentrance.sol",
+        19,
+        26
+      ]
+    ],
+    "titles": [
+      "Misnamed constructor lets anyone take ownership of Fallout and drain it",
+      "sendAllocation never decrements the allocation, allowing repeated withdrawals",
+      "Reentrancy in Reentrance.withdraw allows draining the contract"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E01",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0011738999999999999,
+    "seconds": 10.829154014587402,
+    "in_tokens": 3169,
+    "out_tokens": 1714,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "King.sol",
+        17,
+        17
+      ],
+      [
+        "Reentrance.sol",
+        21,
+        25
+      ]
+    ],
+    "titles": [
+      "Misnamed constructor lets anyone take ownership and drain the contract",
+      "Previous king can permanently block takeover via reverting transfer",
+      "Reentrancy in withdraw allows draining all funds"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0013628,
+    "seconds": 11.261636734008789,
+    "in_tokens": 4358,
+    "out_tokens": 1854,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Reentrance.sol",
+        20,
+        25
+      ],
+      [
+        "King.sol",
+        17,
+        17
+      ],
+      [
+        "Fallout.sol",
+        13,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrancy in withdraw drains contract ETH",
+      "King can be permanently locked by a contract that rejects payments",
+      "Constructor name typo lets anyone take ownership and drain the contract"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0024944,
+    "seconds": 21.719951152801514,
+    "in_tokens": 6924,
+    "out_tokens": 3604,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "King.sol",
+        15,
+        20
+      ],
+      [
+        "Reentrance.sol",
+        21,
+        25
+      ]
+    ],
+    "titles": [
+      "Misnamed constructor lets anyone take ownership and drain all funds",
+      "Push payment to king can be blocked by a contract king that rejects ETH",
+      "Reentrancy in withdraw drains contract via balance update after external call"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0024863000000000003,
+    "seconds": 21.04816484451294,
+    "in_tokens": 8073,
+    "out_tokens": 3358,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Reentrance.sol",
+        21,
+        25
+      ],
+      [
+        "King.sol",
+        17,
+        17
+      ],
+      [
+        "Fallout.sol",
+        13,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrancy in withdraw allows draining funds via callback before balance update",
+      "King contract can be permanently locked by a reverting king via transfer",
+      "Constructor typo 'Fal1out' lets anyone reclaim ownership and drain funds"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0007167,
+    "seconds": 6.402791261672974,
+    "in_tokens": 1322,
+    "out_tokens": 1169,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Telephone.sol",
+        11,
+        14
+      ],
+      [
+        "Vault.sol",
+        6,
+        17
+      ],
+      [
+        "CoinFlip.sol",
+        13,
+        30
+      ]
+    ],
+    "titles": [
+      "Telephone: ownership takeover via tx.origin check",
+      "Vault: password readable from storage, so lock can be bypassed",
+      "CoinFlip: outcome predictable from previous block hash"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E04",
+      "E07",
+      "E08"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0011526,
+    "seconds": 11.519246101379395,
+    "in_tokens": 2806,
+    "out_tokens": 1744,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "CoinFlip.sol",
+        14,
+        22
+      ],
+      [
+        "Telephone.sol",
+        12,
+        13
+      ]
+    ],
+    "titles": [
+      "Predictable coin flip outcome from previous blockhash",
+      "tx.origin check lets any attacker take ownership via an intermediary contract"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E04",
+      "E07"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0013683,
+    "seconds": 11.98552131652832,
+    "in_tokens": 4008,
+    "out_tokens": 1935,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Telephone.sol",
+        11,
+        15
+      ],
+      [
+        "Vault.sol",
+        6,
+        10
+      ]
+    ],
+    "titles": [
+      "Ownership takeover via contract intermediary using tx.origin != msg.sender check",
+      "Vault password stored in plaintext storage and readable on-chain"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E04",
+      "E08"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0025153,
+    "seconds": 22.74964189529419,
+    "in_tokens": 6913,
+    "out_tokens": 3648,
+    "gate_failures": 1,
+    "found": 3,
+    "spans": [
+      [
+        "CoinFlip.sol",
+        14,
+        24
+      ],
+      [
+        "Vault.sol",
+        6,
+        14
+      ],
+      [
+        "Telephone.sol",
+        11,
+        15
+      ]
+    ],
+    "titles": [
+      "Coin flip outcome is predictable from the previous block hash",
+      "Password stored on-chain is readable, so anyone can unlock the vault",
+      "tx.origin check lets any attacker take ownership via an intermediary contract"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E04",
+      "E07",
+      "E08"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0027378000000000003,
+    "seconds": 22.451483964920044,
+    "in_tokens": 10038,
+    "out_tokens": 3468,
+    "gate_failures": 1,
+    "found": 3,
+    "spans": [
+      [
+        "CoinFlip.sol",
+        13,
+        22
+      ],
+      [
+        "Telephone.sol",
+        12,
+        13
+      ],
+      [
+        "Vault.sol",
+        6,
+        6
+      ]
+    ],
+    "titles": [
+      "Coin flip outcome is predictable from the previous block hash",
+      "tx.origin != msg.sender check lets any contract take ownership",
+      "Vault password is readable from contract storage, so anyone can unlock"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E04",
+      "E07",
+      "E08"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.000488,
+    "seconds": 4.421678066253662,
+    "in_tokens": 1090,
+    "out_tokens": 758,
+    "gate_failures": 0,
+    "found": 1,
+    "spans": [
+      [
+        "Token.sol",
+        13,
+        15
+      ]
+    ],
+    "titles": [
+      "Integer underflow in transfer lets any account drain balances"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 1,
+    "found_hit": 1,
+    "hit_ids": [
+      "E11"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.001669,
+    "seconds": 16.280697107315063,
+    "in_tokens": 3710,
+    "out_tokens": 2596,
+    "gate_failures": 0,
+    "found": 1,
+    "spans": [
+      [
+        "Token.sol",
+        13,
+        15
+      ]
+    ],
+    "titles": [
+      "Unchecked uint256 underflow in transfer lets any holder mint unlimited tokens"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 1,
+    "found_hit": 1,
+    "hit_ids": [
+      "E11"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0017673,
+    "seconds": 14.739647150039673,
+    "in_tokens": 5173,
+    "out_tokens": 2500,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Token.sol",
+        13,
+        14
+      ],
+      [
+        "Token.sol",
+        15,
+        15
+      ]
+    ],
+    "titles": [
+      "Underflow in transfer lets any zero-balance account mint tokens",
+      "Unchecked addition in transfer can overflow recipient balance"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 1,
+    "found_hit": 2,
+    "hit_ids": [
+      "E11"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0023174999999999997,
+    "seconds": 20.878363847732544,
+    "in_tokens": 6720,
+    "out_tokens": 3291,
+    "gate_failures": 2,
+    "found": 1,
+    "spans": [
+      [
+        "Token.sol",
+        13,
+        15
+      ]
+    ],
+    "titles": [
+      "Unchecked underflow in transfer lets any holder mint unlimited tokens"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 1,
+    "found_hit": 1,
+    "hit_ids": [
+      "E11"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0020872,
+    "seconds": 18.048481941223145,
+    "in_tokens": 6362,
+    "out_tokens": 2902,
+    "gate_failures": 0,
+    "found": 1,
+    "spans": [
+      [
+        "Token.sol",
+        13,
+        15
+      ]
+    ],
+    "titles": [
+      "Unchecked underflow in transfer lets any account with zero balance mint tokens"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 1,
+    "found_hit": 1,
+    "hit_ids": [
+      "E11"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0009652,
+    "seconds": 8.230292081832886,
+    "in_tokens": 1837,
+    "out_tokens": 1563,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        23,
+        29
+      ],
+      [
+        "Switch.sol",
+        13,
+        27
+      ]
+    ],
+    "titles": [
+      "StakeWETH credits stake without verifying token transfer succeeded",
+      "flipSwitch onlyOff modifier can be bypassed with crafted calldata to call turnSwitchOn"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0032359,
+    "seconds": 29.41194486618042,
+    "in_tokens": 6504,
+    "out_tokens": 5171,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        25,
+        29
+      ],
+      [
+        "Switch.sol",
+        16,
+        20
+      ]
+    ],
+    "titles": [
+      "StakeWETH ignores the token's transferFrom return value and credits stake before confirming payment",
+      "onlyOff checks a fixed calldata offset, letting an attacker run turnSwitchOn via flipSwitch"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0032534,
+    "seconds": 27.33407187461853,
+    "in_tokens": 8649,
+    "out_tokens": 4777,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        25,
+        29
+      ],
+      [
+        "Switch.sol",
+        15,
+        20
+      ]
+    ],
+    "titles": [
+      "StakeWETH ignores the token transfer result, so stakes can be credited without any tokens received",
+      "onlyOff checks a fixed calldata offset, so flipSwitch can run any function"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0045075,
+    "seconds": 39.621237993240356,
+    "in_tokens": 9690,
+    "out_tokens": 7077,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        25,
+        29
+      ],
+      [
+        "Switch.sol",
+        13,
+        27
+      ]
+    ],
+    "titles": [
+      "StakeWETH credits stake before checking the token transfer result, enabling free stake and ETH drain",
+      "onlyOff checks a fixed calldata offset, so flipSwitch can run turnSwitchOn"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0047249,
+    "seconds": 40.54331612586975,
+    "in_tokens": 11789,
+    "out_tokens": 7092,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        25,
+        29
+      ],
+      [
+        "Switch.sol",
+        13,
+        22
+      ]
+    ],
+    "titles": [
+      "StakeWETH credits stake before checking the token transfer result, allowing ETH theft via a false-returning token",
+      "onlyOff checks a fixed calldata offset, so flipSwitch can run turnSwitchOn"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0012842,
+    "seconds": 10.638298749923706,
+    "in_tokens": 2202,
+    "out_tokens": 2128,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        29
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ]
+    ],
+    "titles": [
+      "Array length underflow in retract() lets anyone overwrite arbitrary storage, including owner",
+      "multicall() nested delegatecall bypasses the deposit-once check, reusing msg.value to double-credit balances"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E16",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0055069,
+    "seconds": 46.385318994522095,
+    "in_tokens": 10789,
+    "out_tokens": 8856,
+    "gate_failures": 1,
+    "found": 6,
+    "spans": [
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ],
+      [
+        "PuzzleWallet.sol",
+        52,
+        55
+      ],
+      [
+        "PuzzleWallet.sol",
+        41,
+        45
+      ],
+      [
+        "AlienCodex.sol",
+        24,
+        28
+      ],
+      [
+        "AlienCodex.sol",
+        15,
+        17
+      ]
+    ],
+    "titles": [
+      "Unprotected proposeNewAdmin writes into wallet owner slot via storage collision",
+      "multicall allows nested multicall to reuse msg.value across multiple deposits",
+      "setMaxBalance overwrites proxy admin via storage collision",
+      "init can be re-run once maxBalance is reset to zero, letting anyone take ownership",
+      "Array length underflow in retract() enables arbitrary storage write via revise()",
+      "Unrestricted makeContact() enables all codex functions"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E16",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0051641,
+    "seconds": 41.67790603637695,
+    "in_tokens": 10431,
+    "out_tokens": 8242,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        29
+      ],
+      [
+        "AlienCodex.sol",
+        15,
+        17
+      ],
+      [
+        "PuzzleWallet.sol",
+        7,
+        8
+      ],
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ]
+    ],
+    "titles": [
+      "Array length underflow in retract() enables arbitrary storage write via revise() and overwrites owner",
+      "Unprotected makeContact() lets anyone unlock the contacted-gated functions",
+      "Proxy admin variable aliases PuzzleWallet maxBalance, enabling takeover via setMaxBalance",
+      "Unprotected proposeNewAdmin writes PuzzleWallet owner slot via pendingAdmin alias",
+      "multicall allows nested multicall to reuse msg.value and drain balance"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E16",
+      "E19",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.007032399999999999,
+    "seconds": 57.470101833343506,
+    "in_tokens": 16659,
+    "out_tokens": 10733,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        25
+      ],
+      [
+        "AlienCodex.sol",
+        10,
+        17
+      ],
+      [
+        "PuzzleWallet.sol",
+        7,
+        8
+      ],
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ]
+    ],
+    "titles": [
+      "Unchecked dynamic array length underflow in retract() enables arbitrary storage write via revise()",
+      "Owner-style gate `contacted` is trivially bypassed via public makeContact",
+      "Storage slot collision lets setMaxBalance overwrite proxy admin",
+      "Unprotected proposeNewAdmin writes slot 0, handing wallet ownership to anyone",
+      "multicall allows repeated deposit via nested multicall, double-counting msg.value"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E16",
+      "E19",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0096982,
+    "seconds": 75.44395709037781,
+    "in_tokens": 21082,
+    "out_tokens": 15180,
+    "gate_failures": 0,
+    "found": 6,
+    "spans": [
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        52,
+        55
+      ],
+      [
+        "PuzzleWallet.sol",
+        82,
+        87
+      ],
+      [
+        "PuzzleWallet.sol",
+        7,
+        8
+      ],
+      [
+        "AlienCodex.sol",
+        23,
+        25
+      ],
+      [
+        "AlienCodex.sol",
+        27,
+        29
+      ]
+    ],
+    "titles": [
+      "proposeNewAdmin has no access control",
+      "setMaxBalance writes a storage slot shared with the proxy admin",
+      "Nested multicall reuses msg.value to double-count deposits",
+      "Proxy and implementation storage layouts collide, letting anyone take ownership",
+      "Array length underflow in retract() enables arbitrary storage write and ownership takeover",
+      "Unchecked index in revise() allows arbitrary storage slot overwrite, including owner"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 4,
+    "hit_ids": [
+      "E16",
+      "E19",
+      "E20"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0008897,
+    "seconds": 7.481816053390503,
+    "in_tokens": 1442,
+    "out_tokens": 1491,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        30
+      ],
+      [
+        "Preservation.sol",
+        20,
+        22
+      ]
+    ],
+    "titles": [
+      "Delegation fallback forwards arbitrary calldata via delegatecall, letting anyone call pwn() and take ownership",
+      "Preservation delegatecalls into libraries with mismatched storage layout, allowing an attacker to overwrite owner"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0016425,
+    "seconds": 14.107586860656738,
+    "in_tokens": 3560,
+    "out_tokens": 2573,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        26
+      ],
+      [
+        "Preservation.sol",
+        20,
+        22
+      ]
+    ],
+    "titles": [
+      "Unrestricted delegatecall in fallback lets anyone hijack Delegation ownership",
+      "Delegatecall storage collision lets anyone take ownership of Preservation"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.003322,
+    "seconds": 26.64987277984619,
+    "in_tokens": 9790,
+    "out_tokens": 4686,
+    "gate_failures": 1,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        30
+      ],
+      [
+        "Preservation.sol",
+        20,
+        22
+      ]
+    ],
+    "titles": [
+      "Unrestricted delegatecall in fallback lets anyone take ownership",
+      "Delegatecall to library overwrites Preservation's owner via storage slot collision"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0026155,
+    "seconds": 22.373349905014038,
+    "in_tokens": 7040,
+    "out_tokens": 3823,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        30
+      ],
+      [
+        "Preservation.sol",
+        20,
+        22
+      ]
+    ],
+    "titles": [
+      "Unrestricted delegatecall forwarding lets anyone take ownership via pwn()",
+      "Storage layout mismatch lets delegatecall overwrite owner via timeZone1Library"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0026026000000000005,
+    "seconds": 20.767072916030884,
+    "in_tokens": 7746,
+    "out_tokens": 3656,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        26
+      ],
+      [
+        "Preservation.sol",
+        20,
+        22
+      ]
+    ],
+    "titles": [
+      "Fallback forwards arbitrary msg.data via delegatecall, letting anyone take ownership",
+      "Delegatecall to library writes Preservation's owner slot, allowing anyone to take ownership"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0010692,
+    "seconds": 8.870656967163086,
+    "in_tokens": 2002,
+    "out_tokens": 1738,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        35
+      ],
+      [
+        "GatekeeperTwo.sol",
+        26,
+        29
+      ]
+    ],
+    "titles": [
+      "Anyone can seize ownership of Fallback via receive() and drain its balance",
+      "NaughtCoin lock can be bypassed through transferFrom/approve",
+      "GatekeeperTwo entry gates can be satisfied from a constructor and a precomputed key"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E10",
+      "E12"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0019046,
+    "seconds": 17.41224503517151,
+    "in_tokens": 3541,
+    "out_tokens": 3101,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "Fallback.sol",
+        18,
+        24
+      ],
+      [
+        "GatekeeperTwo.sol",
+        12,
+        19
+      ],
+      [
+        "GatekeeperTwo.sol",
+        21,
+        24
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        25
+      ]
+    ],
+    "titles": [
+      "Anyone can seize ownership via a tiny ETH transfer to receive()",
+      "Ownership transfers to any address whose contributions exceed the owner's via contribute()",
+      "extcodesize check in gateTwo is bypassed from a constructor",
+      "gateThree XOR key is trivially derivable by the caller",
+      "Timelock bypassed via transferFrom/approve allowance path"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0018333999999999998,
+    "seconds": 15.506861209869385,
+    "in_tokens": 4934,
+    "out_tokens": 2680,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "GatekeeperTwo.sol",
+        13,
+        17
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        25
+      ]
+    ],
+    "titles": [
+      "Anyone who has made a contribution can seize ownership via receive() and drain the contract",
+      "gateTwo extcodesize check is bypassed by calls made from a contract constructor",
+      "Timelock bypassed via transferFrom, which is not locked"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0026514,
+    "seconds": 22.4725661277771,
+    "in_tokens": 7454,
+    "out_tokens": 3812,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "GatekeeperTwo.sol",
+        12,
+        17
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        25
+      ]
+    ],
+    "titles": [
+      "receive() grants ownership to any prior contributor",
+      "gateTwo extcodesize check is bypassed from a contract constructor",
+      "Timelock bypassed via transferFrom: only transfer() is restricted"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0047882,
+    "seconds": 40.85586094856262,
+    "in_tokens": 12942,
+    "out_tokens": 6988,
+    "gate_failures": 1,
+    "found": 3,
+    "spans": [
+      [
+        "GatekeeperTwo.sol",
+        12,
+        19
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        25
+      ],
+      [
+        "Fallback.sol",
+        34,
+        37
+      ]
+    ],
+    "titles": [
+      "extcodesize check in gateTwo is bypassed by calling enter() from a constructor",
+      "Lock bypass: transferFrom is not restricted by the timelock",
+      "Anyone with a prior contribution can take ownership via receive()"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0011570999999999999,
+    "seconds": 9.062422752380371,
+    "in_tokens": 2546,
+    "out_tokens": 1805,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Dex.sol",
+        56,
+        59
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        33
+      ],
+      [
+        "Dex.sol",
+        23,
+        34
+      ]
+    ],
+    "titles": [
+      "Unrestricted approve on SwappableToken lets anyone spend any holder's tokens",
+      "DexTwo swap does not validate that from/to are the pool tokens, allowing drain with a fake token",
+      "Dex swap price is the spot ratio of pool balances, enabling repeated-swap drain"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0030284,
+    "seconds": 25.975173950195312,
+    "in_tokens": 6634,
+    "out_tokens": 4730,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Dex.sol",
+        32,
+        34
+      ],
+      [
+        "Dex.sol",
+        27,
+        29
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        33
+      ]
+    ],
+    "titles": [
+      "Spot-price swap formula lets attacker drain the pool through repeated swaps",
+      "Unchecked return value of transferFrom in swap lets a false-returning token drain the pool",
+      "swap() accepts arbitrary token addresses, letting an attacker drain the pool with a fake token"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 3,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0036547000000000003,
+    "seconds": 30.801705837249756,
+    "in_tokens": 8512,
+    "out_tokens": 5607,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Dex.sol",
+        32,
+        34
+      ],
+      [
+        "Dex.sol",
+        23,
+        30
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        29
+      ],
+      [
+        "DexTwo.sol",
+        55,
+        58
+      ]
+    ],
+    "titles": [
+      "Swap price is the instantaneous pool balance ratio, so repeated swaps drain the pool",
+      "swap has no minimum-output or deadline parameter, so callers are exposed to price manipulation and sandwiching",
+      "swap() accepts arbitrary 'from' token, allowing a fake token to drain the real pool",
+      "SwappableTokenTwo.approve lets anyone set allowances on behalf of any non-DEX owner"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 3,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0042807,
+    "seconds": 35.0721640586853,
+    "in_tokens": 10457,
+    "out_tokens": 6470,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Dex.sol",
+        26,
+        33
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        29
+      ]
+    ],
+    "titles": [
+      "Swap price derived from live pool balances, allowing drain via manipulation",
+      "swap() accepts arbitrary token addresses, letting an attacker drain the pool's real tokens"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0069939,
+    "seconds": 55.60953426361084,
+    "in_tokens": 20064,
+    "out_tokens": 9975,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Dex.sol",
+        32,
+        34
+      ],
+      [
+        "Dex.sol",
+        56,
+        58
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        29
+      ],
+      [
+        "DexTwo.sol",
+        55,
+        58
+      ]
+    ],
+    "titles": [
+      "Swap price derived from live pool balances allows reserve-draining manipulation",
+      "Unauthenticated owner parameter in SwappableToken.approve lets anyone grant allowances from any holder",
+      "swap() accepts arbitrary 'from' and 'to' tokens, enabling drain of real pool tokens via a fake token",
+      "SwappableTokenTwo.approve has no caller authorization, letting anyone spend any holder's tokens"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0018609000000000002,
+    "seconds": 15.08647108078003,
+    "in_tokens": 3089,
+    "out_tokens": 3104,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        17,
+        28
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        18
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        22,
+        26
+      ]
+    ],
+    "titles": [
+      "GoodSamaritan: attacker-controlled notify() revert forces wallet to drain its remaining coins",
+      "HigherOrder: unchecked calldata write to treasury lets anyone become commander",
+      "MagicAnimalCarousel: setAnimalAndSpin XOR/OR corrupts existing crate owner and animal data"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0058632,
+    "seconds": 51.47465515136719,
+    "in_tokens": 8027,
+    "out_tokens": 10121,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        51,
+        54
+      ],
+      [
+        "GoodSamaritan.sol",
+        19,
+        25
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        13
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        42,
+        43
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ]
+    ],
+    "titles": [
+      "Recipient callback in Coin.transfer lets a contract revert with NotEnoughBalance and drain the wallet",
+      "Attacker can spoof NotEnoughBoundary revert to drain the wallet via error-selector matching",
+      "Anyone can set treasury via unrestricted registerTreasury and then seize commander",
+      "changeAnimal shifts animal name by 160 instead of 176, overwriting the next-crate pointer",
+      "setAnimalAndSpin uses XOR and OR on an occupied crate, corrupting owner and animal fields"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 5,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0107324,
+    "seconds": 91.24639415740967,
+    "in_tokens": 14439,
+    "out_tokens": 18577,
+    "gate_failures": 3,
+    "found": 4,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        19,
+        25
+      ],
+      [
+        "GoodSamaritan.sol",
+        51,
+        54
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        12
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        42,
+        43
+      ]
+    ],
+    "titles": [
+      "Attacker-controlled revert in notify() spoofs NotEnoughBalance and drains the wallet",
+      "Attacker-controlled notify() callback can forge NotEnoughBalance revert and drain the wallet",
+      "Unrestricted registerTreasury lets anyone set treasury and then seize commander",
+      "changeAnimal writes a 96-bit name at bit 160, corrupting the next-crate pointer"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 4,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0092808,
+    "seconds": 77.57999587059021,
+    "in_tokens": 17503,
+    "out_tokens": 15061,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        19,
+        24
+      ],
+      [
+        "GoodSamaritan.sol",
+        51,
+        54
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        13
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        39,
+        43
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ]
+    ],
+    "titles": [
+      "Malicious recipient's notify() callback forges NotEnoughBalance to drain the wallet remainder",
+      "Reentrant notify callback lets a contract recipient spoof NotEnoughBalance and drain the wallet",
+      "registerTreasury writes unchecked calldata into treasury, letting anyone become commander",
+      "changeAnimal shifts a 96-bit name by 160, corrupting the next-crate pointer",
+      "setAnimalAndSpin XORs/ORs into existing crate data instead of replacing it"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 5,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0093896,
+    "seconds": 76.45490002632141,
+    "in_tokens": 19576,
+    "out_tokens": 14864,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        51,
+        54
+      ],
+      [
+        "GoodSamaritan.sol",
+        19,
+        24
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        12
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        39,
+        43
+      ]
+    ],
+    "titles": [
+      "Untrusted recipient callback lets attacker force full wallet drain via NotEnoughBalance revert",
+      "Malicious recipient drains the Wallet by reverting from its notify callback with NotEnoughBalance",
+      "registerTreasury stores an unvalidated calldata word, letting anyone set treasury above 255 and claim commander",
+      "setAnimalAndSpin XOR/OR packing corrupts an existing crate's animal and owner",
+      "changeAnimal shifts animal by 160 bits, overwriting the next-crate-id field"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 5,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0014888,
+    "seconds": 10.739167928695679,
+    "in_tokens": 3398,
+    "out_tokens": 2298,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ],
+      [
+        "AirdropClaim.sol",
+        36,
+        37
+      ],
+      [
+        "Payroll.sol",
+        33,
+        38
+      ]
+    ],
+    "titles": [
+      "Stakers can claim rewards from before they staked",
+      "Reentrancy in claim lets an eligible contract claim multiple times",
+      "Payroll marks payment as paid without checking transfer result"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U04"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0041553,
+    "seconds": 37.610235929489136,
+    "in_tokens": 9498,
+    "out_tokens": 6411,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        35,
+        37
+      ],
+      [
+        "Payroll.sol",
+        36,
+        37
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrancy in claim() allows an eligible contract to claim multiple times",
+      "Unchecked transfer return value marks payment as paid without paying",
+      "stake() does not settle rewardDebt, letting new or topped-up stakers claim rewards accrued before they deposited"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U04"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0041302000000000005,
+    "seconds": 33.704506158828735,
+    "in_tokens": 12207,
+    "out_tokens": 5819,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        36,
+        37
+      ],
+      [
+        "Payroll.sol",
+        36,
+        37
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrancy in claim() allows repeated claims via receiver callback",
+      "Unchecked transfer return value marks payment as paid when transfer fails",
+      "stake() does not settle pending rewards, letting new deposits claim past rewards"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U04"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.005863900000000001,
+    "seconds": 48.648247718811035,
+    "in_tokens": 14269,
+    "out_tokens": 8874,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        36,
+        37
+      ],
+      [
+        "Payroll.sol",
+        36,
+        37
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrancy in claim() lets an eligible contract claim repeatedly",
+      "Return value of token.transfer ignored; payment marked paid even when transfer fails",
+      "stake() does not settle rewardDebt, letting new stakers claim rewards accrued before they staked"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U04"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0068343,
+    "seconds": 54.58511996269226,
+    "in_tokens": 18553,
+    "out_tokens": 9958,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        36,
+        37
+      ],
+      [
+        "Payroll.sol",
+        36,
+        37
+      ],
+      [
+        "StakeRewards.sol",
+        7,
+        7
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrancy in claim() lets an eligible contract claim repeatedly",
+      "Unchecked transfer return value marks payment as paid without paying",
+      "RATE_PER_SECOND truncates to zero, so staking rewards are never accrued",
+      "New stakes accrue rewards from before they were deposited"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 4,
+    "found_hit": 4,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U03",
+      "U04"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0010926,
+    "seconds": 9.306595087051392,
+    "in_tokens": 2156,
+    "out_tokens": 1754,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Treasury.sol",
+        15,
+        19
+      ],
+      [
+        "PayoutSplitter.sol",
+        17,
+        25
+      ],
+      [
+        "ShareVault.sol",
+        14,
+        15
+      ]
+    ],
+    "titles": [
+      "Treasury.initialize can be called by anyone, including to retake ownership",
+      "PayoutSplitter.distribute can be blocked permanently by a member whose receive reverts",
+      "ShareVault is vulnerable to the first-depositor inflation attack, letting attackers steal later deposits"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U07"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0030647,
+    "seconds": 28.88579297065735,
+    "in_tokens": 6217,
+    "out_tokens": 4886,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        17,
+        24
+      ],
+      [
+        "Treasury.sol",
+        15,
+        19
+      ],
+      [
+        "ShareVault.sol",
+        14,
+        16
+      ]
+    ],
+    "titles": [
+      "Any member can permanently block distribute() with a reverting receiver",
+      "Anyone can re-initialize the contract and seize ownership",
+      "First-depositor donation attack lets attacker steal later deposits via forced ETH and share-price inflation"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U07"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0030107000000000003,
+    "seconds": 27.729345083236694,
+    "in_tokens": 7362,
+    "out_tokens": 4549,
+    "gate_failures": 1,
+    "found": 2,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        20,
+        23
+      ],
+      [
+        "Treasury.sol",
+        15,
+        19
+      ]
+    ],
+    "titles": [
+      "Reentrant distribute() lets a member block all payouts or skew shares",
+      "Treasury can be re-initialized by anyone, allowing ownership takeover"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "U05",
+      "U06"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.004031900000000001,
+    "seconds": 37.7527289390564,
+    "in_tokens": 8934,
+    "out_tokens": 6277,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        21,
+        24
+      ],
+      [
+        "ShareVault.sol",
+        14,
+        16
+      ],
+      [
+        "Treasury.sol",
+        15,
+        18
+      ]
+    ],
+    "titles": [
+      "Member with a reverting receive() permanently blocks all distributions",
+      "Share-price inflation lets first depositor steal later deposits",
+      "Anyone can re-run initialize() and seize ownership of the treasury"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U07"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0068598,
+    "seconds": 60.40295076370239,
+    "in_tokens": 15188,
+    "out_tokens": 10682,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        17,
+        25
+      ],
+      [
+        "ShareVault.sol",
+        14,
+        15
+      ],
+      [
+        "Treasury.sol",
+        15,
+        19
+      ],
+      [
+        "VoucherMint.sol",
+        15,
+        18
+      ]
+    ],
+    "titles": [
+      "Reentrant distribute() lets a member revert every payout (block distribution)",
+      "First-depositor share inflation via direct ETH donation lets attacker steal later deposits",
+      "Anyone can re-initialize Treasury and seize ownership",
+      "Voucher signatures replayable across chains and contract deployments"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 4,
+    "found_hit": 4,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U07",
+      "U08"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0013099000000000001,
+    "seconds": 8.068455934524536,
+    "in_tokens": 5969,
+    "out_tokens": 1426,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0023449000000000005,
+    "seconds": 18.97375178337097,
+    "in_tokens": 11214,
+    "out_tokens": 2447,
+    "gate_failures": 3,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0030289,
+    "seconds": 20.674944162368774,
+    "in_tokens": 15844,
+    "out_tokens": 2889,
+    "gate_failures": 3,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_verify",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0020058999999999997,
+    "seconds": 15.809999942779541,
+    "in_tokens": 10044,
+    "out_tokens": 2003,
+    "gate_failures": 2,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0027681000000000003,
+    "seconds": 20.72535490989685,
+    "in_tokens": 11766,
+    "out_tokens": 3183,
+    "gate_failures": 0,
+    "found": 1,
+    "spans": [
+      [
+        "SafeRegistry.sol",
+        31,
+        34
+      ]
+    ],
+    "titles": [
+      "Unrestricted first-come registration lets one account squat names and block others"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 4,
+    "files_with_findings": 1,
+    "findings_on_safe": 1
+  },
+  {
+    "variant": "single",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0008557,
+    "seconds": 5.03788423538208,
+    "in_tokens": 4372,
+    "out_tokens": 837,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0016284000000000001,
+    "seconds": 13.574250936508179,
+    "in_tokens": 6884,
+    "out_tokens": 1880,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0020553,
+    "seconds": 14.532683849334717,
+    "in_tokens": 9588,
+    "out_tokens": 2193,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_verify",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0018383,
+    "seconds": 15.566210746765137,
+    "in_tokens": 8253,
+    "out_tokens": 2026,
+    "gate_failures": 2,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 0,
+    "status": "ok",
+    "cost": 0.0021287999999999997,
+    "seconds": 15.829994440078735,
+    "in_tokens": 8953,
+    "out_tokens": 2467,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "single",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0008082,
+    "seconds": 6.463173866271973,
+    "in_tokens": 1692,
+    "out_tokens": 1278,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "Reentrance.sol",
+        19,
+        26
+      ],
+      [
+        "King.sol",
+        15,
+        20
+      ]
+    ],
+    "titles": [
+      "Misnamed constructor lets anyone take ownership and drain funds",
+      "Reentrancy in withdraw allows draining the contract",
+      "King can be permanently locked by a reverting king contract"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0015231,
+    "seconds": 13.569320917129517,
+    "in_tokens": 4241,
+    "out_tokens": 2198,
+    "gate_failures": 1,
+    "found": 3,
+    "spans": [
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "King.sol",
+        17,
+        17
+      ],
+      [
+        "Reentrance.sol",
+        21,
+        25
+      ]
+    ],
+    "titles": [
+      "Misnamed constructor lets anyone take ownership and drain the contract",
+      "King can be permanently locked by a contract that rejects ETH",
+      "Reentrancy in withdraw allows draining all contract funds"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0022844,
+    "seconds": 18.53010082244873,
+    "in_tokens": 7604,
+    "out_tokens": 3048,
+    "gate_failures": 2,
+    "found": 3,
+    "spans": [
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "King.sol",
+        16,
+        19
+      ],
+      [
+        "Reentrance.sol",
+        21,
+        25
+      ]
+    ],
+    "titles": [
+      "Misnamed constructor lets anyone take ownership and drain funds",
+      "Reverting king contract permanently blocks new bids (DoS via push payment)",
+      "Reentrancy in withdraw lets attacker drain contract balance"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0024537,
+    "seconds": 22.55570912361145,
+    "in_tokens": 6797,
+    "out_tokens": 3548,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Reentrance.sol",
+        20,
+        25
+      ],
+      [
+        "King.sol",
+        17,
+        17
+      ],
+      [
+        "Fallout.sol",
+        13,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrancy in withdraw allows draining all contract ETH",
+      "King refund via transfer() lets a reverting king permanently block takeover",
+      "Constructor misnamed as 'Fal1out', so anyone can take ownership and drain funds"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0026620999999999997,
+    "seconds": 22.22817087173462,
+    "in_tokens": 8116,
+    "out_tokens": 3701,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Reentrance.sol",
+        20,
+        25
+      ],
+      [
+        "King.sol",
+        17,
+        17
+      ],
+      [
+        "Fallout.sol",
+        13,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrancy in withdraw allows repeated drain of contract ETH",
+      "Failed push payment to current king permanently blocks new bids (DoS)",
+      "Constructor misnamed as a regular function lets anyone take ownership and drain funds"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0007647,
+    "seconds": 6.83371114730835,
+    "in_tokens": 1322,
+    "out_tokens": 1265,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Telephone.sol",
+        11,
+        15
+      ],
+      [
+        "Vault.sol",
+        6,
+        17
+      ],
+      [
+        "CoinFlip.sol",
+        13,
+        30
+      ]
+    ],
+    "titles": [
+      "Ownership takeover via tx.origin check in changeOwner",
+      "Vault password stored on-chain and readable from storage",
+      "Coin flip outcome is predictable and can be computed within the same transaction"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E04",
+      "E07",
+      "E08"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0011907,
+    "seconds": 12.073761701583862,
+    "in_tokens": 2837,
+    "out_tokens": 1814,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "CoinFlip.sol",
+        14,
+        22
+      ],
+      [
+        "Vault.sol",
+        6,
+        14
+      ],
+      [
+        "Telephone.sol",
+        11,
+        14
+      ]
+    ],
+    "titles": [
+      "Coin flip outcome is predictable from the previous block hash",
+      "Vault password is readable from on-chain storage, letting anyone unlock",
+      "tx.origin check lets any attacker contract take ownership"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E04",
+      "E07",
+      "E08"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0016209000000000002,
+    "seconds": 13.91716194152832,
+    "in_tokens": 5584,
+    "out_tokens": 2125,
+    "gate_failures": 1,
+    "found": 2,
+    "spans": [
+      [
+        "Vault.sol",
+        6,
+        10
+      ],
+      [
+        "Telephone.sol",
+        11,
+        15
+      ]
+    ],
+    "titles": [
+      "Vault password is stored on-chain and can be read by anyone",
+      "Ownership takeover via tx.origin check in changeOwner"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E04",
+      "E08"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0024319999999999997,
+    "seconds": 23.134254693984985,
+    "in_tokens": 6805,
+    "out_tokens": 3503,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "CoinFlip.sol",
+        14,
+        24
+      ],
+      [
+        "Telephone.sol",
+        11,
+        15
+      ],
+      [
+        "Vault.sol",
+        6,
+        10
+      ]
+    ],
+    "titles": [
+      "Coin flip outcome is predictable from the previous block hash",
+      "tx.origin check lets any attacker take ownership through an intermediary contract",
+      "Private password stored on-chain is readable from storage"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E04",
+      "E07",
+      "E08"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0017225,
+    "seconds": 14.293216943740845,
+    "in_tokens": 7215,
+    "out_tokens": 2002,
+    "gate_failures": 1,
+    "found": 1,
+    "spans": [
+      [
+        "Telephone.sol",
+        11,
+        15
+      ]
+    ],
+    "titles": [
+      "Ownership takeover via a relay contract, since changeOwner gates on tx.origin != msg.sender"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 1,
+    "found_hit": 1,
+    "hit_ids": [
+      "E04"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0006075,
+    "seconds": 5.967523813247681,
+    "in_tokens": 1090,
+    "out_tokens": 997,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Token.sol",
+        12,
+        15
+      ],
+      [
+        "Elevator.sol",
+        15,
+        17
+      ]
+    ],
+    "titles": [
+      "Integer underflow in transfer lets any holder mint unlimited tokens",
+      "Building callback can return different isLastFloor values across two calls"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E09",
+      "E11"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0014696000000000002,
+    "seconds": 14.023234128952026,
+    "in_tokens": 3636,
+    "out_tokens": 2212,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Token.sol",
+        13,
+        14
+      ],
+      [
+        "Token.sol",
+        15,
+        15
+      ]
+    ],
+    "titles": [
+      "Unchecked underflow in transfer lets any account spend tokens it does not own",
+      "Unchecked overflow when crediting the recipient balance"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 1,
+    "found_hit": 2,
+    "hit_ids": [
+      "E11"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0018513000000000002,
+    "seconds": 15.57129192352295,
+    "in_tokens": 5173,
+    "out_tokens": 2668,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Token.sol",
+        13,
+        14
+      ],
+      [
+        "Token.sol",
+        15,
+        15
+      ]
+    ],
+    "titles": [
+      "Unchecked underflow in transfer lets any zero-balance caller mint tokens",
+      "Unchecked overflow on recipient balance in transfer"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 1,
+    "found_hit": 2,
+    "hit_ids": [
+      "E11"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0016960999999999999,
+    "seconds": 15.764189004898071,
+    "in_tokens": 4776,
+    "out_tokens": 2437,
+    "gate_failures": 0,
+    "found": 1,
+    "spans": [
+      [
+        "Token.sol",
+        13,
+        15
+      ]
+    ],
+    "titles": [
+      "Integer underflow in transfer allows minting unlimited tokens"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 1,
+    "found_hit": 1,
+    "hit_ids": [
+      "E11"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0027304,
+    "seconds": 22.517650842666626,
+    "in_tokens": 8174,
+    "out_tokens": 3826,
+    "gate_failures": 0,
+    "found": 1,
+    "spans": [
+      [
+        "Token.sol",
+        13,
+        15
+      ]
+    ],
+    "titles": [
+      "Unchecked underflow in transfer lets any holder mint unlimited tokens"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 1,
+    "found_hit": 1,
+    "hit_ids": [
+      "E11"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0010622000000000001,
+    "seconds": 9.593297958374023,
+    "in_tokens": 1837,
+    "out_tokens": 1757,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        21,
+        30
+      ],
+      [
+        "Switch.sol",
+        17,
+        27
+      ]
+    ],
+    "titles": [
+      "StakeWETH credits stake without verifying token transfer succeeded, enabling theft of contract ETH",
+      "Switch's onlyOff modifier can be bypassed via calldata offset manipulation, allowing anyone to call arbitrary functions through flipSwitch"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0034303999999999997,
+    "seconds": 31.05222201347351,
+    "in_tokens": 6504,
+    "out_tokens": 5560,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        25,
+        29
+      ],
+      [
+        "Switch.sol",
+        13,
+        27
+      ]
+    ],
+    "titles": [
+      "StakeWETH credits stake before verifying the token transfer succeeded",
+      "onlyOff checks a fixed calldata offset, so flipSwitch can be used to call turnSwitchOn"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0039129,
+    "seconds": 33.67727994918823,
+    "in_tokens": 8644,
+    "out_tokens": 6097,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Stake.sol",
+        25,
+        29
+      ],
+      [
+        "Stake.sol",
+        32,
+        38
+      ],
+      [
+        "Switch.sol",
+        18,
+        25
+      ]
+    ],
+    "titles": [
+      "StakeWETH credits stake before verifying token transfer succeeded",
+      "Unstake pays out ETH for stakes that were recorded in WETH",
+      "onlyOff checks the wrong calldata bytes, letting anyone flip the switch on"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0051164,
+    "seconds": 43.49522113800049,
+    "in_tokens": 11164,
+    "out_tokens": 8000,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Stake.sol",
+        25,
+        29
+      ],
+      [
+        "Stake.sol",
+        32,
+        38
+      ],
+      [
+        "Switch.sol",
+        17,
+        20
+      ]
+    ],
+    "titles": [
+      "StakeWETH credits stake without verifying the token transfer succeeded",
+      "Unstake pays out native ETH against WETH-backed stake balances",
+      "onlyOff checks a fixed calldata offset instead of the actual _data, letting anyone turn the switch on"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0060493,
+    "seconds": 52.7682147026062,
+    "in_tokens": 14848,
+    "out_tokens": 9129,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        33,
+        37
+      ],
+      [
+        "Switch.sol",
+        13,
+        22
+      ]
+    ],
+    "titles": [
+      "Unstake reduces stake before ETH transfer and ignores failure of the caller-facing result",
+      "onlyOff checks a fixed calldata offset instead of the actual _data, allowing turnSwitchOn to be executed"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 1,
+    "found_hit": 1,
+    "hit_ids": [
+      "E15"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0010797,
+    "seconds": 9.097706079483032,
+    "in_tokens": 2202,
+    "out_tokens": 1719,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        28
+      ],
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        82,
+        87
+      ]
+    ],
+    "titles": [
+      "Owner overwrite via array length underflow in retract() and unchecked revise()",
+      "Unauthenticated proposeNewAdmin allows anyone to become proxy admin",
+      "msg.value reuse via nested multicall bypasses the single-deposit check"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E16",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.004137999999999999,
+    "seconds": 34.574198961257935,
+    "in_tokens": 7885,
+    "out_tokens": 6699,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        25
+      ],
+      [
+        "AlienCodex.sol",
+        27,
+        29
+      ],
+      [
+        "PuzzleWallet.sol",
+        7,
+        8
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ],
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ]
+    ],
+    "titles": [
+      "Storage array length underflow in retract() lets anyone reach all storage",
+      "revise() writes to arbitrary storage slots via unchecked index",
+      "Proxy/implementation storage collision lets anyone take over the wallet's owner and admin",
+      "multicall deposit guard bypassed by nested multicall, allowing msg.value to be reused",
+      "proposeNewAdmin has no access control and overwrites the wallet owner via storage collision"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 4,
+    "hit_ids": [
+      "E16",
+      "E19",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0053058,
+    "seconds": 42.51722288131714,
+    "in_tokens": 12798,
+    "out_tokens": 8052,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        29
+      ],
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ]
+    ],
+    "titles": [
+      "Length underflow in retract() enables arbitrary storage overwrite and ownership takeover",
+      "proposeNewAdmin has no access control, so anyone can set pendingAdmin",
+      "multicall lets nested multicall reuse msg.value via deposit, bypassing the single-deposit guard"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E16",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0088699,
+    "seconds": 71.53374218940735,
+    "in_tokens": 15954,
+    "out_tokens": 14549,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        29
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ],
+      [
+        "PuzzleWallet.sol",
+        52,
+        55
+      ]
+    ],
+    "titles": [
+      "Array length underflow in retract() enables arbitrary storage overwrite (owner takeover)",
+      "Nested multicall bypasses the deposit guard, letting msg.value be credited multiple times",
+      "setMaxBalance writes to the proxy admin slot, allowing admin takeover by a whitelisted user"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E16",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.007653200000000001,
+    "seconds": 60.78283476829529,
+    "in_tokens": 17572,
+    "out_tokens": 11792,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        25
+      ],
+      [
+        "AlienCodex.sol",
+        27,
+        29
+      ],
+      [
+        "AlienCodex.sol",
+        15,
+        17
+      ],
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ]
+    ],
+    "titles": [
+      "Array length underflow in retract() lets anyone make the codex length wrap to 2^256-1",
+      "revise() writes to codex[i] with no bounds check, enabling arbitrary storage writes",
+      "makeContact() has no access control, letting anyone unlock the contacted() functions",
+      "Unprotected proposeNewAdmin writes shared proxy storage, enabling takeover of PuzzleWallet owner",
+      "multicall nested-call check bypasses the single-deposit guard, reusing msg.value"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 3,
+    "hit_ids": [
+      "E16",
+      "E20"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0006487,
+    "seconds": 5.435547113418579,
+    "in_tokens": 1442,
+    "out_tokens": 1009,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        26
+      ],
+      [
+        "Preservation.sol",
+        20,
+        27
+      ]
+    ],
+    "titles": [
+      "Fallback delegatecall to Delegate lets anyone call pwn() and take ownership",
+      "Unrestricted delegatecall target in setFirstTime/setSecondTime lets attacker overwrite owner"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0017727999999999997,
+    "seconds": 15.848199844360352,
+    "in_tokens": 3488,
+    "out_tokens": 2848,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        26
+      ],
+      [
+        "Preservation.sol",
+        20,
+        22
+      ],
+      [
+        "Preservation.sol",
+        6,
+        9
+      ]
+    ],
+    "titles": [
+      "Unrestricted delegatecall in fallback lets anyone take ownership via pwn()",
+      "delegatecall into library with mismatched storage layout lets anyone take ownership",
+      "Storage slot collision lets anyone overwrite the library pointer via delegatecall"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0020151,
+    "seconds": 16.888109922409058,
+    "in_tokens": 5141,
+    "out_tokens": 3002,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        26
+      ],
+      [
+        "Preservation.sol",
+        21,
+        21
+      ]
+    ],
+    "titles": [
+      "Fallback forwards arbitrary msg.data via delegatecall, letting anyone run Delegate.pwn() and seize ownership",
+      "Delegatecall to library writes into caller slot 0 and 2, letting anyone seize owner"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0016292,
+    "seconds": 13.989144086837769,
+    "in_tokens": 4942,
+    "out_tokens": 2270,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        26
+      ],
+      [
+        "Preservation.sol",
+        20,
+        22
+      ]
+    ],
+    "titles": [
+      "Fallback delegatecalls arbitrary calldata, letting anyone take ownership via pwn()",
+      "Delegatecall storage collision lets anyone take ownership of Preservation"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0029825,
+    "seconds": 23.263482093811035,
+    "in_tokens": 9045,
+    "out_tokens": 4156,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        26
+      ],
+      [
+        "Preservation.sol",
+        20,
+        22
+      ]
+    ],
+    "titles": [
+      "Fallback forwards arbitrary msg.data via delegatecall, letting anyone run Delegate.pwn() in Delegation's storage",
+      "Storage layout mismatch lets anyone overwrite owner via delegatecall"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0009677,
+    "seconds": 8.08922791481018,
+    "in_tokens": 2002,
+    "out_tokens": 1535,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "GatekeeperTwo.sol",
+        12,
+        19
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        35
+      ]
+    ],
+    "titles": [
+      "Ownership takeover via receive() lets any contributor seize owner and drain funds",
+      "gateTwo extcodesize check is bypassable from a constructor, so enter() can be called by a contract",
+      "lockTokens modifier applies only to transfer(), so the timelock is bypassed via transferFrom()"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0015306999999999999,
+    "seconds": 13.393789052963257,
+    "in_tokens": 3537,
+    "out_tokens": 2354,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "GatekeeperTwo.sol",
+        14,
+        17
+      ],
+      [
+        "GatekeeperTwo.sol",
+        21,
+        24
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        35
+      ]
+    ],
+    "titles": [
+      "receive() lets any past contributor seize ownership",
+      "gateTwo bypassed by calling enter() from a contract constructor",
+      "gateThree key is fully determined by the caller's address, so anyone can compute it",
+      "Time lock bypassed via transferFrom, letting player drain tokens"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0017688,
+    "seconds": 14.750959873199463,
+    "in_tokens": 4983,
+    "out_tokens": 2541,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "GatekeeperTwo.sol",
+        12,
+        19
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        25
+      ]
+    ],
+    "titles": [
+      "receive() lets any past contributor seize ownership and drain the contract",
+      "gateTwo extcodesize check is bypassed from a contract constructor",
+      "transferFrom bypasses the timelock, letting the player move locked tokens"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0033125,
+    "seconds": 28.13305926322937,
+    "in_tokens": 8790,
+    "out_tokens": 4867,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "GatekeeperTwo.sol",
+        12,
+        19
+      ],
+      [
+        "GatekeeperTwo.sol",
+        21,
+        24
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        25
+      ]
+    ],
+    "titles": [
+      "Any past contributor can seize ownership via receive() and drain the contract",
+      "extcodesize check in gateTwo is bypassed from a contract constructor",
+      "gateThree key is derived from the caller's own address and is therefore computable by anyone",
+      "Timelock bypassed via transferFrom/approve on the player's tokens"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.002718,
+    "seconds": 22.536311864852905,
+    "in_tokens": 8970,
+    "out_tokens": 3642,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "GatekeeperTwo.sol",
+        12,
+        19
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        25
+      ]
+    ],
+    "titles": [
+      "receive() lets any prior contributor seize ownership and drain funds",
+      "gateTwo extcodesize check is bypassed from a contract constructor",
+      "Time lock bypassed via unrestricted transferFrom"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0011361,
+    "seconds": 8.896470069885254,
+    "in_tokens": 2546,
+    "out_tokens": 1763,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "DexTwo.sol",
+        23,
+        26
+      ],
+      [
+        "Dex.sol",
+        56,
+        59
+      ],
+      [
+        "DexTwo.sol",
+        55,
+        58
+      ]
+    ],
+    "titles": [
+      "DexTwo swap accepts arbitrary tokens, allowing the pool to be drained",
+      "SwappableToken.approve has no access control, allowing anyone to take tokens from any account",
+      "DexTwo SwappableTokenTwo.approve has no access control, allowing anyone to take tokens from any account"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 1,
+    "found_hit": 1,
+    "hit_ids": [
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.004767499999999999,
+    "seconds": 42.59782314300537,
+    "in_tokens": 8185,
+    "out_tokens": 7898,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Dex.sol",
+        32,
+        34
+      ],
+      [
+        "Dex.sol",
+        56,
+        59
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        29
+      ],
+      [
+        "DexTwo.sol",
+        55,
+        58
+      ]
+    ],
+    "titles": [
+      "Spot-balance pricing lets attackers drain the pool via repeated swaps",
+      "Unrestricted SwappableToken.approve lets anyone spend any holder's tokens",
+      "swap() accepts arbitrary token addresses, letting an attacker drain the pool's real tokens",
+      "SwappableTokenTwo.approve() has no caller check, so anyone can grant allowances for any non-DEX owner"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.005631000000000001,
+    "seconds": 45.15355896949768,
+    "in_tokens": 14715,
+    "out_tokens": 8319,
+    "gate_failures": 1,
+    "found": 4,
+    "spans": [
+      [
+        "Dex.sol",
+        32,
+        34
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        29
+      ],
+      [
+        "DexTwo.sol",
+        55,
+        58
+      ],
+      [
+        "Dex.sol",
+        27,
+        29
+      ]
+    ],
+    "titles": [
+      "Swap price derived from instantaneous pool balances can be manipulated and drained",
+      "swap() accepts arbitrary `from` token, letting an attacker drain any reserve token",
+      "SwappableTokenTwo.approve has no access control, allowing anyone to set allowances for any owner",
+      "swap ignores the boolean result of transferFrom, so a false-returning token lets callers take tokens for free"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 3,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0071118,
+    "seconds": 59.44693899154663,
+    "in_tokens": 17498,
+    "out_tokens": 10724,
+    "gate_failures": 2,
+    "found": 4,
+    "spans": [
+      [
+        "Dex.sol",
+        32,
+        34
+      ],
+      [
+        "Dex.sol",
+        56,
+        59
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        29
+      ],
+      [
+        "Dex.sol",
+        27,
+        29
+      ]
+    ],
+    "titles": [
+      "Swap price is the raw spot ratio of pool balances, so the pool can be drained",
+      "SwappableToken.approve has no access control, allowing anyone to spend any user's tokens",
+      "swap() ignores transferFrom return value, letting a fake 'from' token drain the real 'to' token",
+      "Unchecked ERC20 transferFrom return values in swap allow draining the pool with a non-reverting token"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 3,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0045173,
+    "seconds": 36.131096601486206,
+    "in_tokens": 12308,
+    "out_tokens": 6573,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Dex.sol",
+        32,
+        34
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        29
+      ]
+    ],
+    "titles": [
+      "Swap price derived from raw token balances enables pool drain via spot-price manipulation",
+      "swap() trusts caller-supplied token addresses, letting an attacker drain the real token with a fake token"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0036455999999999997,
+    "seconds": 30.425673007965088,
+    "in_tokens": 6296,
+    "out_tokens": 6032,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        17,
+        28
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        18
+      ]
+    ],
+    "titles": [
+      "Reentrancy-free drain of GoodSamaritan wallet via custom NotEnoughBalance revert from notify callback",
+      "Unvalidated calldata write to treasury lets anyone satisfy claimLeadership and become commander"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0063385,
+    "seconds": 54.20929002761841,
+    "in_tokens": 9795,
+    "out_tokens": 10718,
+    "gate_failures": 1,
+    "found": 6,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        19,
+        25
+      ],
+      [
+        "GoodSamaritan.sol",
+        51,
+        54
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        12
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        39,
+        43
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        21,
+        24
+      ]
+    ],
+    "titles": [
+      "Requester callback can spoof NotEnoughBalance and drain the remaining wallet balance",
+      "Coin.transfer makes unprotected callback to arbitrary recipient contracts",
+      "Unprotected registerTreasury lets anyone set treasury and seize commander",
+      "setAnimalAndSpin XOR/OR writes corrupt crate owner and animal name",
+      "changeAnimal stores animal at wrong bit offset, corrupting the next-crate pointer",
+      "encodeAnimalName silently truncates 11-12 character names"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 6,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0116508,
+    "seconds": 97.68805193901062,
+    "in_tokens": 16558,
+    "out_tokens": 19990,
+    "gate_failures": 3,
+    "found": 5,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        51,
+        54
+      ],
+      [
+        "GoodSamaritan.sol",
+        19,
+        24
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        13
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        42,
+        43
+      ]
+    ],
+    "titles": [
+      "Malicious recipient contract uses notify() callback to revert with NotEnoughBalance and force transferRemainder, draining the wallet",
+      "Attacker forges NotEnoughBalance revert to drain the wallet via transferRemainder",
+      "Unprotected registerTreasury lets anyone set treasury and then seize commander",
+      "setAnimalAndSpin XORs and ORs into the overwritten crate instead of replacing it",
+      "changeAnimal writes the animal at the wrong bit offset and ORs it over the next-crate pointer"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 5,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0086032,
+    "seconds": 68.07656502723694,
+    "in_tokens": 17352,
+    "out_tokens": 13736,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        17,
+        25
+      ],
+      [
+        "GoodSamaritan.sol",
+        51,
+        54
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        12
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        39,
+        43
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ]
+    ],
+    "titles": [
+      "Attacker contract can revert with spoofed NotEnoughBalance to trigger full wallet drain",
+      "Coin.transfer makes unchecked callback into arbitrary recipient contracts",
+      "Anyone can overwrite treasury via unchecked assembly sstore, then claim commander",
+      "changeAnimal writes the animal at the wrong bit offset, corrupting the next-crate pointer",
+      "setAnimalAndSpin XORs animal data and ORs owner bits into an existing crate on wraparound"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 5,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.014958599999999999,
+    "seconds": 123.58820581436157,
+    "in_tokens": 22651,
+    "out_tokens": 25387,
+    "gate_failures": 3,
+    "found": 5,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        22,
+        24
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        13
+      ],
+      [
+        "HigherOrder.sol",
+        15,
+        18
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        42,
+        43
+      ]
+    ],
+    "titles": [
+      "Requester-controlled notify() revert spoofs NotEnoughBalance and drains the wallet remainder",
+      "registerTreasury has no access control and lets anyone write treasury",
+      "claimLeadership gate is satisfiable by any caller via the unprotected treasury setter",
+      "XOR and OR writes into a reused crate slot corrupt existing animal and owner data",
+      "changeAnimal writes the name at the wrong bit offset, overlapping the next-ID field"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 5,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0013913,
+    "seconds": 10.420996904373169,
+    "in_tokens": 3398,
+    "out_tokens": 2103,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ],
+      [
+        "AirdropClaim.sol",
+        30,
+        38
+      ],
+      [
+        "Payroll.sol",
+        33,
+        38
+      ]
+    ],
+    "titles": [
+      "YieldPool: stake() does not settle pending rewards, letting new stakers claim rewards accrued before they staked",
+      "AirdropClaim: claim() is reentrant via the receiver callback before claimed is set",
+      "Payroll: pay() marks payment as paid without checking the token transfer result"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U04"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0048807,
+    "seconds": 42.29897379875183,
+    "in_tokens": 11012,
+    "out_tokens": 7559,
+    "gate_failures": 1,
+    "found": 3,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        36,
+        37
+      ],
+      [
+        "Payroll.sol",
+        36,
+        37
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrancy in claim() allows an eligible contract to claim repeatedly",
+      "Unchecked transfer return value marks payment as paid without paying",
+      "stake() does not settle rewardDebt, so new deposits claim rewards accrued before they were made"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U04"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0051076,
+    "seconds": 41.72478103637695,
+    "in_tokens": 13986,
+    "out_tokens": 7418,
+    "gate_failures": 1,
+    "found": 3,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        34,
+        37
+      ],
+      [
+        "Payroll.sol",
+        36,
+        37
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrancy in claim() allows an eligible contract to claim multiple times",
+      "Unchecked token.transfer return value marks payment as paid without transferring funds",
+      "Newly staked funds earn rewards notified before the stake"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U04"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0058419000000000006,
+    "seconds": 49.59104585647583,
+    "in_tokens": 14279,
+    "out_tokens": 8828,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        30,
+        38
+      ],
+      [
+        "Payroll.sol",
+        33,
+        38
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrancy in claim() lets an eligible contract claim repeatedly and exhaust the airdrop",
+      "Unchecked transfer return value lets anyone permanently mark a payment as paid without paying",
+      "stake() does not settle accrued rewards, letting new deposits claim past rewards"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U04"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.006716099999999999,
+    "seconds": 56.219383001327515,
+    "in_tokens": 16891,
+    "out_tokens": 10054,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        30,
+        38
+      ],
+      [
+        "Payroll.sol",
+        36,
+        37
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrant claim() lets an eligible receiver claim twice before the claimed flag is set",
+      "Unchecked token transfer return value lets anyone permanently burn a scheduled payment",
+      "New stakes inherit rewards accrued before they staked"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U04"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0011010999999999998,
+    "seconds": 8.812480926513672,
+    "in_tokens": 2156,
+    "out_tokens": 1771,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Treasury.sol",
+        15,
+        19
+      ],
+      [
+        "ShareVault.sol",
+        14,
+        15
+      ],
+      [
+        "PayoutSplitter.sol",
+        17,
+        24
+      ]
+    ],
+    "titles": [
+      "Treasury initialize can be re-called by anyone to seize ownership",
+      "First-depositor share inflation lets attacker steal later deposits via rounding to zero",
+      "Anyone can join with a reverting contract and block all distributions"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U07"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0020087,
+    "seconds": 18.723225831985474,
+    "in_tokens": 4222,
+    "out_tokens": 3173,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        22,
+        23
+      ],
+      [
+        "Treasury.sol",
+        15,
+        19
+      ],
+      [
+        "VoucherMint.sol",
+        15,
+        16
+      ]
+    ],
+    "titles": [
+      "Any member can permanently block distribute() by reverting on ETH receipt",
+      "Anyone can re-initialize the Treasury and seize ownership",
+      "Voucher digest lacks chain ID and contract address, enabling cross-chain replay"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U08"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0036450000000000002,
+    "seconds": 32.65912914276123,
+    "in_tokens": 8730,
+    "out_tokens": 5544,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        21,
+        23
+      ],
+      [
+        "ShareVault.sol",
+        14,
+        16
+      ],
+      [
+        "Treasury.sol",
+        15,
+        19
+      ],
+      [
+        "VoucherMint.sol",
+        15,
+        17
+      ]
+    ],
+    "titles": [
+      "A member whose receive() reverts permanently blocks all distributions",
+      "Share inflation via forced ETH donation lets attacker steal later deposits",
+      "Unrestricted re-initialization lets anyone seize ownership",
+      "Voucher signatures lack domain separation, enabling cross-contract and cross-chain replay"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 4,
+    "found_hit": 4,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U07",
+      "U08"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.005481799999999999,
+    "seconds": 50.66872978210449,
+    "in_tokens": 11213,
+    "out_tokens": 8721,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        17,
+        25
+      ],
+      [
+        "ShareVault.sol",
+        14,
+        16
+      ],
+      [
+        "Treasury.sol",
+        15,
+        19
+      ],
+      [
+        "VoucherMint.sol",
+        15,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrancy in distribute() lets a member contract drain the balance",
+      "Share minting rounds to zero when donated ETH inflates the share price",
+      "Anyone can re-initialize and seize ownership of the Treasury",
+      "Voucher signature is not bound to this contract or chain, enabling cross-deployment replay"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 4,
+    "found_hit": 4,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U07",
+      "U08"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0032098,
+    "seconds": 27.84628987312317,
+    "in_tokens": 9328,
+    "out_tokens": 4554,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        22,
+        23
+      ],
+      [
+        "Treasury.sol",
+        15,
+        19
+      ],
+      [
+        "VoucherMint.sol",
+        15,
+        19
+      ]
+    ],
+    "titles": [
+      "Malicious member can permanently block distribute() for all members",
+      "Anyone can re-run initialize() to take ownership and drain funds",
+      "Voucher signatures replayable across chains and VoucherMint deployments"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U08"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0014169,
+    "seconds": 9.450376033782959,
+    "in_tokens": 5969,
+    "out_tokens": 1640,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.002241,
+    "seconds": 17.811747074127197,
+    "in_tokens": 10225,
+    "out_tokens": 2437,
+    "gate_failures": 2,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0026449999999999993,
+    "seconds": 18.26590895652771,
+    "in_tokens": 13430,
+    "out_tokens": 2604,
+    "gate_failures": 2,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_verify",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0023401000000000003,
+    "seconds": 19.729997158050537,
+    "in_tokens": 11016,
+    "out_tokens": 2477,
+    "gate_failures": 3,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0022301,
+    "seconds": 14.971879005432129,
+    "in_tokens": 12001,
+    "out_tokens": 2060,
+    "gate_failures": 1,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "single",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0008247,
+    "seconds": 4.508514165878296,
+    "in_tokens": 4372,
+    "out_tokens": 775,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0018894999999999997,
+    "seconds": 15.944313049316406,
+    "in_tokens": 6895,
+    "out_tokens": 2400,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0023977,
+    "seconds": 16.592363119125366,
+    "in_tokens": 13617,
+    "out_tokens": 2072,
+    "gate_failures": 3,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_verify",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0022597000000000003,
+    "seconds": 18.826188802719116,
+    "in_tokens": 10457,
+    "out_tokens": 2428,
+    "gate_failures": 3,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 1,
+    "status": "ok",
+    "cost": 0.0024503000000000003,
+    "seconds": 17.835238218307495,
+    "in_tokens": 12133,
+    "out_tokens": 2474,
+    "gate_failures": 2,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "single",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0006622,
+    "seconds": 4.976245164871216,
+    "in_tokens": 1692,
+    "out_tokens": 986,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Reentrance.sol",
+        19,
+        26
+      ],
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "King.sol",
+        15,
+        20
+      ]
+    ],
+    "titles": [
+      "Reentrancy in withdraw drains contract funds",
+      "Misnamed constructor lets anyone take ownership and drain allocations",
+      "King can be permanently blocked by a reverting king contract"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0011014,
+    "seconds": 10.174808979034424,
+    "in_tokens": 3159,
+    "out_tokens": 1571,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Reentrance.sol",
+        19,
+        26
+      ],
+      [
+        "King.sol",
+        17,
+        17
+      ],
+      [
+        "Fallout.sol",
+        13,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrancy in withdraw allows draining all contract ether",
+      "Failed push payment to current king permanently blocks new bids",
+      "Misnamed constructor lets anyone take ownership and drain all funds"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0017086000000000002,
+    "seconds": 14.180527925491333,
+    "in_tokens": 6216,
+    "out_tokens": 2174,
+    "gate_failures": 1,
+    "found": 3,
+    "spans": [
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "King.sol",
+        17,
+        18
+      ],
+      [
+        "Reentrance.sol",
+        21,
+        25
+      ]
+    ],
+    "titles": [
+      "Misnamed constructor lets anyone take ownership and drain funds",
+      "Failed push payment to previous king permanently blocks new kings",
+      "Reentrancy in withdraw drains contract via external call before balance update"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0025103,
+    "seconds": 21.60365605354309,
+    "in_tokens": 7978,
+    "out_tokens": 3425,
+    "gate_failures": 1,
+    "found": 3,
+    "spans": [
+      [
+        "King.sol",
+        17,
+        17
+      ],
+      [
+        "Reentrance.sol",
+        21,
+        25
+      ],
+      [
+        "Fallout.sol",
+        13,
+        16
+      ]
+    ],
+    "titles": [
+      "Failing transfer to current king permanently blocks the contract",
+      "Reentrancy in withdraw allows draining all contract ether",
+      "Misnamed constructor lets anyone take ownership and drain the contract"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-a",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0031575,
+    "seconds": 27.226821899414062,
+    "in_tokens": 9510,
+    "out_tokens": 4413,
+    "gate_failures": 1,
+    "found": 3,
+    "spans": [
+      [
+        "Fallout.sol",
+        13,
+        16
+      ],
+      [
+        "Reentrance.sol",
+        21,
+        25
+      ],
+      [
+        "King.sol",
+        17,
+        19
+      ]
+    ],
+    "titles": [
+      "Misnamed constructor lets anyone take ownership and drain funds",
+      "Reentrancy in withdraw drains contract via balance updated after external call",
+      "Reverting king contract permanently blocks new bids (DoS via push payment)"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E01",
+      "E02",
+      "E03"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0005897000000000001,
+    "seconds": 5.213453054428101,
+    "in_tokens": 1322,
+    "out_tokens": 915,
+    "gate_failures": 0,
+    "found": 1,
+    "spans": [
+      [
+        "Telephone.sol",
+        12,
+        13
+      ]
+    ],
+    "titles": [
+      "tx.origin check lets any contract take ownership"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 1,
+    "found_hit": 1,
+    "hit_ids": [
+      "E04"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0009365,
+    "seconds": 8.901220798492432,
+    "in_tokens": 2815,
+    "out_tokens": 1310,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "CoinFlip.sol",
+        14,
+        24
+      ],
+      [
+        "Telephone.sol",
+        12,
+        13
+      ]
+    ],
+    "titles": [
+      "Coin flip outcome is predictable from the previous block hash, so callers can always win",
+      "tx.origin check lets any attacker take ownership via an intermediary contract"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E04",
+      "E07"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0013988,
+    "seconds": 12.785002946853638,
+    "in_tokens": 3953,
+    "out_tokens": 2007,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "CoinFlip.sol",
+        14,
+        22
+      ],
+      [
+        "Telephone.sol",
+        11,
+        15
+      ],
+      [
+        "Vault.sol",
+        6,
+        6
+      ]
+    ],
+    "titles": [
+      "Coin flip outcome is predictable from the previous block hash",
+      "changeOwner bypassable via intermediary contract (tx.origin check)",
+      "Vault password is stored in plaintext and can be read from contract storage"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E04",
+      "E07",
+      "E08"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0022849000000000003,
+    "seconds": 21.89984893798828,
+    "in_tokens": 6119,
+    "out_tokens": 3346,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "CoinFlip.sol",
+        14,
+        25
+      ],
+      [
+        "Telephone.sol",
+        12,
+        13
+      ],
+      [
+        "Vault.sol",
+        6,
+        6
+      ]
+    ],
+    "titles": [
+      "Predictable blockhash-based coin flip lets a caller always win",
+      "tx.origin authentication lets any intermediary contract seize ownership",
+      "Vault password is recoverable from public storage, so anyone can unlock"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E04",
+      "E07",
+      "E08"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-b",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0029945,
+    "seconds": 25.188647270202637,
+    "in_tokens": 10315,
+    "out_tokens": 3926,
+    "gate_failures": 2,
+    "found": 3,
+    "spans": [
+      [
+        "Vault.sol",
+        6,
+        10
+      ],
+      [
+        "CoinFlip.sol",
+        14,
+        24
+      ],
+      [
+        "Telephone.sol",
+        12,
+        13
+      ]
+    ],
+    "titles": [
+      "Vault password stored in plaintext on-chain, so anyone can read it and unlock",
+      "Coin flip outcome is predictable from the previous block hash",
+      "Ownership takeover via tx.origin check in changeOwner"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E04",
+      "E07",
+      "E08"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.000643,
+    "seconds": 6.028253078460693,
+    "in_tokens": 1090,
+    "out_tokens": 1068,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Token.sol",
+        13,
+        15
+      ],
+      [
+        "Elevator.sol",
+        15,
+        17
+      ]
+    ],
+    "titles": [
+      "Integer underflow in transfer lets any account with zero balance mint tokens",
+      "Building callback can return inconsistent answers to set `top` arbitrarily"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E09",
+      "E11"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0023461000000000003,
+    "seconds": 22.72676920890808,
+    "in_tokens": 5526,
+    "out_tokens": 3587,
+    "gate_failures": 2,
+    "found": 2,
+    "spans": [
+      [
+        "Token.sol",
+        13,
+        14
+      ],
+      [
+        "Token.sol",
+        15,
+        15
+      ]
+    ],
+    "titles": [
+      "Unchecked underflow in transfer lets any account with insufficient balance mint tokens",
+      "Unchecked overflow on recipient balance in transfer"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 1,
+    "found_hit": 2,
+    "hit_ids": [
+      "E11"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0017042999999999997,
+    "seconds": 15.152472972869873,
+    "in_tokens": 5173,
+    "out_tokens": 2374,
+    "gate_failures": 0,
+    "found": 1,
+    "spans": [
+      [
+        "Token.sol",
+        13,
+        15
+      ]
+    ],
+    "titles": [
+      "Unchecked subtraction underflow lets any holder mint unlimited tokens"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 1,
+    "found_hit": 1,
+    "hit_ids": [
+      "E11"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0027844,
+    "seconds": 25.99980092048645,
+    "in_tokens": 5809,
+    "out_tokens": 4407,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Token.sol",
+        13,
+        14
+      ],
+      [
+        "Token.sol",
+        15,
+        15
+      ]
+    ],
+    "titles": [
+      "Unchecked underflow in transfer lets any account mint tokens",
+      "Unchecked overflow when crediting the recipient balance"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 1,
+    "found_hit": 2,
+    "hit_ids": [
+      "E11"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-c",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0020388,
+    "seconds": 17.714135885238647,
+    "in_tokens": 6343,
+    "out_tokens": 2809,
+    "gate_failures": 0,
+    "found": 1,
+    "spans": [
+      [
+        "Token.sol",
+        13,
+        15
+      ]
+    ],
+    "titles": [
+      "Unchecked uint256 underflow lets any zero-balance account mint unlimited tokens"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 1,
+    "found_hit": 1,
+    "hit_ids": [
+      "E11"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0010437,
+    "seconds": 9.40526795387268,
+    "in_tokens": 1837,
+    "out_tokens": 1720,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        21,
+        29
+      ],
+      [
+        "Switch.sol",
+        13,
+        27
+      ]
+    ],
+    "titles": [
+      "StakeWETH credits stake without verifying the token transfer succeeded",
+      "flipSwitch onlyOff modifier can be bypassed to call turnSwitchOn"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0034054000000000003,
+    "seconds": 31.437350034713745,
+    "in_tokens": 6504,
+    "out_tokens": 5510,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        25,
+        29
+      ],
+      [
+        "Switch.sol",
+        16,
+        25
+      ]
+    ],
+    "titles": [
+      "WETH transferFrom return value unchecked; stake credited without tokens received",
+      "onlyOff checks a fixed calldata offset, so flipSwitch can be called with arbitrary data"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0030469,
+    "seconds": 25.489961862564087,
+    "in_tokens": 8649,
+    "out_tokens": 4364,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        26,
+        29
+      ],
+      [
+        "Switch.sol",
+        13,
+        27
+      ]
+    ],
+    "titles": [
+      "Unchecked transferFrom result lets stakes be credited without tokens being received",
+      "onlyOff reads a fixed calldata offset that an attacker can decouple from the executed _data"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.005455,
+    "seconds": 48.93279480934143,
+    "in_tokens": 11125,
+    "out_tokens": 8685,
+    "gate_failures": 1,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        25,
+        29
+      ],
+      [
+        "Switch.sol",
+        13,
+        27
+      ]
+    ],
+    "titles": [
+      "StakeWETH credits stake before checking the token transfer result, letting non-reverting failed transfers mint phantom stake",
+      "onlyOff checks a fixed calldata offset, so flipSwitch can execute any function"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-d",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.004505800000000001,
+    "seconds": 37.25947022438049,
+    "in_tokens": 11743,
+    "out_tokens": 6663,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Stake.sol",
+        25,
+        29
+      ],
+      [
+        "Switch.sol",
+        13,
+        22
+      ]
+    ],
+    "titles": [
+      "Unchecked WETH transferFrom result lets stakes be credited without tokens moving",
+      "onlyOff checks a fixed calldata offset, so flipSwitch can be made to run any self-call"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E14",
+      "E15"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0011337,
+    "seconds": 8.797888040542603,
+    "in_tokens": 2202,
+    "out_tokens": 1827,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        29
+      ],
+      [
+        "PuzzleWallet.sol",
+        7,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ]
+    ],
+    "titles": [
+      "Array length underflow in retract() allows overwriting any storage slot",
+      "Unauthenticated proposeNewAdmin() writes to slot 0, which aliases PuzzleWallet.owner",
+      "multicall() allows nested multicall to bypass the single-deposit check, double-counting msg.value"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E16",
+      "E19",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0035369000000000004,
+    "seconds": 29.18812918663025,
+    "in_tokens": 7834,
+    "out_tokens": 5507,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        7,
+        8
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        88
+      ],
+      [
+        "AlienCodex.sol",
+        23,
+        25
+      ]
+    ],
+    "titles": [
+      "Unrestricted proposeNewAdmin in proxy lets anyone overwrite the admin pathway and, via storage collision, seize PuzzleWallet ownership",
+      "Proxy and implementation storage layouts collide, letting admin and owner state overwrite each other",
+      "multicall nested delegatecall reuses msg.value, bypassing the single-deposit guard",
+      "Array length underflow in retract() enables arbitrary storage overwrite and ownership takeover"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E16",
+      "E19",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0044854,
+    "seconds": 36.24745202064514,
+    "in_tokens": 10354,
+    "out_tokens": 6900,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        24,
+        24
+      ],
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        52,
+        55
+      ],
+      [
+        "PuzzleWallet.sol",
+        7,
+        8
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ]
+    ],
+    "titles": [
+      "Array length underflow in retract() allows arbitrary storage overwrite and ownership takeover",
+      "proposeNewAdmin has no access control, letting anyone overwrite pendingAdmin (storage slot 0, aliased as wallet owner)",
+      "setMaxBalance lets a whitelisted user overwrite proxy admin via storage collision with maxBalance",
+      "Proxy/implementation storage layout mismatch lets anyone take over the wallet owner",
+      "multicall lets a nested multicall bypass the one-deposit guard and reuse msg.value"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E16",
+      "E19",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.012183300000000001,
+    "seconds": 98.70569205284119,
+    "in_tokens": 21233,
+    "out_tokens": 20120,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        25
+      ],
+      [
+        "AlienCodex.sol",
+        27,
+        29
+      ],
+      [
+        "PuzzleWallet.sol",
+        7,
+        7
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ],
+      [
+        "PuzzleWallet.sol",
+        21,
+        23
+      ]
+    ],
+    "titles": [
+      "Length underflow in retract() on empty codex array",
+      "Unbounded array index write in revise() enables arbitrary storage overwrite",
+      "Storage slot collision between proxy pendingAdmin and wallet maxBalance lets anyone overwrite wallet state",
+      "multicall reuses msg.value via nested multicall delegatecall, bypassing the single-deposit guard",
+      "proposeNewAdmin has no access control, letting anyone overwrite pendingAdmin"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 4,
+    "hit_ids": [
+      "E16",
+      "E19",
+      "E20"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "train-e",
+    "kind": "vuln",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0082651,
+    "seconds": 62.55910301208496,
+    "in_tokens": 21251,
+    "out_tokens": 12280,
+    "gate_failures": 0,
+    "found": 6,
+    "spans": [
+      [
+        "AlienCodex.sol",
+        23,
+        28
+      ],
+      [
+        "AlienCodex.sol",
+        10,
+        17
+      ],
+      [
+        "PuzzleWallet.sol",
+        7,
+        23
+      ],
+      [
+        "PuzzleWallet.sol",
+        74,
+        90
+      ],
+      [
+        "PuzzleWallet.sol",
+        52,
+        55
+      ],
+      [
+        "PuzzleWallet.sol",
+        57,
+        60
+      ]
+    ],
+    "titles": [
+      "Array length underflow in retract() enables arbitrary storage writes via revise()",
+      "contacted modifier is bypassable because makeContact is public and unrestricted",
+      "Proxy storage slot aliasing lets anyone overwrite PuzzleWallet owner via proposeNewAdmin",
+      "multicall allows nested multicall to reuse msg.value and drain balance",
+      "setMaxBalance can be called by a whitelisted user and overwrites the proxy admin slot",
+      "addToWhitelist trusts an owner value that can be overwritten through the proxy storage collision"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E16",
+      "E19",
+      "E20"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0006382,
+    "seconds": 4.9003987312316895,
+    "in_tokens": 1442,
+    "out_tokens": 988,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        26
+      ],
+      [
+        "Preservation.sol",
+        20,
+        22
+      ]
+    ],
+    "titles": [
+      "Unrestricted delegatecall fallback lets anyone call Delegate.pwn() and take ownership",
+      "Delegatecall to user-influenced library lets attacker overwrite owner via storage slot collision"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0019026999999999998,
+    "seconds": 17.818573236465454,
+    "in_tokens": 4437,
+    "out_tokens": 2918,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        26
+      ],
+      [
+        "Preservation.sol",
+        20,
+        22
+      ]
+    ],
+    "titles": [
+      "Unrestricted delegatecall in fallback lets anyone take ownership",
+      "Storage layout mismatch lets delegatecall overwrite timeZone1Library and take ownership"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0018727,
+    "seconds": 15.551012754440308,
+    "in_tokens": 5002,
+    "out_tokens": 2745,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        26
+      ],
+      [
+        "Preservation.sol",
+        21,
+        21
+      ]
+    ],
+    "titles": [
+      "Fallback forwards arbitrary calldata via delegatecall, letting anyone take ownership",
+      "Delegatecall to library with mismatched storage layout lets anyone overwrite owner"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0019026,
+    "seconds": 15.864230871200562,
+    "in_tokens": 5041,
+    "out_tokens": 2797,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Delegation.sol",
+        25,
+        30
+      ],
+      [
+        "Preservation.sol",
+        20,
+        22
+      ]
+    ],
+    "titles": [
+      "Unrestricted delegatecall in fallback lets anyone hijack Delegation ownership",
+      "Delegatecall to user-settable library overwrites owner via storage slot collision"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-a",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0037508,
+    "seconds": 29.550462007522583,
+    "in_tokens": 10703,
+    "out_tokens": 5361,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Delegation.sol",
+        26,
+        26
+      ],
+      [
+        "Preservation.sol",
+        21,
+        21
+      ],
+      [
+        "Preservation.sol",
+        6,
+        9
+      ]
+    ],
+    "titles": [
+      "Fallback delegatecalls arbitrary caller calldata, letting anyone take ownership",
+      "Delegatecall storage collision lets anyone overwrite timeZone1Library and then take ownership",
+      "Storage layout mismatch between Preservation and LibraryContract lets delegatecall overwrite library address and owner"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E05",
+      "E06"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0007372,
+    "seconds": 6.0688087940216064,
+    "in_tokens": 2002,
+    "out_tokens": 1074,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "Fallback.sol",
+        18,
+        37
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        25
+      ]
+    ],
+    "titles": [
+      "Fallback owner takeover then withdraw of all funds",
+      "NaughtCoin timelock bypassed via transferFrom"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E10",
+      "E12"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0020684,
+    "seconds": 18.84049391746521,
+    "in_tokens": 4554,
+    "out_tokens": 3226,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "GatekeeperTwo.sol",
+        15,
+        17
+      ],
+      [
+        "GatekeeperTwo.sol",
+        22,
+        22
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        25
+      ]
+    ],
+    "titles": [
+      "Anyone can take ownership via receive() after a trivial contribution",
+      "gateTwo extcodesize check bypassable from a contract constructor",
+      "gateThree key is fully derivable from the caller address, so the gate is predictable",
+      "transferFrom not covered by timelock, letting the player bypass the lock"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0022984,
+    "seconds": 19.147007942199707,
+    "in_tokens": 5034,
+    "out_tokens": 3590,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "Fallback.sol",
+        18,
+        24
+      ],
+      [
+        "GatekeeperTwo.sol",
+        12,
+        19
+      ],
+      [
+        "GatekeeperTwo.sol",
+        21,
+        24
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        25
+      ]
+    ],
+    "titles": [
+      "Anyone can take ownership via receive() after a trivial contribution",
+      "Ownership can be seized through contribute() by out-contributing the owner",
+      "extcodesize check in gateTwo is bypassed by calling enter() from a contract constructor",
+      "gateThree XOR key is deterministically computable by any caller, so the gate offers no real protection",
+      "Timelock bypassed via transferFrom, which is not restricted"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0033498,
+    "seconds": 28.9643337726593,
+    "in_tokens": 8673,
+    "out_tokens": 4965,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "GatekeeperTwo.sol",
+        12,
+        19
+      ],
+      [
+        "GatekeeperTwo.sol",
+        21,
+        24
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        25
+      ]
+    ],
+    "titles": [
+      "Anyone who has made a tiny contribution can seize ownership via receive() and drain the contract",
+      "gateTwo bypassed by calling enter() from a contract constructor",
+      "gateThree key is fully derivable from msg.sender, so anyone can compute it",
+      "transferFrom not overridden, so the timelock on transfer() can be bypassed"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-b",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0035255000000000004,
+    "seconds": 28.559431791305542,
+    "in_tokens": 10605,
+    "out_tokens": 4930,
+    "gate_failures": 1,
+    "found": 3,
+    "spans": [
+      [
+        "Fallback.sol",
+        34,
+        37
+      ],
+      [
+        "NaughtCoin.sol",
+        23,
+        25
+      ],
+      [
+        "GatekeeperTwo.sol",
+        14,
+        17
+      ]
+    ],
+    "titles": [
+      "Anyone can seize ownership via receive() after a 1-wei contribution",
+      "Time lock bypassed via unrestricted transferFrom",
+      "extcodesize check in gateTwo is bypassed from a constructor"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E10",
+      "E12",
+      "E13"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0012140999999999999,
+    "seconds": 10.123473882675171,
+    "in_tokens": 2546,
+    "out_tokens": 1919,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Dex.sol",
+        56,
+        58
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        29
+      ],
+      [
+        "Dex.sol",
+        23,
+        34
+      ]
+    ],
+    "titles": [
+      "Unrestricted SwappableToken.approve lets anyone grant themselves allowance over any holder's tokens",
+      "DexTwo.swap does not validate that from/to are the pool tokens, allowing pool drain with a worthless token",
+      "Spot-price swap formula lets repeated swaps drain one side of the pool"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0035548,
+    "seconds": 31.133352994918823,
+    "in_tokens": 6633,
+    "out_tokens": 5783,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "Dex.sol",
+        32,
+        34
+      ],
+      [
+        "Dex.sol",
+        56,
+        59
+      ],
+      [
+        "Dex.sol",
+        26,
+        29
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        33
+      ],
+      [
+        "DexTwo.sol",
+        55,
+        58
+      ]
+    ],
+    "titles": [
+      "Swap price derived from raw pool balances allows reserve manipulation and pool draining",
+      "SwappableToken.approve has no access control, allowing anyone to set allowances on any holder's tokens",
+      "Integer truncation can yield zero output while the user still pays input",
+      "swap() trusts caller-supplied token addresses, enabling drain via fake token",
+      "SwappableTokenTwo.approve has no access control, allowing anyone to spend any user's tokens"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 3,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0047968,
+    "seconds": 39.931061029434204,
+    "in_tokens": 12633,
+    "out_tokens": 7067,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Dex.sol",
+        32,
+        34
+      ],
+      [
+        "Dex.sol",
+        56,
+        58
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        28
+      ]
+    ],
+    "titles": [
+      "Swap price derived from live token balances enables reserve-skew drain",
+      "Unrestricted SwappableToken.approve lets anyone grant themselves allowance over any holder's tokens",
+      "swap() accepts arbitrary token addresses, letting an attacker drain reserves with a fake token"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.004789,
+    "seconds": 38.58143997192383,
+    "in_tokens": 12170,
+    "out_tokens": 7144,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Dex.sol",
+        26,
+        33
+      ],
+      [
+        "Dex.sol",
+        56,
+        59
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        29
+      ]
+    ],
+    "titles": [
+      "Swap price is the instantaneous pool balance ratio, so the pool can be drained by repeated swaps or balance donations",
+      "SwappableToken.approve has no caller authorization, so anyone can grant themselves allowance over any holder's tokens",
+      "swap() accepts arbitrary token addresses, allowing the pool to be drained with a fake token"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-c",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.004455499999999999,
+    "seconds": 33.6850860118866,
+    "in_tokens": 14510,
+    "out_tokens": 6009,
+    "gate_failures": 1,
+    "found": 2,
+    "spans": [
+      [
+        "Dex.sol",
+        32,
+        34
+      ],
+      [
+        "DexTwo.sol",
+        23,
+        33
+      ]
+    ],
+    "titles": [
+      "Swap price derived from instantaneous token balances allows reserve-ratio manipulation and pool drain",
+      "swap() accepts arbitrary 'from'/'to' tokens, enabling a fake-token drain of the real reserves"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 2,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "E17",
+      "E18"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0021929000000000002,
+    "seconds": 18.019752979278564,
+    "in_tokens": 3089,
+    "out_tokens": 3768,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        19,
+        24
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        16
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ]
+    ],
+    "titles": [
+      "GoodSamaritan: reentrant NotEnoughBalance revert lets attacker drain the wallet",
+      "HigherOrder: unchecked calldata write to treasury lets anyone become commander",
+      "MagicAnimalCarousel: XOR/OR instead of replacement corrupts reused crates, breaking ownership"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0046608000000000005,
+    "seconds": 39.80974578857422,
+    "in_tokens": 8028,
+    "out_tokens": 7716,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        19,
+        25
+      ],
+      [
+        "GoodSamaritan.sol",
+        51,
+        54
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        12
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        42,
+        43
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ]
+    ],
+    "titles": [
+      "Attacker-controlled notify() revert spoofs NotEnoughBalance and drains the wallet",
+      "Untrusted notify() callback lets requester drain the wallet's remaining coins",
+      "Unchecked calldata write lets anyone set treasury above 255 and seize commander",
+      "changeAnimal shifts the name to the wrong bit offset and ORs it over the next-crate pointer",
+      "setAnimalAndSpin uses XOR and operator precedence that corrupt existing animal data"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 5,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0035340000000000002,
+    "seconds": 29.385627031326294,
+    "in_tokens": 6035,
+    "out_tokens": 5861,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        17,
+        28
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        12
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        42,
+        43
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ]
+    ],
+    "titles": [
+      "Attacker contract can drain the wallet by reverting with the NotEnoughBalance error from its notify() callback",
+      "Anyone can overwrite treasury via unguarded registerTreasury and then claim commander",
+      "changeAnimal shifts the animal name into the nextId field, corrupting carousel links",
+      "setAnimalAndSpin uses XOR to write the animal, corrupting and overwriting existing crate data"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 4,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0083141,
+    "seconds": 67.76217484474182,
+    "in_tokens": 17566,
+    "out_tokens": 13115,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        17,
+        27
+      ],
+      [
+        "GoodSamaritan.sol",
+        51,
+        54
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        13
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        39,
+        43
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ]
+    ],
+    "titles": [
+      "Attacker callback during donation can spoof NotEnoughBalance and trigger full wallet drain",
+      "Attacker-controlled notify callback forges NotEnoughBalance to drain the wallet",
+      "registerTreasury writes unvalidated calldata into treasury, letting anyone pass the commander check",
+      "changeAnimal shifts a 12-byte name into the next-ID field, corrupting crate links",
+      "setAnimalAndSpin XORs animal bits and ORs owner bits into a previously used crate"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 5,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "heldout-d",
+    "kind": "vuln",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.009491099999999999,
+    "seconds": 77.01687288284302,
+    "in_tokens": 19286,
+    "out_tokens": 15125,
+    "gate_failures": 0,
+    "found": 5,
+    "spans": [
+      [
+        "GoodSamaritan.sol",
+        22,
+        24
+      ],
+      [
+        "GoodSamaritan.sol",
+        51,
+        54
+      ],
+      [
+        "HigherOrder.sol",
+        9,
+        12
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        25,
+        26
+      ],
+      [
+        "MagicAnimalCarousel.sol",
+        42,
+        43
+      ]
+    ],
+    "titles": [
+      "Attacker-controlled notify callback spoofs NotEnoughBalance to drain wallet remainder",
+      "Untrusted notify callback lets a recipient force NotEnoughBalance and drain the whole pool",
+      "Anyone can set treasury above 255 and claim commander",
+      "setAnimalAndSpin XOR/OR packing corrupts existing crates, enabling overwrite and owner lock",
+      "changeAnimal shifts animal name to bit 160, overlapping and corrupting the next-crate pointer field"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 3,
+    "truth_hit": 3,
+    "found_hit": 5,
+    "hit_ids": [
+      "E21",
+      "E22",
+      "E23"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0013507999999999999,
+    "seconds": 10.321129083633423,
+    "in_tokens": 3398,
+    "out_tokens": 2022,
+    "gate_failures": 0,
+    "found": 2,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        30,
+        38
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrant double-claim via onClaim callback before claimed flag is set",
+      "New stakes receive already-accrued rewards meant for existing stakers"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 2,
+    "found_hit": 2,
+    "hit_ids": [
+      "U01",
+      "U02"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.004611199999999999,
+    "seconds": 39.99647378921509,
+    "in_tokens": 11012,
+    "out_tokens": 7020,
+    "gate_failures": 1,
+    "found": 3,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        36,
+        37
+      ],
+      [
+        "Payroll.sol",
+        36,
+        37
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrancy in claim() allows repeated claims before claimed flag is set",
+      "Unchecked ERC20 transfer return value marks payment as paid without paying",
+      "stake() does not settle rewardDebt, letting new deposits claim past rewards"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U04"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0045087,
+    "seconds": 36.99646782875061,
+    "in_tokens": 12207,
+    "out_tokens": 6576,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        30,
+        38
+      ],
+      [
+        "Payroll.sol",
+        36,
+        37
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrancy in claim() allows an eligible contract to claim repeatedly",
+      "Unchecked token.transfer return value marks payment as paid without paying",
+      "stake() does not settle rewardDebt, letting new deposits claim past rewards"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U04"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.006268500000000001,
+    "seconds": 53.54114317893982,
+    "in_tokens": 15750,
+    "out_tokens": 9387,
+    "gate_failures": 1,
+    "found": 3,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        34,
+        37
+      ],
+      [
+        "Payroll.sol",
+        36,
+        37
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrancy in claim() lets an eligible contract claim repeatedly",
+      "Unchecked transfer return value marks payment as paid even when transfer fails",
+      "stake() does not settle rewardDebt, letting new and existing stakers claim rewards accrued before their deposit"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U04"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "unseen-a",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0058304,
+    "seconds": 46.58478808403015,
+    "in_tokens": 16859,
+    "out_tokens": 8289,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "AirdropClaim.sol",
+        30,
+        38
+      ],
+      [
+        "Payroll.sol",
+        36,
+        37
+      ],
+      [
+        "YieldPool.sol",
+        12,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrant double-claim via onClaim callback before claimed flag is set",
+      "Ignored return value of token.transfer marks payment as paid without paying",
+      "New stakes inherit rewards accrued before they joined"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U01",
+      "U02",
+      "U04"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0011960999999999999,
+    "seconds": 10.119668960571289,
+    "in_tokens": 2156,
+    "out_tokens": 1961,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "Treasury.sol",
+        15,
+        19
+      ],
+      [
+        "PayoutSplitter.sol",
+        17,
+        25
+      ],
+      [
+        "ShareVault.sol",
+        12,
+        18
+      ]
+    ],
+    "titles": [
+      "Treasury.initialize can be re-called by anyone to seize ownership",
+      "PayoutSplitter.distribute can be permanently blocked by a member that reverts on ETH receipt",
+      "ShareVault is vulnerable to the first-depositor inflation (donation) attack"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U07"
+    ]
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.003085,
+    "seconds": 29.284059762954712,
+    "in_tokens": 6140,
+    "out_tokens": 4942,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        20,
+        23
+      ],
+      [
+        "ShareVault.sol",
+        14,
+        15
+      ],
+      [
+        "Treasury.sol",
+        16,
+        18
+      ]
+    ],
+    "titles": [
+      "Reentrancy in distribute() lets a member re-trigger payouts and take more than its equal share",
+      "Share-price inflation via forced ETH donation lets attacker steal later deposits",
+      "Treasury can be re-initialized to seize ownership"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U07"
+    ]
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.002979,
+    "seconds": 26.72659397125244,
+    "in_tokens": 5755,
+    "out_tokens": 4807,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        17,
+        25
+      ],
+      [
+        "ShareVault.sol",
+        14,
+        16
+      ],
+      [
+        "Treasury.sol",
+        15,
+        19
+      ],
+      [
+        "VoucherMint.sol",
+        15,
+        17
+      ]
+    ],
+    "titles": [
+      "Reentrant distribute() lets a member re-split the balance mid-loop and take more than an equal share",
+      "First-depositor share inflation lets attacker steal later deposits",
+      "Anyone can re-initialize the Treasury and take ownership",
+      "Voucher signatures replayable across chains and VoucherMint deployments"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 4,
+    "found_hit": 4,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U07",
+      "U08"
+    ]
+  },
+  {
+    "variant": "graph_verify",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.005071399999999999,
+    "seconds": 47.87257504463196,
+    "in_tokens": 9439,
+    "out_tokens": 8255,
+    "gate_failures": 0,
+    "found": 4,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        20,
+        23
+      ],
+      [
+        "ShareVault.sol",
+        14,
+        16
+      ],
+      [
+        "Treasury.sol",
+        15,
+        19
+      ],
+      [
+        "VoucherMint.sol",
+        15,
+        16
+      ]
+    ],
+    "titles": [
+      "Reentrancy in distribute() lets a member take extra funds and skew payouts",
+      "Donation/first-depositor attack lets attacker steal later deposits via share rounding to zero",
+      "Anyone can re-initialize and seize ownership of the Treasury",
+      "Voucher digest lacks chain ID and contract address, enabling cross-chain or cross-deployment replay"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 4,
+    "found_hit": 4,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U07",
+      "U08"
+    ]
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "unseen-b",
+    "kind": "vuln",
+    "split": "unseen",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0051791,
+    "seconds": 45.77932691574097,
+    "in_tokens": 12416,
+    "out_tokens": 7875,
+    "gate_failures": 0,
+    "found": 3,
+    "spans": [
+      [
+        "PayoutSplitter.sol",
+        20,
+        23
+      ],
+      [
+        "Treasury.sol",
+        15,
+        19
+      ],
+      [
+        "VoucherMint.sol",
+        15,
+        18
+      ]
+    ],
+    "titles": [
+      "Reentrancy in distribute() lets a member re-trigger the split and over-collect",
+      "Anyone can re-run initialize and take ownership",
+      "Voucher signature is not bound to this contract or chain, enabling cross-deployment replay"
+    ],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "truth": 4,
+    "truth_hit": 3,
+    "found_hit": 3,
+    "hit_ids": [
+      "U05",
+      "U06",
+      "U08"
+    ]
+  },
+  {
+    "variant": "single",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0007737,
+    "seconds": 5.798548936843872,
+    "in_tokens": 2927,
+    "out_tokens": 962,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0020483999999999997,
+    "seconds": 17.002304077148438,
+    "in_tokens": 8864,
+    "out_tokens": 2324,
+    "gate_failures": 1,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0026302,
+    "seconds": 18.819249868392944,
+    "in_tokens": 13617,
+    "out_tokens": 2537,
+    "gate_failures": 2,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_verify",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0024072,
+    "seconds": 18.62787914276123,
+    "in_tokens": 12192,
+    "out_tokens": 2376,
+    "gate_failures": 4,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "safe-heldout",
+    "kind": "safe",
+    "split": "heldout",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0026809,
+    "seconds": 18.53135895729065,
+    "in_tokens": 14259,
+    "out_tokens": 2510,
+    "gate_failures": 2,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 4,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "single",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0016514,
+    "seconds": 8.602786779403687,
+    "in_tokens": 8859,
+    "out_tokens": 1531,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_noverify",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0025804000000000005,
+    "seconds": 22.534104108810425,
+    "in_tokens": 10019,
+    "out_tokens": 3157,
+    "gate_failures": 2,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_noverify_rag",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0023386,
+    "seconds": 15.71971583366394,
+    "in_tokens": 12696,
+    "out_tokens": 2138,
+    "gate_failures": 2,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_verify",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0021522000000000004,
+    "seconds": 16.885560035705566,
+    "in_tokens": 11407,
+    "out_tokens": 2023,
+    "gate_failures": 4,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  },
+  {
+    "variant": "graph_verify_rag",
+    "target": "safe-train",
+    "kind": "safe",
+    "split": "train",
+    "run": 2,
+    "status": "ok",
+    "cost": 0.0019976,
+    "seconds": 14.844153881072998,
+    "in_tokens": 9366,
+    "out_tokens": 2122,
+    "gate_failures": 0,
+    "found": 0,
+    "spans": [],
+    "titles": [],
+    "analyst_model": "claude-haiku-5-5",
+    "verifier_model": "claude-haiku-5-5",
+    "safe_files": 8,
+    "files_with_findings": 0,
+    "findings_on_safe": 0
+  }
+]
